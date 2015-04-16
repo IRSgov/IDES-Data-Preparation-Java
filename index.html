@@ -1334,6 +1334,732 @@ public class FATCAPackager {
     }
 }
 </code></pre>
+
+<ol>
+<li>Add code for FATCAXmlSigner.java</li>
+</ol>
+
+<pre><code>package fatca;
+
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.security.PrivateKey;
+import java.security.Signature;
+import java.security.cert.X509Certificate;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Date;
+import java.util.List;
+
+import javax.xml.XMLConstants;
+import javax.xml.crypto.XMLStructure;
+import javax.xml.crypto.dom.DOMStructure;
+import javax.xml.crypto.dsig.CanonicalizationMethod;
+import javax.xml.crypto.dsig.DigestMethod;
+import javax.xml.crypto.dsig.Reference;
+import javax.xml.crypto.dsig.SignedInfo;
+import javax.xml.crypto.dsig.XMLObject;
+import javax.xml.crypto.dsig.XMLSignature;
+import javax.xml.crypto.dsig.XMLSignatureFactory;
+import javax.xml.crypto.dsig.dom.DOMSignContext;
+import javax.xml.crypto.dsig.keyinfo.KeyInfo;
+import javax.xml.crypto.dsig.keyinfo.KeyInfoFactory;
+import javax.xml.crypto.dsig.keyinfo.X509Data;
+import javax.xml.crypto.dsig.spec.C14NMethodParameterSpec;
+import javax.xml.crypto.dsig.spec.TransformParameterSpec;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.SAXParserFactory;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+
+import com.sun.org.apache.xml.internal.security.Init;
+import com.sun.org.apache.xml.internal.security.c14n.Canonicalizer;
+import com.sun.org.apache.xml.internal.security.utils.Base64;
+import com.sun.org.apache.xml.internal.security.utils.IgnoreAllErrorHandler;
+
+public class FATCAXmlSigner {
+    public static String SIGNATURE_OBJECT_ID = "FATCA";
+    public static String SIGNATUER_ALGO = "SHA256withRSA";
+    public static String MESSAGE_DIGEST_ALGO = "SHA-256";
+    public static String SIGNATURE_DIGEST_METHOD = DigestMethod.SHA256;
+    public static String SIGNATURE_METHOD = "http://www.w3.org/2001/04/xmldsig-more#rsa-sha256";
+    public static String CANONICALIZATION_METHOD = CanonicalizationMethod.INCLUSIVE;
+
+    public static int bufSize = 64 * 1024;
+
+    protected static Logger logger = Logger.getLogger(new Object(){}.getClass().getEnclosingClass().getName());
+    protected static int logLevel = logger.getEffectiveLevel().toInt();
+    protected static String digprefix = "&lt;Object xmlns=\"http://www.w3.org/2000/09/xmldsig#\" Id=\"" + SIGNATURE_OBJECT_ID + "\"&gt;";
+    protected static String digsuffix = "&lt;/Object&gt;";
+    protected static final int STARTTAG = 0;
+    protected static final int ENDTAG = 1;
+    protected static final int CHUNK = 2;
+
+    // for debug
+    public StringBuilder digestBuf  = null;
+
+    protected XMLSignatureFactory xmlSigFactory = null;
+    protected KeyInfoFactory keyInfoFactory = null;
+    protected TransformerFactory transformerFactory = null;
+    protected SAXParserFactory saxFactory = null;  
+    protected Canonicalizer canonicalizer =  null;
+    protected DocumentBuilder docBuilder = null;
+
+    protected String digestValue = null, signatureValue = null;
+    protected MessageDigest messageDigest = null;
+    protected ArrayList&lt;String&gt; nsStartTagList = new ArrayList&lt;String&gt;();
+    protected ArrayList&lt;String&gt; nsEndTagList = new ArrayList&lt;String&gt;();
+
+    public FATCAXmlSigner() {
+        try {
+            Init.init();
+            transformerFactory = TransformerFactory.newInstance();
+            saxFactory = SAXParserFactory.newInstance();  
+            xmlSigFactory = XMLSignatureFactory.getInstance();
+            keyInfoFactory = xmlSigFactory.getKeyInfoFactory();
+            saxFactory.setNamespaceAware(false);
+            canonicalizer = Canonicalizer.getInstance(CANONICALIZATION_METHOD);
+            DocumentBuilderFactory dfactory = DocumentBuilderFactory.newInstance();
+            dfactory.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, Boolean.TRUE);
+            dfactory.setNamespaceAware(true);
+            dfactory.setValidating(true);
+            docBuilder = dfactory.newDocumentBuilder();
+            docBuilder.setErrorHandler(new IgnoreAllErrorHandler());
+        } catch(Exception e) {
+            logger.error(e.getMessage(), e);
+            throw new RuntimeException(e);
+        }
+    }
+
+    protected void initMessageDigest() throws NoSuchAlgorithmException {
+        logger.debug("--&gt; initMessageDigest()");
+        digestValue = null;
+        messageDigest = MessageDigest.getInstance(MESSAGE_DIGEST_ALGO);
+        messageDigest.update(digprefix.getBytes());
+        if (logLevel &lt;= Level.DEBUG_INT &amp;&amp; digestBuf != null) {
+            digestBuf.setLength(0);
+            digestBuf.append(digprefix);
+        }
+        logger.debug("&lt;-- initMessageDigest()");
+    }
+
+    protected void finalizeMessageDigest() {
+        logger.debug("--&gt; finalizeMessageDigest()");
+        messageDigest.update(digsuffix.getBytes());
+        digestValue = Base64.encode(messageDigest.digest());
+        if (logLevel &lt;= Level.DEBUG_INT &amp;&amp; digestBuf != null)
+            digestBuf.append(digsuffix);
+        logger.debug("&lt;-- finalizeMessageDigest()");
+    }
+
+    protected void calcMsgDigestByParsingDoc(String infile) throws Exception {
+        throw new Exception ("not yet implemented");
+    }
+
+    protected void calcMsgDigestNoTransformation(String xmlInputFile) throws Exception {
+        logger.debug("--&gt; calcMsgDigestNoTransformation(). xmlInputFile=" + xmlInputFile);
+        int len;
+        String tmp;
+        initMessageDigest();
+        BufferedInputStream bis = new BufferedInputStream(new FileInputStream(xmlInputFile));
+        boolean flag = true;
+        byte[] tmpBuf = new byte[bufSize];
+        while((len = bis.read(tmpBuf)) != -1) {
+            tmp = new String(tmpBuf, 0, len);
+            tmp = tmp.replace("\r", "");
+            if (flag) {
+                flag = false;
+                if (tmp.startsWith("&lt;?xml")) {
+                    int pos = tmp.indexOf("&gt;");
+                    if (pos != -1) {
+                        tmp = tmp.substring(pos+1);
+                        if (tmp.startsWith("\n"))
+                            tmp = tmp.substring(1);
+                    }
+                }
+            }
+            if (logLevel &lt;= Level.DEBUG_INT &amp;&amp; digestBuf != null)
+                digestBuf.append(tmp);
+            messageDigest.update(tmp.getBytes());
+        }
+        bis.close();
+        finalizeMessageDigest();
+        logger.debug("&lt;-- calcMsgDigestNoTransformation()");
+    }
+
+    protected Document createSignedDoc(boolean isTransformed, PrivateKey signatureKey, X509Certificate signaturePublicCert) throws Exception {
+        return createSignedDoc(null, isTransformed, signatureKey, signaturePublicCert);
+    }
+
+   protected Document createSignedDoc(String xmlInputFile, boolean isTransformed, PrivateKey signatureKey, X509Certificate signaturePublicCert) throws Exception {
+        logger.debug("--&gt; createSignedDoc(). xmlInputFile=" + xmlInputFile);
+        BufferedInputStream bis = null;
+        Document doc = null;
+        try {
+            String uri = "";
+            Reference sigref;
+            Node node;
+            if (xmlInputFile != null) {
+                bis = new BufferedInputStream(new FileInputStream(xmlInputFile));
+                doc = docBuilder.parse(bis);
+                node = doc.getDocumentElement();
+            }
+            else {
+                doc = docBuilder.newDocument();
+                node = doc.createTextNode("text");
+            }
+            XMLStructure content = new DOMStructure(node);
+            XMLObject xmlobj = xmlSigFactory.newXMLObject
+                (Collections.singletonList(content), SIGNATURE_OBJECT_ID, null, null);
+            List&lt;XMLObject&gt; xmlObjs = Collections.singletonList(xmlobj);
+            if (!"".equals(SIGNATURE_OBJECT_ID))
+                uri = "#" + SIGNATURE_OBJECT_ID;
+            if (isTransformed)
+                sigref = xmlSigFactory.newReference(uri, xmlSigFactory.newDigestMethod(SIGNATURE_DIGEST_METHOD, null), 
+                        Collections.singletonList(xmlSigFactory.newTransform(CANONICALIZATION_METHOD, 
+                                (TransformParameterSpec) null)), null, null);
+            else
+                sigref = xmlSigFactory.newReference(uri, xmlSigFactory.newDigestMethod(SIGNATURE_DIGEST_METHOD, null), null, null, null);
+            SignedInfo signedInfo = xmlSigFactory.newSignedInfo(
+                    xmlSigFactory.newCanonicalizationMethod(CANONICALIZATION_METHOD, (C14NMethodParameterSpec) null),
+                    xmlSigFactory.newSignatureMethod(SIGNATURE_METHOD, null),
+                    Collections.singletonList(sigref));
+            KeyInfo keyInfo = null;
+            if (signaturePublicCert != null) {
+                List&lt;X509Certificate&gt; list = new ArrayList&lt;X509Certificate&gt;();
+                list.add(signaturePublicCert);
+                X509Data kv = keyInfoFactory.newX509Data(list);
+                keyInfo = keyInfoFactory.newKeyInfo(Collections.singletonList(kv));
+            }
+            XMLSignature signature = xmlSigFactory.newXMLSignature(signedInfo, keyInfo, xmlObjs, null, null);
+            DOMSignContext dsc = new DOMSignContext(signatureKey, doc);
+            signature.sign(dsc);
+        } catch(Exception e) {
+            logger.error(e.getMessage(), e);
+            throw e;
+        } finally {
+            if (bis != null) try{bis.close();}catch(Exception e){}
+        }
+        logger.debug("&lt;-- createSignedDoc()");
+        return doc;
+    }
+
+    protected boolean signXML(String xmlInputFile, String signedXmlOutputFile, boolean transformXml, PrivateKey signatureKey, X509Certificate signaturePublicCert) throws Exception {
+        logger.debug("--&gt; signXML(). xmlInputFile=" + xmlInputFile + ", signedXmlOutputFile=" + signedXmlOutputFile + ", transformXml=" + transformXml);
+        boolean ret = false;
+        ByteArrayOutputStream baos = null;
+        BufferedOutputStream bos = null;
+        BufferedInputStream bis = null;
+        try {
+            Node node;
+            Transformer trans;
+            NodeList nodeList;
+            boolean isTransformed = false;
+            if (transformXml) {
+                logger.debug("parsing xml...." + new Date());
+                calcMsgDigestByParsingDoc(xmlInputFile);
+                isTransformed = true;
+                logger.debug("parsing xml....done. " + new Date());
+            } else
+                calcMsgDigestNoTransformation(xmlInputFile);
+            Document doc = createSignedDoc(isTransformed, signatureKey, signaturePublicCert);
+            nodeList = doc.getElementsByTagName("DigestValue");
+            if (nodeList.getLength() &gt; 0) {
+                node = nodeList.item(0);
+                node = node.getFirstChild();
+                node.setNodeValue(digestValue);
+            } else
+                throw new Exception("Invalid document structure. Missing &lt;DigestValue&gt; content");
+            signatureValue = null;
+            nodeList = doc.getElementsByTagName("SignedInfo");
+            if (nodeList.getLength() &gt; 0) {
+                node = nodeList.item(0); 
+                baos = new ByteArrayOutputStream();
+                trans = transformerFactory.newTransformer();
+                trans.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
+                trans.transform(new DOMSource(node), new StreamResult(baos));
+                baos.close();
+                if (!Init.isInitialized())
+                    Init.init();
+                Canonicalizer canon = Canonicalizer.getInstance(CANONICALIZATION_METHOD);
+                Signature signature = Signature.getInstance(SIGNATUER_ALGO);
+                signature.initSign(signatureKey);
+                signature.update(canon.canonicalize(baos.toByteArray()));
+                byte[] signatureBuf = signature.sign();
+                signatureValue = Base64.encode(signatureBuf);
+                baos = null;
+            } else
+                throw new Exception("Invalid document structure. Missing &lt;SignedInfo&gt; content");
+            nodeList = doc.getElementsByTagName("SignatureValue");
+            if (nodeList.getLength() &gt; 0)
+                nodeList.item(0).getFirstChild().setNodeValue(signatureValue);
+            else
+                throw new Exception("Invalid document structure. Missing &lt;SignatureValue&gt; content");
+            String textContent = null;
+            nodeList = doc.getElementsByTagName("Object");
+            if (nodeList.getLength() &gt; 0) {
+                node = nodeList.item(0);
+                node = node.getFirstChild();
+                textContent = node.getTextContent();
+            } else
+                throw new Exception("Invalid document structure. Missing &lt;Object&gt; content");
+            baos = new ByteArrayOutputStream();
+            trans = transformerFactory.newTransformer();
+            trans.transform(new DOMSource(doc), new StreamResult(baos));
+            baos.close();
+            String tmp = baos.toString();
+            baos = null;
+            int pos = tmp.indexOf(textContent);
+            if (pos == -1)
+                throw new Exception("Invalid document structure or invalid transformation");
+            String prefix = tmp.substring(0, pos);
+            String suffix = tmp.substring(pos + textContent.length());
+            bos = new BufferedOutputStream(new FileOutputStream(signedXmlOutputFile));
+            bos.write(prefix.getBytes());
+            bis = new BufferedInputStream(new FileInputStream(xmlInputFile));
+            int len;
+            boolean flag = true;
+            byte[] tmpBuf = new byte[bufSize];
+            while((len = bis.read(tmpBuf)) != -1) {
+                if (flag) {
+                    tmp = new String(tmpBuf, 0, len);
+                    flag = false;
+                    if (tmp.startsWith("&lt;?xml")) {
+                        pos = tmp.indexOf("&gt;");
+                        if (pos != -1) {
+                            tmp = tmp.substring(pos+1);
+                            if (tmp.startsWith("\r\n"))
+                                tmp = tmp.substring(2);
+                            if (tmp.startsWith("\n"))
+                                tmp = tmp.substring(1);
+                            if (tmp.startsWith("\r"))
+                                tmp = tmp.substring(1);
+                        }
+                    }
+                    bos.write(tmp.getBytes());
+                } else 
+                    bos.write(tmpBuf, 0, len);
+            }
+            bos.write(suffix.getBytes());
+            ret = true;
+        } catch(Exception e) {
+            logger.error(e.getMessage(), e);
+            throw e;
+        } finally {
+            if (bos != null) try{bos.close();}catch(Exception e){}
+            if (bis != null) try{bis.close();}catch(Exception e){}
+            if (baos != null) try{baos.close();}catch(Exception e){}
+        }
+        logger.debug("&lt;--signXML()");
+        return ret;
+    }
+
+    protected void printNode(Node node) {
+        logger.debug("--&gt; printNode() " + node.getNodeName());
+        logger.debug("prefix=" + node.getPrefix() + ", baseuri=" + 
+                node.getBaseURI() + ", nsuri=" + node.getNamespaceURI() + ", value=" + node.getNodeValue());
+        if (node.getFirstChild() != null) {
+            logger.debug("--&gt; Child of " + node.getNodeName() );
+            printNode(node.getFirstChild());
+            logger.debug("&lt;-- Child of " + node.getNodeName() );
+        }
+        if (node.getNextSibling() != null) {
+            logger.debug("--&gt; Sibling of " + node.getNodeName() );
+            printNode(node.getNextSibling());
+            logger.debug("&lt;-- Sibling of " + node.getNodeName() );
+        }
+        logger.debug("&lt;-- printNode() " + node.getNodeName());
+    }
+
+    public void signDOM(String xmlInputFile, String signedXmlOutputFile, PrivateKey signatureKey, X509Certificate signaturePublicKey) throws Exception {
+        logger.debug("--&gt; signDOM(). xmlInputFile=" + xmlInputFile + ", signedXmlOutputFile=" + signedXmlOutputFile);
+        BufferedOutputStream bos = null;
+        try {
+            Document doc = createSignedDoc(xmlInputFile, true, signatureKey, signaturePublicKey);
+            NodeList nodeList = doc.getElementsByTagName("DigestValue");
+            if (nodeList.getLength() &gt; 0)
+                digestValue = nodeList.item(0).getFirstChild().getNodeValue();
+            nodeList = doc.getElementsByTagName("SignatureValue");
+            if (nodeList.getLength() &gt; 0)
+                signatureValue = nodeList.item(0).getFirstChild().getNodeValue();
+            bos = new BufferedOutputStream(new FileOutputStream(signedXmlOutputFile));
+            Transformer transformer = transformerFactory.newTransformer();
+            transformer.transform(new DOMSource(doc), new StreamResult(bos));
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+            throw e;
+        } finally {
+            if (bos != null) try{bos.close();}catch(Exception e) {}
+        }
+        logger.debug("&lt;-- signDOM()");
+    }
+
+    public boolean signStreaming(String xmlInputFile, String signedXmlOutputFile, PrivateKey signatureKey, X509Certificate signaturePublicCert) throws Exception {
+        logger.debug("--&gt; signStreaming(). xmlInputFile=" + xmlInputFile + ", signedXmlOutputFile=" + signedXmlOutputFile);
+        boolean flag = signXML(xmlInputFile, signedXmlOutputFile, false, signatureKey, signaturePublicCert);
+        logger.debug("&lt;-- signStreaming()");
+        return flag;
+    }
+
+    public boolean signStreamingWithCanonicalization(String xmlInputFile, String signedXmlOutputFile, PrivateKey signatureKey, X509Certificate signaturePublicCert) throws Exception {
+        logger.debug("--&gt; signStreamingWithCanonicalization(). xmlInputFile=" + xmlInputFile + ", signedXmlOutputFile=" + signedXmlOutputFile);
+        boolean flag = signXML(xmlInputFile, signedXmlOutputFile, true, signatureKey, signaturePublicCert);
+        logger.debug("&lt;-- signStreamingWithCanonicalization()");
+        return flag;
+    }
+}
+
+</code></pre>
+
+<ol>
+<li>Add code for TestMain.java</li>
+</ol>
+
+<pre><code>package fatca;
+
+import java.security.PrivateKey;
+import java.security.cert.X509Certificate;
+
+import org.apache.log4j.Logger;
+
+public class TestMain {
+    protected static Logger logger = Logger.getLogger(new Object(){}.getClass().getEnclosingClass().getName());
+
+
+
+    private FATCAXmlSigner signer = null;
+    private FATCAPackager pkger = null;
+
+    // sender FFI or HCTA
+    private String canadaGiin = "000000.00000.TA.124";
+    private PrivateKey canadaSigKey = null;
+    private X509Certificate canadaPubCert = null;
+
+    // receiver
+    private String usaGiin = "000000.00000.TA.840";
+    private X509Certificate usaCert = null;
+    private PrivateKey usaPrivateKey = null; 
+
+    // approver - for model1 option2
+    private String mexicoGiin = "000000.00000.TA.484";
+    private X509Certificate mexicoPubCert = null;
+    private PrivateKey mexicoPrivateKey = null; 
+
+    public TestMain() throws Exception{
+        signer = new FATCAXmlSigner();
+        pkger = new FATCAPackager();
+        canadaSigKey = UtilShared.getPrivateKey("jks", "Keystore/Canada_PrepTool/KSprivateCA.jks", "pwd123", "CAN2014", "CANADAcert");
+        canadaPubCert = UtilShared.getCert("jks", "Keystore/Canada_PrepTool/KSpublicCA.jks", "pwd123", "CANADAcert");
+        usaCert = UtilShared.getCert("jks", "Keystore/IRS_PrepTool/KSpublicUS.jks", "pwd123", "IRScert");
+        mexicoPubCert = UtilShared.getCert("jks", "Keystore/Mexico_PrepTool/KSpublicMX.jks", "pwd123", "MEXICOcert");
+        usaPrivateKey = UtilShared.getPrivateKey("jks", "Keystore/IRS_PrepTool/KSprivateUS.jks", "pwd123", "password", "IRScert");
+        mexicoPrivateKey = UtilShared.getPrivateKey("jks", "Keystore/Mexico_PrepTool/KSprivateMX.jks", "pwd123", "MEX2014", "MEXICOcert");
+    }
+
+    public static void main(String[] args) throws Exception {
+        String canadaXml = "000000.00000.TA.124_0_Payload.xml";
+        String signedCanadaXml = canadaXml + ".signed";
+
+        FATCAPackager.isCanonicalization = false;
+
+        TestMain m = new TestMain();
+
+        m.signer.signStreaming(canadaXml, signedCanadaXml, m.canadaSigKey, m.canadaPubCert);
+        m.signer.signDOM(canadaXml, signedCanadaXml, m.canadaSigKey, m.canadaPubCert);
+
+        String idesOutFile = m.pkger.createPkg(signedCanadaXml, m.canadaGiin, m.usaGiin, m.usaCert, 2014);
+        logger.debug(idesOutFile);
+
+        m.pkger.unpack(idesOutFile, m.usaPrivateKey);
+
+        idesOutFile = m.pkger.createPkgWithApprover(signedCanadaXml, m.canadaGiin, m.usaGiin, m.usaCert, m.mexicoGiin, m.mexicoPubCert, 2014);
+        logger.debug(idesOutFile);
+
+        m.pkger.unpackForApprover(idesOutFile, m.mexicoPrivateKey);
+
+        idesOutFile = m.pkger.signAndCreatePkg(canadaXml, m.canadaSigKey, m.canadaPubCert, m.canadaGiin, m.usaGiin, m.usaCert, 2014);
+        logger.debug(idesOutFile);
+
+        m.pkger.unpack(idesOutFile, m.usaPrivateKey);
+
+        idesOutFile = m.pkger.signAndCreatePkgWithApprover(canadaXml, m.canadaSigKey, m.canadaPubCert, m.canadaGiin, m.usaGiin, m.usaCert, m.mexicoGiin, m.mexicoPubCert, 2014);
+        logger.debug(idesOutFile);
+
+        m.pkger.unpackForApprover(idesOutFile, m.mexicoPrivateKey);
+    }
+}
+
+</code></pre>
+
+<ol>
+<li>Add code for UtilShared.java</li>
+</ol>
+
+<pre><code>package fatca;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.security.KeyStore;
+import java.security.PrivateKey;
+import java.security.PublicKey;
+import java.security.cert.X509Certificate;
+import java.util.Enumeration;
+import java.util.Iterator;
+import java.util.List;
+import java.util.UUID;
+
+import javax.xml.crypto.dsig.Reference;
+import javax.xml.crypto.dsig.Transform;
+import javax.xml.crypto.dsig.XMLSignature;
+import javax.xml.crypto.dsig.XMLSignatureFactory;
+import javax.xml.crypto.dsig.XMLSignature.SignatureValue;
+import javax.xml.crypto.dsig.dom.DOMValidateContext;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+
+import org.apache.log4j.Logger;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+
+import com.sun.org.apache.xml.internal.security.utils.Base64;
+
+public class UtilShared {
+    protected static Logger logger = Logger.getLogger(new Object(){}.getClass().getEnclosingClass().getName());
+
+    public static String AES_TRANSFORMATION = "AES/ECB/PKCS5Padding";
+    public static String RSA_TRANSFORMATION = "RSA";
+
+    public static String SECRET_KEY_ALGO = "AES";
+    public static int SECRET_KEY_SIZE = 256;
+
+    public static String KEYSTORE_TYPE = "pkcs12";
+    public static String CERTIFICATE_TYPE = "X.509";
+
+    public static String genRandomId() {
+        UUID uuid = UUID.randomUUID();
+        return uuid + "@" + System.identityHashCode(uuid);
+    }
+    public static X509Certificate getCert(String keystorefile, String keystorepwd) throws Exception {
+        return getCert(KEYSTORE_TYPE, keystorefile, keystorepwd, null);
+    }
+
+    public static X509Certificate getCert(String keystorefile, String keystorepwd, String alias) throws Exception {
+        return getCert(KEYSTORE_TYPE, keystorefile, keystorepwd, alias);
+    }
+
+    public static X509Certificate getCert(String keystoretype, String keystorefile, String keystorepwd, String alias) throws Exception {
+        try {
+            //KeyStore keystore = KeyStore.getInstance(KeyStore.getDefaultType());
+            KeyStore keystore = KeyStore.getInstance(keystoretype);
+            FileInputStream fis = new FileInputStream(keystorefile);
+            keystore.load(fis, keystorepwd.toCharArray());
+            fis.close();
+            if (alias == null) {
+                Enumeration&lt;String&gt; e = keystore.aliases();
+                if (e.hasMoreElements())
+                    alias = e.nextElement();
+            }
+            if (alias != null) {
+                X509Certificate cert = (X509Certificate)keystore.getCertificate(alias);
+                return cert;
+            }
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+            throw e;
+        }
+        return null;
+    }
+    public static PrivateKey getPrivateKey(String keystorefile, String keystorepwd, String keypwd, String alias) throws Exception {
+        return getPrivateKey(KEYSTORE_TYPE, keystorefile, keystorepwd, keypwd, alias);
+    }
+
+    public static PrivateKey getPrivateKey(String keystorefile, String keystorepwd, String keypwd) throws Exception {
+        return getPrivateKey(KEYSTORE_TYPE, keystorefile, keystorepwd, keypwd, null);
+    }
+
+    public static PrivateKey getPrivateKey(String keystoretype, String keystorefile, String keystorepwd, String keypwd, String alias) throws Exception {
+        try {
+            //KeyStore keystore = KeyStore.getInstance(KeyStore.getDefaultType());
+            KeyStore keystore = KeyStore.getInstance(keystoretype);
+            FileInputStream fis = new FileInputStream(keystorefile);
+            keystore.load(fis, keystorepwd.toCharArray());
+            fis.close();
+            if (alias == null) {
+                Enumeration&lt;String&gt; e = keystore.aliases();
+                if (e.hasMoreElements())
+                    alias = e.nextElement();
+            }
+            if (alias != null) {
+                PrivateKey privkey = (PrivateKey)keystore.getKey(alias, keypwd.toCharArray());
+                if (privkey == null)
+                    privkey = (PrivateKey)keystore.getKey(alias.toLowerCase(), keypwd.toCharArray());
+                return privkey;
+            }
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+            throw e;
+        }
+        return null;
+    }
+
+    public static boolean verifySignatureDOM(String signedPlainTextFile, PublicKey sigkey) throws Exception  {
+        logger.debug("--&gt; verifySignatureDOM()");
+        boolean ret = false;
+        XMLSignatureFactory xmlsigfac;
+        XMLSignature signature;
+        NodeList nl;
+        DocumentBuilderFactory dbf;
+        Document doc;
+        DOMValidateContext valContext;
+        boolean coreValidity, sv, refValid;
+        Iterator&lt;?&gt; iter;
+        try {
+            xmlsigfac = XMLSignatureFactory.getInstance();
+
+            dbf = DocumentBuilderFactory.newInstance();
+            dbf.setNamespaceAware(true);
+            DocumentBuilder db = dbf.newDocumentBuilder();
+
+            doc = db.parse(new File(signedPlainTextFile));
+            nl = doc.getElementsByTagNameNS(XMLSignature.XMLNS, "Object");
+            if (nl.getLength() == 0)
+                throw new Exception("Cannot find Object element");
+            Node objNode = nl.item(0);
+
+            String id = "";
+            Node attrId = objNode.getAttributes().getNamedItem("Id");
+            if (attrId  != null)
+                id = attrId.getTextContent();
+            Element fakeObjNode = doc.createElementNS(XMLSignature.XMLNS, "Object");
+            fakeObjNode.setAttribute("Id", id);
+            doc.getDocumentElement().replaceChild(fakeObjNode, objNode);
+            nl = doc.getElementsByTagNameNS(XMLSignature.XMLNS, "Signature");
+            if (nl.getLength() == 0) {
+                throw new Exception("Cannot find Signature element");
+            }
+            Node sigNode = nl.item(0);
+
+            valContext = new DOMValidateContext(sigkey, sigNode);
+
+            //very important
+            doc.getDocumentElement().replaceChild(objNode, fakeObjNode);
+            signature = xmlsigfac.unmarshalXMLSignature(valContext);
+            coreValidity = signature.validate(valContext);
+
+            logger.debug("Signature core validation " + coreValidity);
+            //if (coreValidity == false) {
+                SignatureValue sigval = signature.getSignatureValue();
+                sv = sigval.validate(valContext);
+                logger.debug("SignatureValue validation status: " + sv);
+                //if (sv == false) {
+                    // Check the validation status of each Reference.
+                    iter = signature.getSignedInfo().getReferences().iterator();
+                    Reference ref;
+                    for (int j=0; iter.hasNext(); j++) {
+                        ref = (Reference) iter.next();
+                        refValid = ref.validate(valContext);
+                        logger.debug("ref["+j+"] validity status: " + refValid);
+                        logger.debug("ref.getURI()=" + ref.getURI());
+                        logger.debug("ref.getCalculatedDigestValue()=" + Base64.encode(ref.getCalculatedDigestValue()));
+                        logger.debug("ref.getDigestValue()=" + Base64.encode(ref.getDigestValue()));
+                        List&lt;?&gt; lt = ref.getTransforms();
+                        Transform tr;
+                        for (int i = 0; i &lt; lt.size(); i++) {
+                            tr = (Transform)lt.get(i);
+                            logger.debug("transform.getAlgorithm()=" + tr.getAlgorithm());
+                        }
+                    }
+                //}
+            //}
+            ret = coreValidity;
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw e;
+        } finally {
+        }
+        logger.debug("&lt;-- verifySignatureDOM()");
+        return ret;
+    }
+}
+
+</code></pre>
+
+<h2>
+<a id="test-payload-file" class="anchor" href="#test-payload-file" aria-hidden="true"><span class="octicon octicon-link"></span></a>Test Payload file</h2>
+
+<p>Place the test Payload file from the repository .zip file into the root of the IDESDataPreparation folder. This is the FATCA Payload file that will be signed, encrypted, and packaged for transmission through IDES.</p>
+
+<p><img src="http://irsgov.github.io/IDES-Data-Preparation-Java/images/image10.png" alt="Image 10"><br>
+Figure 10  </p>
+
+<h2>
+<a id="log4jxml-file" class="anchor" href="#log4jxml-file" aria-hidden="true"><span class="octicon octicon-link"></span></a>log4j.xml file</h2>
+
+<p>Place the log4j.xml file from the repository .zip file into the root of the IDESDataPreparation/bin folder. This is the settings file for the console logging .jar.</p>
+
+<p><img src="http://irsgov.github.io/IDES-Data-Preparation-Java/images/image11.png" alt="Image 11"><br>
+Figure 11  </p>
+
+<h2>
+<a id="project-contents" class="anchor" href="#project-contents" aria-hidden="true"><span class="octicon octicon-link"></span></a>Project Contents</h2>
+
+<p>Refreshing the contents of the project will show the newly added folders and files:
+<img src="http://irsgov.github.io/IDES-Data-Preparation-Java/images/image12.png" alt="Image 12"><br>
+Figure 12  </p>
+
+<h2>
+<a id="project-properties" class="anchor" href="#project-properties" aria-hidden="true"><span class="octicon octicon-link"></span></a>Project Properties</h2>
+
+<p>Enter the Project Properties screen and enter the Java Build Path selection:
+<img src="http://irsgov.github.io/IDES-Data-Preparation-Java/images/image13.png" alt="Image 13"><br>
+Figure 13  </p>
+
+<p>Add the <strong>generated</strong> folder to the <strong>Source</strong> tab and click OK
+<img src="http://irsgov.github.io/IDES-Data-Preparation-Java/images/image14.png" alt="Image 14"><br>
+Figure 14  </p>
+
+<p>Updated <strong>Source</strong> tab
+<img src="http://irsgov.github.io/IDES-Data-Preparation-Java/images/image15.png" alt="Image 15"><br>
+Figure 15  </p>
+
+<p>Select the <strong>Libraries</strong> tab
+<img src="http://irsgov.github.io/IDES-Data-Preparation-Java/images/image16.png" alt="Image 16"><br>
+Figure 16  </p>
+
+<p>Select the <strong>Add JARs</strong> button and browse to the log4j-1.2.16.jar file in the lib folder and click the OK button to add:
+<img src="http://irsgov.github.io/IDES-Data-Preparation-Java/images/image17.png" alt="Image 17"><br>
+Figure 17</p>
+
+<p>Updated <strong>Libraries</strong> tab
+<img src="http://irsgov.github.io/IDES-Data-Preparation-Java/images/image18.png" alt="Image 18"><br>
+Figure 18  </p>
+
+<p><strong>Running The Application</strong>
+Highlight the TestMain.java file located in the src\fatca folder and start the application. The Console tab will display the logging information from the program.</p>
+
+<p><img src="http://irsgov.github.io/IDES-Data-Preparation-Java/images/image19.png" alt="Image 19"><br>
+Figure 19 </p>
+
+<p>The output files will be placed in the root of the IDESDataPreparation folder:
+<img src="http://irsgov.github.io/IDES-Data-Preparation-Java/images/image20.png" alt="Image 20"><br>
+Figure 20 </p>
       </section>
     </div>
 
