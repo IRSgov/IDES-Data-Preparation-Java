@@ -1,0 +1,3354 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ns2:FATCA_OECD xmlns="urn:oecd:ties:stffatcatypes:v1" xmlns:ns2="urn:oecd:ties:fatca:v1" version="1.1">
+    <ns3:MessageSpec xmlns:ns3="urn:oecd:ties:fatca:v1">
+        <SendingCompanyIN>000000.00000.TA.124</SendingCompanyIN>
+        <TransmittingCountry>CA</TransmittingCountry>
+        <ReceivingCountry>US</ReceivingCountry>
+        <MessageType>FATCA</MessageType>
+        <Warning>NoWarning</Warning>
+        <MessageRefId>44d58c046922469cb794ed4b9c50d3aa</MessageRefId>
+        <ReportingPeriod>2014-12-31</ReportingPeriod>
+        <Timestamp>2014-12-30T08:45:47</Timestamp>
+    </ns3:MessageSpec>
+    <ns2:FATCA>
+        <ns2:ReportingFI>
+            <ResCountryCode>CA</ResCountryCode>
+            <TIN issuedBy="CA">736298291</TIN>
+            <Name nameType="OECD207">GWD Limited</Name>
+            <Address legalAddressType="OECD301">
+                <CountryCode>CA</CountryCode>
+                <AddressFix>
+                    <Street>Rua Humberto Perina 1426</Street>
+                    <PostCode>13311</PostCode>
+                    <City>Itu</City>
+                </AddressFix>
+            </Address>
+            <ns2:DocSpec>
+                <ns2:DocTypeIndic>FATCA1</ns2:DocTypeIndic>
+                <ns2:DocRefId>e12de6bdd8e840298aa889dc376688fa</ns2:DocRefId>
+            </ns2:DocSpec>
+        </ns2:ReportingFI>
+        <ns2:ReportingGroup>
+            <ns2:AccountReport>
+                <ns2:DocSpec>
+                    <ns2:DocTypeIndic>FATCA1</ns2:DocTypeIndic>
+                    <ns2:DocRefId>b5933bc2d0f24dc8b5bcfbad9b63999d</ns2:DocRefId>
+                </ns2:DocSpec>
+                <ns2:AccountNumber>6476009251198181799</ns2:AccountNumber>
+                <ns2:AccountHolder>
+                    <ns2:Individual>
+                        <ResCountryCode>CA</ResCountryCode>
+                        <TIN issuedBy="CA">562472495</TIN>
+                        <Name nameType="OECD207">
+                            <FirstName xnlNameType="GivenName">Etoile</FirstName>
+                            <MiddleName xnlNameType="MiddleInitial"></MiddleName>
+                            <NamePrefix xnlNameType="NamePrefix">Mrs.</NamePrefix>
+                            <LastName xnlNameType="FamilyName">Turcotte</LastName>
+                        </Name>
+                        <Address legalAddressType="OECD301">
+                            <CountryCode>CA</CountryCode>
+                            <AddressFix>
+                                <Street>Borstelmannsweg 68</Street>
+                                <PostCode>96469</PostCode>
+                                <City>R????dental</City>
+                            </AddressFix>
+                        </Address>
+                        <Nationality>US</Nationality>
+                        <BirthInfo>
+                            <BirthDate>1910-03-07</BirthDate>
+                            <City>R????dental</City>
+                            <CountryInfo>
+                                <CountryCode>CA</CountryCode>
+                            </CountryInfo>
+                        </BirthInfo>
+                    </ns2:Individual>
+                </ns2:AccountHolder>
+                <ns2:AccountBalance currCode="USD">1668046.73</ns2:AccountBalance>
+                <ns2:Payment>
+                    <ns2:Type>FATCA502</ns2:Type>
+                    <ns2:PaymentAmnt currCode="USD">778724.07</ns2:PaymentAmnt>
+                </ns2:Payment>
+            </ns2:AccountReport>
+            <ns2:AccountReport>
+                <ns2:DocSpec>
+                    <ns2:DocTypeIndic>FATCA1</ns2:DocTypeIndic>
+                    <ns2:DocRefId>b063998fb75d4e68acf2fd41e1064d44</ns2:DocRefId>
+                </ns2:DocSpec>
+                <ns2:AccountNumber>8195355394308367314</ns2:AccountNumber>
+                <ns2:AccountHolder>
+                    <ns2:Individual>
+                        <ResCountryCode>CA</ResCountryCode>
+                        <TIN issuedBy="CA">658436671</TIN>
+                        <Name nameType="OECD207">
+                            <FirstName xnlNameType="GivenName">Aaron</FirstName>
+                            <MiddleName xnlNameType="MiddleInitial"></MiddleName>
+                            <NamePrefix xnlNameType="NamePrefix">Mr.</NamePrefix>
+                            <LastName xnlNameType="FamilyName">Dawson</LastName>
+                        </Name>
+                        <Address legalAddressType="OECD301">
+                            <CountryCode>CA</CountryCode>
+                            <AddressFix>
+                                <Street>Rua Arthur da Silva Peixoto 441</Street>
+                                <PostCode>29176</PostCode>
+                                <City>Serra</City>
+                            </AddressFix>
+                        </Address>
+                        <Nationality>US</Nationality>
+                        <BirthInfo>
+                            <BirthDate>1946-06-03</BirthDate>
+                            <City>Serra</City>
+                            <CountryInfo>
+                                <CountryCode>CA</CountryCode>
+                            </CountryInfo>
+                        </BirthInfo>
+                    </ns2:Individual>
+                </ns2:AccountHolder>
+                <ns2:AccountBalance currCode="USD">1265783.69</ns2:AccountBalance>
+                <ns2:Payment>
+                    <ns2:Type>FATCA503</ns2:Type>
+                    <ns2:PaymentAmnt currCode="USD">838907.45</ns2:PaymentAmnt>
+                </ns2:Payment>
+            </ns2:AccountReport>
+            <ns2:AccountReport>
+                <ns2:DocSpec>
+                    <ns2:DocTypeIndic>FATCA1</ns2:DocTypeIndic>
+                    <ns2:DocRefId>f587315f6ddb4be78ab69b0f0d376501</ns2:DocRefId>
+                </ns2:DocSpec>
+                <ns2:AccountNumber>4415233573149435228</ns2:AccountNumber>
+                <ns2:AccountHolder>
+                    <ns2:Individual>
+                        <ResCountryCode>CA</ResCountryCode>
+                        <TIN issuedBy="CA">473370263</TIN>
+                        <Name nameType="OECD207">
+                            <FirstName xnlNameType="GivenName">Brayden</FirstName>
+                            <MiddleName xnlNameType="MiddleInitial">A</MiddleName>
+                            <NamePrefix xnlNameType="NamePrefix">Mr.</NamePrefix>
+                            <LastName xnlNameType="FamilyName">Kean</LastName>
+                        </Name>
+                        <Address legalAddressType="OECD301">
+                            <CountryCode>CA</CountryCode>
+                            <AddressFix>
+                                <Street>Puerto Lugar 46</Street>
+                                <PostCode>29700</PostCode>
+                                <City>V????lez-M????laga</City>
+                            </AddressFix>
+                        </Address>
+                        <Nationality>US</Nationality>
+                        <BirthInfo>
+                            <BirthDate>1943-07-07</BirthDate>
+                            <City>V????lez-M????laga</City>
+                            <CountryInfo>
+                                <CountryCode>CA</CountryCode>
+                            </CountryInfo>
+                        </BirthInfo>
+                    </ns2:Individual>
+                </ns2:AccountHolder>
+                <ns2:AccountBalance currCode="USD">920381.04</ns2:AccountBalance>
+                <ns2:Payment>
+                    <ns2:Type>FATCA501</ns2:Type>
+                    <ns2:PaymentAmnt currCode="USD">272413.44</ns2:PaymentAmnt>
+                </ns2:Payment>
+            </ns2:AccountReport>
+            <ns2:AccountReport>
+                <ns2:DocSpec>
+                    <ns2:DocTypeIndic>FATCA1</ns2:DocTypeIndic>
+                    <ns2:DocRefId>bb12cbfdbc6148898596b566e1541149</ns2:DocRefId>
+                </ns2:DocSpec>
+                <ns2:AccountNumber>1576692907876537713</ns2:AccountNumber>
+                <ns2:AccountHolder>
+                    <ns2:Individual>
+                        <ResCountryCode>CA</ResCountryCode>
+                        <TIN issuedBy="CA">288274210</TIN>
+                        <Name nameType="OECD207">
+                            <FirstName xnlNameType="GivenName">Stephan</FirstName>
+                            <MiddleName xnlNameType="MiddleInitial">J</MiddleName>
+                            <NamePrefix xnlNameType="NamePrefix">Mr.</NamePrefix>
+                            <LastName xnlNameType="FamilyName">Nordt????mme</LastName>
+                        </Name>
+                        <Address legalAddressType="OECD301">
+                            <CountryCode>CA</CountryCode>
+                            <AddressFix>
+                                <Street>Lungolago 40</Street>
+                                <PostCode>3762</PostCode>
+                                <City>Thal</City>
+                            </AddressFix>
+                        </Address>
+                        <Nationality>US</Nationality>
+                        <BirthInfo>
+                            <BirthDate>1900-05-01</BirthDate>
+                            <City>Thal</City>
+                            <CountryInfo>
+                                <CountryCode>CA</CountryCode>
+                            </CountryInfo>
+                        </BirthInfo>
+                    </ns2:Individual>
+                </ns2:AccountHolder>
+                <ns2:AccountBalance currCode="USD">1114984.99</ns2:AccountBalance>
+                <ns2:Payment>
+                    <ns2:Type>FATCA501</ns2:Type>
+                    <ns2:PaymentAmnt currCode="USD">273489.38</ns2:PaymentAmnt>
+                </ns2:Payment>
+            </ns2:AccountReport>
+            <ns2:AccountReport>
+                <ns2:DocSpec>
+                    <ns2:DocTypeIndic>FATCA1</ns2:DocTypeIndic>
+                    <ns2:DocRefId>407f23a710e1442ba7664887fb3b23e9</ns2:DocRefId>
+                </ns2:DocSpec>
+                <ns2:AccountNumber>476519066254563</ns2:AccountNumber>
+                <ns2:AccountHolder>
+                    <ns2:Individual>
+                        <ResCountryCode>CA</ResCountryCode>
+                        <TIN issuedBy="CA">561976199</TIN>
+                        <Name nameType="OECD207">
+                            <FirstName xnlNameType="GivenName">Luca</FirstName>
+                            <MiddleName xnlNameType="MiddleInitial">M</MiddleName>
+                            <NamePrefix xnlNameType="NamePrefix">Mr.</NamePrefix>
+                            <LastName xnlNameType="FamilyName">Zweig</LastName>
+                        </Name>
+                        <Address legalAddressType="OECD301">
+                            <CountryCode>CA</CountryCode>
+                            <AddressFix>
+                                <Street>Kornquaderweg 85</Street>
+                                <PostCode>5332</PostCode>
+                                <City>Rekingen</City>
+                            </AddressFix>
+                        </Address>
+                        <Nationality>US</Nationality>
+                        <BirthInfo>
+                            <BirthDate>1923-07-24</BirthDate>
+                            <City>Rekingen</City>
+                            <CountryInfo>
+                                <CountryCode>CA</CountryCode>
+                            </CountryInfo>
+                        </BirthInfo>
+                    </ns2:Individual>
+                </ns2:AccountHolder>
+                <ns2:AccountBalance currCode="USD">981346.23</ns2:AccountBalance>
+                <ns2:Payment>
+                    <ns2:Type>FATCA502</ns2:Type>
+                    <ns2:PaymentAmnt currCode="USD">33120.45</ns2:PaymentAmnt>
+                </ns2:Payment>
+            </ns2:AccountReport>
+            <ns2:AccountReport>
+                <ns2:DocSpec>
+                    <ns2:DocTypeIndic>FATCA1</ns2:DocTypeIndic>
+                    <ns2:DocRefId>02fb9a706d5d4ffa9fc9a6c982d67ebd</ns2:DocRefId>
+                </ns2:DocSpec>
+                <ns2:AccountNumber>8478920341947941026</ns2:AccountNumber>
+                <ns2:AccountHolder>
+                    <ns2:Individual>
+                        <ResCountryCode>CA</ResCountryCode>
+                        <TIN issuedBy="CA">672541645</TIN>
+                        <Name nameType="OECD207">
+                            <FirstName xnlNameType="GivenName">Eduard</FirstName>
+                            <MiddleName xnlNameType="MiddleInitial"></MiddleName>
+                            <NamePrefix xnlNameType="NamePrefix">Mr.</NamePrefix>
+                            <LastName xnlNameType="FamilyName">Aarnoutse</LastName>
+                        </Name>
+                        <Address legalAddressType="OECD301">
+                            <CountryCode>CA</CountryCode>
+                            <AddressFix>
+                                <Street>67 Culperry Road</Street>
+                                <PostCode>602</PostCode>
+                                <City>Kelston</City>
+                            </AddressFix>
+                        </Address>
+                        <Nationality>US</Nationality>
+                        <BirthInfo>
+                            <BirthDate>1982-06-04</BirthDate>
+                            <City>Kelston</City>
+                            <CountryInfo>
+                                <CountryCode>CA</CountryCode>
+                            </CountryInfo>
+                        </BirthInfo>
+                    </ns2:Individual>
+                </ns2:AccountHolder>
+                <ns2:AccountBalance currCode="USD">242799.83</ns2:AccountBalance>
+                <ns2:Payment>
+                    <ns2:Type>FATCA503</ns2:Type>
+                    <ns2:PaymentAmnt currCode="USD">44490.00</ns2:PaymentAmnt>
+                </ns2:Payment>
+            </ns2:AccountReport>
+            <ns2:AccountReport>
+                <ns2:DocSpec>
+                    <ns2:DocTypeIndic>FATCA1</ns2:DocTypeIndic>
+                    <ns2:DocRefId>9862790b07cc4b6a9ae73eba3b747fc9</ns2:DocRefId>
+                </ns2:DocSpec>
+                <ns2:AccountNumber>1320009628521567678</ns2:AccountNumber>
+                <ns2:AccountHolder>
+                    <ns2:Individual>
+                        <ResCountryCode>CA</ResCountryCode>
+                        <TIN issuedBy="CA">206721804</TIN>
+                        <Name nameType="OECD207">
+                            <FirstName xnlNameType="GivenName">Dwight</FirstName>
+                            <MiddleName xnlNameType="MiddleInitial">L</MiddleName>
+                            <NamePrefix xnlNameType="NamePrefix">Mr.</NamePrefix>
+                            <LastName xnlNameType="FamilyName">Schokker</LastName>
+                        </Name>
+                        <Address legalAddressType="OECD301">
+                            <CountryCode>CA</CountryCode>
+                            <AddressFix>
+                                <Street>43 rue de la Mare aux Carats</Street>
+                                <PostCode>93100</PostCode>
+                                <City>MONTREUIL</City>
+                            </AddressFix>
+                        </Address>
+                        <Nationality>US</Nationality>
+                        <BirthInfo>
+                            <BirthDate>1925-08-26</BirthDate>
+                            <City>MONTREUIL</City>
+                            <CountryInfo>
+                                <CountryCode>CA</CountryCode>
+                            </CountryInfo>
+                        </BirthInfo>
+                    </ns2:Individual>
+                </ns2:AccountHolder>
+                <ns2:AccountBalance currCode="USD">747112.82</ns2:AccountBalance>
+                <ns2:Payment>
+                    <ns2:Type>FATCA502</ns2:Type>
+                    <ns2:PaymentAmnt currCode="USD">575558.59</ns2:PaymentAmnt>
+                </ns2:Payment>
+            </ns2:AccountReport>
+            <ns2:AccountReport>
+                <ns2:DocSpec>
+                    <ns2:DocTypeIndic>FATCA1</ns2:DocTypeIndic>
+                    <ns2:DocRefId>bc17209cce2d4a6e8788ac2d39885d86</ns2:DocRefId>
+                </ns2:DocSpec>
+                <ns2:AccountNumber>5787092915693104003</ns2:AccountNumber>
+                <ns2:AccountHolder>
+                    <ns2:Individual>
+                        <ResCountryCode>CA</ResCountryCode>
+                        <TIN issuedBy="CA">164907865</TIN>
+                        <Name nameType="OECD207">
+                            <FirstName xnlNameType="GivenName">Lara</FirstName>
+                            <MiddleName xnlNameType="MiddleInitial"></MiddleName>
+                            <NamePrefix xnlNameType="NamePrefix">Mrs.</NamePrefix>
+                            <LastName xnlNameType="FamilyName">Keats</LastName>
+                        </Name>
+                        <Address legalAddressType="OECD301">
+                            <CountryCode>CA</CountryCode>
+                            <AddressFix>
+                                <Street>56 Glenpark Road</Street>
+                                <PostCode>2456</PostCode>
+                                <City>MULLAWAY</City>
+                            </AddressFix>
+                        </Address>
+                        <Nationality>US</Nationality>
+                        <BirthInfo>
+                            <BirthDate>1902-08-27</BirthDate>
+                            <City>MULLAWAY</City>
+                            <CountryInfo>
+                                <CountryCode>CA</CountryCode>
+                            </CountryInfo>
+                        </BirthInfo>
+                    </ns2:Individual>
+                </ns2:AccountHolder>
+                <ns2:AccountBalance currCode="USD">1240104.50</ns2:AccountBalance>
+                <ns2:Payment>
+                    <ns2:Type>FATCA501</ns2:Type>
+                    <ns2:PaymentAmnt currCode="USD">290904.11</ns2:PaymentAmnt>
+                </ns2:Payment>
+            </ns2:AccountReport>
+            <ns2:AccountReport>
+                <ns2:DocSpec>
+                    <ns2:DocTypeIndic>FATCA1</ns2:DocTypeIndic>
+                    <ns2:DocRefId>5b7253834893414ebd93bf32d0f5a4e1</ns2:DocRefId>
+                </ns2:DocSpec>
+                <ns2:AccountNumber>3628879568856961400</ns2:AccountNumber>
+                <ns2:AccountHolder>
+                    <ns2:Individual>
+                        <ResCountryCode>CA</ResCountryCode>
+                        <TIN issuedBy="CA">961690046</TIN>
+                        <Name nameType="OECD207">
+                            <FirstName xnlNameType="GivenName">George</FirstName>
+                            <MiddleName xnlNameType="MiddleInitial">C</MiddleName>
+                            <NamePrefix xnlNameType="NamePrefix">Mr.</NamePrefix>
+                            <LastName xnlNameType="FamilyName">Berg</LastName>
+                        </Name>
+                        <Address legalAddressType="OECD301">
+                            <CountryCode>CA</CountryCode>
+                            <AddressFix>
+                                <Street>70 Rue du Palais</Street>
+                                <PostCode>95120</PostCode>
+                                <City>ERMONT</City>
+                            </AddressFix>
+                        </Address>
+                        <Nationality>US</Nationality>
+                        <BirthInfo>
+                            <BirthDate>1974-09-19</BirthDate>
+                            <City>ERMONT</City>
+                            <CountryInfo>
+                                <CountryCode>CA</CountryCode>
+                            </CountryInfo>
+                        </BirthInfo>
+                    </ns2:Individual>
+                </ns2:AccountHolder>
+                <ns2:AccountBalance currCode="USD">1163015.42</ns2:AccountBalance>
+                <ns2:Payment>
+                    <ns2:Type>FATCA501</ns2:Type>
+                    <ns2:PaymentAmnt currCode="USD">619715.57</ns2:PaymentAmnt>
+                </ns2:Payment>
+            </ns2:AccountReport>
+            <ns2:AccountReport>
+                <ns2:DocSpec>
+                    <ns2:DocTypeIndic>FATCA1</ns2:DocTypeIndic>
+                    <ns2:DocRefId>6d640cf290a1489da07e1884ad99cd7d</ns2:DocRefId>
+                </ns2:DocSpec>
+                <ns2:AccountNumber>2103976116857769898</ns2:AccountNumber>
+                <ns2:AccountHolder>
+                    <ns2:Individual>
+                        <ResCountryCode>CA</ResCountryCode>
+                        <TIN issuedBy="CA">758326559</TIN>
+                        <Name nameType="OECD207">
+                            <FirstName xnlNameType="GivenName">David</FirstName>
+                            <MiddleName xnlNameType="MiddleInitial"></MiddleName>
+                            <NamePrefix xnlNameType="NamePrefix">Mr.</NamePrefix>
+                            <LastName xnlNameType="FamilyName">Ferron</LastName>
+                        </Name>
+                        <Address legalAddressType="OECD301">
+                            <CountryCode>CA</CountryCode>
+                            <AddressFix>
+                                <Street>Avenda????o 31</Street>
+                                <PostCode>4140</PostCode>
+                                <City>Carboneras</City>
+                            </AddressFix>
+                        </Address>
+                        <Nationality>US</Nationality>
+                        <BirthInfo>
+                            <BirthDate>1981-07-15</BirthDate>
+                            <City>Carboneras</City>
+                            <CountryInfo>
+                                <CountryCode>CA</CountryCode>
+                            </CountryInfo>
+                        </BirthInfo>
+                    </ns2:Individual>
+                </ns2:AccountHolder>
+                <ns2:AccountBalance currCode="USD">570302.11</ns2:AccountBalance>
+                <ns2:Payment>
+                    <ns2:Type>FATCA503</ns2:Type>
+                    <ns2:PaymentAmnt currCode="USD">393886.70</ns2:PaymentAmnt>
+                </ns2:Payment>
+            </ns2:AccountReport>
+            <ns2:AccountReport>
+                <ns2:DocSpec>
+                    <ns2:DocTypeIndic>FATCA1</ns2:DocTypeIndic>
+                    <ns2:DocRefId>f1054b796c604610978f929109fd8598</ns2:DocRefId>
+                </ns2:DocSpec>
+                <ns2:AccountNumber>1370589088826585067</ns2:AccountNumber>
+                <ns2:AccountHolder>
+                    <ns2:Individual>
+                        <ResCountryCode>CA</ResCountryCode>
+                        <TIN issuedBy="CA">487560318</TIN>
+                        <Name nameType="OECD207">
+                            <FirstName xnlNameType="GivenName">Hanan</FirstName>
+                            <MiddleName xnlNameType="MiddleInitial"></MiddleName>
+                            <NamePrefix xnlNameType="NamePrefix">Mr.</NamePrefix>
+                            <LastName xnlNameType="FamilyName">van der Boom</LastName>
+                        </Name>
+                        <Address legalAddressType="OECD301">
+                            <CountryCode>CA</CountryCode>
+                            <AddressFix>
+                                <Street>14 boulevard de Prague</Street>
+                                <PostCode>93160</PostCode>
+                                <City>NOISY-LE-GRAND</City>
+                            </AddressFix>
+                        </Address>
+                        <Nationality>US</Nationality>
+                        <BirthInfo>
+                            <BirthDate>1958-04-23</BirthDate>
+                            <City>NOISY-LE-GRAND</City>
+                            <CountryInfo>
+                                <CountryCode>CA</CountryCode>
+                            </CountryInfo>
+                        </BirthInfo>
+                    </ns2:Individual>
+                </ns2:AccountHolder>
+                <ns2:AccountBalance currCode="USD">787680.76</ns2:AccountBalance>
+                <ns2:Payment>
+                    <ns2:Type>FATCA503</ns2:Type>
+                    <ns2:PaymentAmnt currCode="USD">554708.75</ns2:PaymentAmnt>
+                </ns2:Payment>
+            </ns2:AccountReport>
+            <ns2:AccountReport>
+                <ns2:DocSpec>
+                    <ns2:DocTypeIndic>FATCA1</ns2:DocTypeIndic>
+                    <ns2:DocRefId>4f42825c56e4434d9fbdb540587e4cdc</ns2:DocRefId>
+                </ns2:DocSpec>
+                <ns2:AccountNumber>2021713181539063309</ns2:AccountNumber>
+                <ns2:AccountHolder>
+                    <ns2:Individual>
+                        <ResCountryCode>CA</ResCountryCode>
+                        <TIN issuedBy="CA">342533874</TIN>
+                        <Name nameType="OECD207">
+                            <FirstName xnlNameType="GivenName">Zi</FirstName>
+                            <MiddleName xnlNameType="MiddleInitial"></MiddleName>
+                            <NamePrefix xnlNameType="NamePrefix">Mrs.</NamePrefix>
+                            <LastName xnlNameType="FamilyName">Wang</LastName>
+                        </Name>
+                        <Address legalAddressType="OECD301">
+                            <CountryCode>CA</CountryCode>
+                            <AddressFix>
+                                <Street>Avenue d'Ouchy 109</Street>
+                                <PostCode>2807</PostCode>
+                                <City>Pleigne</City>
+                            </AddressFix>
+                        </Address>
+                        <Nationality>US</Nationality>
+                        <BirthInfo>
+                            <BirthDate>1944-03-27</BirthDate>
+                            <City>Pleigne</City>
+                            <CountryInfo>
+                                <CountryCode>CA</CountryCode>
+                            </CountryInfo>
+                        </BirthInfo>
+                    </ns2:Individual>
+                </ns2:AccountHolder>
+                <ns2:AccountBalance currCode="USD">314376.72</ns2:AccountBalance>
+                <ns2:Payment>
+                    <ns2:Type>FATCA503</ns2:Type>
+                    <ns2:PaymentAmnt currCode="USD">50588.18</ns2:PaymentAmnt>
+                </ns2:Payment>
+            </ns2:AccountReport>
+            <ns2:AccountReport>
+                <ns2:DocSpec>
+                    <ns2:DocTypeIndic>FATCA1</ns2:DocTypeIndic>
+                    <ns2:DocRefId>5f135bb908124e6a8edcf92331d0b9c9</ns2:DocRefId>
+                </ns2:DocSpec>
+                <ns2:AccountNumber>5764584520431026014</ns2:AccountNumber>
+                <ns2:AccountHolder>
+                    <ns2:Individual>
+                        <ResCountryCode>CA</ResCountryCode>
+                        <TIN issuedBy="CA">456881914</TIN>
+                        <Name nameType="OECD207">
+                            <FirstName xnlNameType="GivenName">Taj</FirstName>
+                            <MiddleName xnlNameType="MiddleInitial"></MiddleName>
+                            <NamePrefix xnlNameType="NamePrefix">Mr.</NamePrefix>
+                            <LastName xnlNameType="FamilyName">Garrett</LastName>
+                        </Name>
+                        <Address legalAddressType="OECD301">
+                            <CountryCode>CA</CountryCode>
+                            <AddressFix>
+                                <Street>Ourense 69</Street>
+                                <PostCode>43420</PostCode>
+                                <City>Santa Coloma de Queralt</City>
+                            </AddressFix>
+                        </Address>
+                        <Nationality>US</Nationality>
+                        <BirthInfo>
+                            <BirthDate>1908-11-15</BirthDate>
+                            <City>Santa Coloma de Queralt</City>
+                            <CountryInfo>
+                                <CountryCode>CA</CountryCode>
+                            </CountryInfo>
+                        </BirthInfo>
+                    </ns2:Individual>
+                </ns2:AccountHolder>
+                <ns2:AccountBalance currCode="USD">765703.92</ns2:AccountBalance>
+                <ns2:Payment>
+                    <ns2:Type>FATCA502</ns2:Type>
+                    <ns2:PaymentAmnt currCode="USD">440114.32</ns2:PaymentAmnt>
+                </ns2:Payment>
+            </ns2:AccountReport>
+            <ns2:AccountReport>
+                <ns2:DocSpec>
+                    <ns2:DocTypeIndic>FATCA1</ns2:DocTypeIndic>
+                    <ns2:DocRefId>be291d78c6b9402d904909ccacaee730</ns2:DocRefId>
+                </ns2:DocSpec>
+                <ns2:AccountNumber>5983397759689544610</ns2:AccountNumber>
+                <ns2:AccountHolder>
+                    <ns2:Individual>
+                        <ResCountryCode>CA</ResCountryCode>
+                        <TIN issuedBy="CA">253864036</TIN>
+                        <Name nameType="OECD207">
+                            <FirstName xnlNameType="GivenName">Demi</FirstName>
+                            <MiddleName xnlNameType="MiddleInitial"></MiddleName>
+                            <NamePrefix xnlNameType="NamePrefix">Mrs.</NamePrefix>
+                            <LastName xnlNameType="FamilyName">White</LastName>
+                        </Name>
+                        <Address legalAddressType="OECD301">
+                            <CountryCode>CA</CountryCode>
+                            <AddressFix>
+                                <Street>Rua 424 1527</Street>
+                                <PostCode>89258</PostCode>
+                                <City>Jaragu???? do Sul</City>
+                            </AddressFix>
+                        </Address>
+                        <Nationality>US</Nationality>
+                        <BirthInfo>
+                            <BirthDate>1966-05-20</BirthDate>
+                            <City>Jaragu???? do Sul</City>
+                            <CountryInfo>
+                                <CountryCode>CA</CountryCode>
+                            </CountryInfo>
+                        </BirthInfo>
+                    </ns2:Individual>
+                </ns2:AccountHolder>
+                <ns2:AccountBalance currCode="USD">1096387.94</ns2:AccountBalance>
+                <ns2:Payment>
+                    <ns2:Type>FATCA501</ns2:Type>
+                    <ns2:PaymentAmnt currCode="USD">516574.83</ns2:PaymentAmnt>
+                </ns2:Payment>
+            </ns2:AccountReport>
+            <ns2:AccountReport>
+                <ns2:DocSpec>
+                    <ns2:DocTypeIndic>FATCA1</ns2:DocTypeIndic>
+                    <ns2:DocRefId>731f8c54ba3e4889a654cc8526677609</ns2:DocRefId>
+                </ns2:DocSpec>
+                <ns2:AccountNumber>6837077241672204816</ns2:AccountNumber>
+                <ns2:AccountHolder>
+                    <ns2:Individual>
+                        <ResCountryCode>CA</ResCountryCode>
+                        <TIN issuedBy="CA">711995182</TIN>
+                        <Name nameType="OECD207">
+                            <FirstName xnlNameType="GivenName">Qi</FirstName>
+                            <MiddleName xnlNameType="MiddleInitial"></MiddleName>
+                            <NamePrefix xnlNameType="NamePrefix">Mrs.</NamePrefix>
+                            <LastName xnlNameType="FamilyName">Kao</LastName>
+                        </Name>
+                        <Address legalAddressType="OECD301">
+                            <CountryCode>CA</CountryCode>
+                            <AddressFix>
+                                <Street>Rua Juvino S. de Carvalho 1955</Street>
+                                <PostCode>58106</PostCode>
+                                <City>Campina Grande</City>
+                            </AddressFix>
+                        </Address>
+                        <Nationality>US</Nationality>
+                        <BirthInfo>
+                            <BirthDate>1920-03-07</BirthDate>
+                            <City>Campina Grande</City>
+                            <CountryInfo>
+                                <CountryCode>CA</CountryCode>
+                            </CountryInfo>
+                        </BirthInfo>
+                    </ns2:Individual>
+                </ns2:AccountHolder>
+                <ns2:AccountBalance currCode="USD">1405606.29</ns2:AccountBalance>
+                <ns2:Payment>
+                    <ns2:Type>FATCA502</ns2:Type>
+                    <ns2:PaymentAmnt currCode="USD">772155.22</ns2:PaymentAmnt>
+                </ns2:Payment>
+            </ns2:AccountReport>
+            <ns2:AccountReport>
+                <ns2:DocSpec>
+                    <ns2:DocTypeIndic>FATCA1</ns2:DocTypeIndic>
+                    <ns2:DocRefId>9d2454f54a724c2cb72eaee8edd28d00</ns2:DocRefId>
+                </ns2:DocSpec>
+                <ns2:AccountNumber>151771344055924781</ns2:AccountNumber>
+                <ns2:AccountHolder>
+                    <ns2:Individual>
+                        <ResCountryCode>CA</ResCountryCode>
+                        <TIN issuedBy="CA">260120404</TIN>
+                        <Name nameType="OECD207">
+                            <FirstName xnlNameType="GivenName">Gradasso</FirstName>
+                            <MiddleName xnlNameType="MiddleInitial">B</MiddleName>
+                            <NamePrefix xnlNameType="NamePrefix">Mr.</NamePrefix>
+                            <LastName xnlNameType="FamilyName">Desruisseaux</LastName>
+                        </Name>
+                        <Address legalAddressType="OECD301">
+                            <CountryCode>CA</CountryCode>
+                            <AddressFix>
+                                <Street>Rua Sebasti????o Teodoro de Andrade 1748</Street>
+                                <PostCode>06172</PostCode>
+                                <City>Osasco</City>
+                            </AddressFix>
+                        </Address>
+                        <Nationality>US</Nationality>
+                        <BirthInfo>
+                            <BirthDate>1905-06-07</BirthDate>
+                            <City>Osasco</City>
+                            <CountryInfo>
+                                <CountryCode>CA</CountryCode>
+                            </CountryInfo>
+                        </BirthInfo>
+                    </ns2:Individual>
+                </ns2:AccountHolder>
+                <ns2:AccountBalance currCode="USD">1468773.65</ns2:AccountBalance>
+                <ns2:Payment>
+                    <ns2:Type>FATCA501</ns2:Type>
+                    <ns2:PaymentAmnt currCode="USD">596685.56</ns2:PaymentAmnt>
+                </ns2:Payment>
+            </ns2:AccountReport>
+            <ns2:AccountReport>
+                <ns2:DocSpec>
+                    <ns2:DocTypeIndic>FATCA1</ns2:DocTypeIndic>
+                    <ns2:DocRefId>de8fa456884f493f84881b948563c15c</ns2:DocRefId>
+                </ns2:DocSpec>
+                <ns2:AccountNumber>4262897350898299975</ns2:AccountNumber>
+                <ns2:AccountHolder>
+                    <ns2:Individual>
+                        <ResCountryCode>CA</ResCountryCode>
+                        <TIN issuedBy="CA">616210474</TIN>
+                        <Name nameType="OECD207">
+                            <FirstName xnlNameType="GivenName">Didem</FirstName>
+                            <MiddleName xnlNameType="MiddleInitial"></MiddleName>
+                            <NamePrefix xnlNameType="NamePrefix">Ms.</NamePrefix>
+                            <LastName xnlNameType="FamilyName">Sloof</LastName>
+                        </Name>
+                        <Address legalAddressType="OECD301">
+                            <CountryCode>CA</CountryCode>
+                            <AddressFix>
+                                <Street>Rua Bernardo de Vasconcelos 1492</Street>
+                                <PostCode>21715</PostCode>
+                                <City>Rio de Janeiro</City>
+                            </AddressFix>
+                        </Address>
+                        <Nationality>US</Nationality>
+                        <BirthInfo>
+                            <BirthDate>1908-04-05</BirthDate>
+                            <City>Rio de Janeiro</City>
+                            <CountryInfo>
+                                <CountryCode>CA</CountryCode>
+                            </CountryInfo>
+                        </BirthInfo>
+                    </ns2:Individual>
+                </ns2:AccountHolder>
+                <ns2:AccountBalance currCode="USD">297355.44</ns2:AccountBalance>
+                <ns2:Payment>
+                    <ns2:Type>FATCA501</ns2:Type>
+                    <ns2:PaymentAmnt currCode="USD">139453.64</ns2:PaymentAmnt>
+                </ns2:Payment>
+            </ns2:AccountReport>
+            <ns2:AccountReport>
+                <ns2:DocSpec>
+                    <ns2:DocTypeIndic>FATCA1</ns2:DocTypeIndic>
+                    <ns2:DocRefId>ad4a85fea4404fe5a70b215f83ce4ccd</ns2:DocRefId>
+                </ns2:DocSpec>
+                <ns2:AccountNumber>1576145955625412827</ns2:AccountNumber>
+                <ns2:AccountHolder>
+                    <ns2:Individual>
+                        <ResCountryCode>CA</ResCountryCode>
+                        <TIN issuedBy="CA">330066907</TIN>
+                        <Name nameType="OECD207">
+                            <FirstName xnlNameType="GivenName">Lee</FirstName>
+                            <MiddleName xnlNameType="MiddleInitial">J</MiddleName>
+                            <NamePrefix xnlNameType="NamePrefix">Mr.</NamePrefix>
+                            <LastName xnlNameType="FamilyName">Hao</LastName>
+                        </Name>
+                        <Address legalAddressType="OECD301">
+                            <CountryCode>CA</CountryCode>
+                            <AddressFix>
+                                <Street>Plaza Maior 62</Street>
+                                <PostCode>37214</PostCode>
+                                <City>Cabeza del Caballo</City>
+                            </AddressFix>
+                        </Address>
+                        <Nationality>US</Nationality>
+                        <BirthInfo>
+                            <BirthDate>1899-01-19</BirthDate>
+                            <City>Cabeza del Caballo</City>
+                            <CountryInfo>
+                                <CountryCode>CA</CountryCode>
+                            </CountryInfo>
+                        </BirthInfo>
+                    </ns2:Individual>
+                </ns2:AccountHolder>
+                <ns2:AccountBalance currCode="USD">1264057.22</ns2:AccountBalance>
+                <ns2:Payment>
+                    <ns2:Type>FATCA501</ns2:Type>
+                    <ns2:PaymentAmnt currCode="USD">627798.72</ns2:PaymentAmnt>
+                </ns2:Payment>
+            </ns2:AccountReport>
+            <ns2:AccountReport>
+                <ns2:DocSpec>
+                    <ns2:DocTypeIndic>FATCA1</ns2:DocTypeIndic>
+                    <ns2:DocRefId>2ec06b54a5944316a349d25dfb5ff325</ns2:DocRefId>
+                </ns2:DocSpec>
+                <ns2:AccountNumber>91172570193094515</ns2:AccountNumber>
+                <ns2:AccountHolder>
+                    <ns2:Individual>
+                        <ResCountryCode>CA</ResCountryCode>
+                        <TIN issuedBy="CA">869362113</TIN>
+                        <Name nameType="OECD207">
+                            <FirstName xnlNameType="GivenName">Kayley</FirstName>
+                            <MiddleName xnlNameType="MiddleInitial">R</MiddleName>
+                            <NamePrefix xnlNameType="NamePrefix">Mrs.</NamePrefix>
+                            <LastName xnlNameType="FamilyName">Martin</LastName>
+                        </Name>
+                        <Address legalAddressType="OECD301">
+                            <CountryCode>CA</CountryCode>
+                            <AddressFix>
+                                <Street>Invalidenstrasse 31</Street>
+                                <PostCode>67152</PostCode>
+                                <City>Ruppertsberg</City>
+                            </AddressFix>
+                        </Address>
+                        <Nationality>US</Nationality>
+                        <BirthInfo>
+                            <BirthDate>1969-04-23</BirthDate>
+                            <City>Ruppertsberg</City>
+                            <CountryInfo>
+                                <CountryCode>CA</CountryCode>
+                            </CountryInfo>
+                        </BirthInfo>
+                    </ns2:Individual>
+                </ns2:AccountHolder>
+                <ns2:AccountBalance currCode="USD">1279321.03</ns2:AccountBalance>
+                <ns2:Payment>
+                    <ns2:Type>FATCA503</ns2:Type>
+                    <ns2:PaymentAmnt currCode="USD">891172.97</ns2:PaymentAmnt>
+                </ns2:Payment>
+            </ns2:AccountReport>
+            <ns2:AccountReport>
+                <ns2:DocSpec>
+                    <ns2:DocTypeIndic>FATCA1</ns2:DocTypeIndic>
+                    <ns2:DocRefId>c710d98117574d959c112c4553be5274</ns2:DocRefId>
+                </ns2:DocSpec>
+                <ns2:AccountNumber>2477112513323993401</ns2:AccountNumber>
+                <ns2:AccountHolder>
+                    <ns2:Individual>
+                        <ResCountryCode>CA</ResCountryCode>
+                        <TIN issuedBy="CA">302163407</TIN>
+                        <Name nameType="OECD207">
+                            <FirstName xnlNameType="GivenName">Ninette</FirstName>
+                            <MiddleName xnlNameType="MiddleInitial">F</MiddleName>
+                            <NamePrefix xnlNameType="NamePrefix">Mrs.</NamePrefix>
+                            <LastName xnlNameType="FamilyName">Couturier</LastName>
+                        </Name>
+                        <Address legalAddressType="OECD301">
+                            <CountryCode>CA</CountryCode>
+                            <AddressFix>
+                                <Street>Rua Haiti 1375</Street>
+                                <PostCode>13450</PostCode>
+                                <City>Santa B????rbara D'Oeste</City>
+                            </AddressFix>
+                        </Address>
+                        <Nationality>US</Nationality>
+                        <BirthInfo>
+                            <BirthDate>1982-08-10</BirthDate>
+                            <City>Santa B????rbara D'Oeste</City>
+                            <CountryInfo>
+                                <CountryCode>CA</CountryCode>
+                            </CountryInfo>
+                        </BirthInfo>
+                    </ns2:Individual>
+                </ns2:AccountHolder>
+                <ns2:AccountBalance currCode="USD">825764.09</ns2:AccountBalance>
+                <ns2:Payment>
+                    <ns2:Type>FATCA502</ns2:Type>
+                    <ns2:PaymentAmnt currCode="USD">497075.51</ns2:PaymentAmnt>
+                </ns2:Payment>
+            </ns2:AccountReport>
+            <ns2:AccountReport>
+                <ns2:DocSpec>
+                    <ns2:DocTypeIndic>FATCA1</ns2:DocTypeIndic>
+                    <ns2:DocRefId>060847087cbb41f387764b35677f9acd</ns2:DocRefId>
+                </ns2:DocSpec>
+                <ns2:AccountNumber>8492224406111137657</ns2:AccountNumber>
+                <ns2:AccountHolder>
+                    <ns2:Individual>
+                        <ResCountryCode>CA</ResCountryCode>
+                        <TIN issuedBy="CA">163157642</TIN>
+                        <Name nameType="OECD207">
+                            <FirstName xnlNameType="GivenName">Phoebe</FirstName>
+                            <MiddleName xnlNameType="MiddleInitial"></MiddleName>
+                            <NamePrefix xnlNameType="NamePrefix">Ms.</NamePrefix>
+                            <LastName xnlNameType="FamilyName">Kerr</LastName>
+                        </Name>
+                        <Address legalAddressType="OECD301">
+                            <CountryCode>CA</CountryCode>
+                            <AddressFix>
+                                <Street>Rua Ferdinando Fermino Franciosi 974</Street>
+                                <PostCode>81930</PostCode>
+                                <City>Curitiba</City>
+                            </AddressFix>
+                        </Address>
+                        <Nationality>US</Nationality>
+                        <BirthInfo>
+                            <BirthDate>1934-07-12</BirthDate>
+                            <City>Curitiba</City>
+                            <CountryInfo>
+                                <CountryCode>CA</CountryCode>
+                            </CountryInfo>
+                        </BirthInfo>
+                    </ns2:Individual>
+                </ns2:AccountHolder>
+                <ns2:AccountBalance currCode="USD">1548156.10</ns2:AccountBalance>
+                <ns2:Payment>
+                    <ns2:Type>FATCA501</ns2:Type>
+                    <ns2:PaymentAmnt currCode="USD">719675.75</ns2:PaymentAmnt>
+                </ns2:Payment>
+            </ns2:AccountReport>
+            <ns2:AccountReport>
+                <ns2:DocSpec>
+                    <ns2:DocTypeIndic>FATCA1</ns2:DocTypeIndic>
+                    <ns2:DocRefId>7f24e2e67ea94e79b37dcaa00d4d4679</ns2:DocRefId>
+                </ns2:DocSpec>
+                <ns2:AccountNumber>4396739781548027286</ns2:AccountNumber>
+                <ns2:AccountHolder>
+                    <ns2:Individual>
+                        <ResCountryCode>CA</ResCountryCode>
+                        <TIN issuedBy="CA">269993168</TIN>
+                        <Name nameType="OECD207">
+                            <FirstName xnlNameType="GivenName">Gracie</FirstName>
+                            <MiddleName xnlNameType="MiddleInitial">L</MiddleName>
+                            <NamePrefix xnlNameType="NamePrefix">Mrs.</NamePrefix>
+                            <LastName xnlNameType="FamilyName">Pritchard</LastName>
+                        </Name>
+                        <Address legalAddressType="OECD301">
+                            <CountryCode>CA</CountryCode>
+                            <AddressFix>
+                                <Street>166 Penney Green</Street>
+                                <PostCode>3200</PostCode>
+                                <City>Forest Lake</City>
+                            </AddressFix>
+                        </Address>
+                        <Nationality>US</Nationality>
+                        <BirthInfo>
+                            <BirthDate>1965-06-23</BirthDate>
+                            <City>Forest Lake</City>
+                            <CountryInfo>
+                                <CountryCode>CA</CountryCode>
+                            </CountryInfo>
+                        </BirthInfo>
+                    </ns2:Individual>
+                </ns2:AccountHolder>
+                <ns2:AccountBalance currCode="USD">367689.90</ns2:AccountBalance>
+                <ns2:Payment>
+                    <ns2:Type>FATCA502</ns2:Type>
+                    <ns2:PaymentAmnt currCode="USD">150257.88</ns2:PaymentAmnt>
+                </ns2:Payment>
+            </ns2:AccountReport>
+            <ns2:AccountReport>
+                <ns2:DocSpec>
+                    <ns2:DocTypeIndic>FATCA1</ns2:DocTypeIndic>
+                    <ns2:DocRefId>9b0560ffc0d940b391ffff349b000511</ns2:DocRefId>
+                </ns2:DocSpec>
+                <ns2:AccountNumber>1716271771888240863</ns2:AccountNumber>
+                <ns2:AccountHolder>
+                    <ns2:Individual>
+                        <ResCountryCode>CA</ResCountryCode>
+                        <TIN issuedBy="CA">458338281</TIN>
+                        <Name nameType="OECD207">
+                            <FirstName xnlNameType="GivenName">Antoon</FirstName>
+                            <MiddleName xnlNameType="MiddleInitial">M</MiddleName>
+                            <NamePrefix xnlNameType="NamePrefix">Mr.</NamePrefix>
+                            <LastName xnlNameType="FamilyName">Keurhorst</LastName>
+                        </Name>
+                        <Address legalAddressType="OECD301">
+                            <CountryCode>CA</CountryCode>
+                            <AddressFix>
+                                <Street>La Fontanilla 98</Street>
+                                <PostCode>14412</PostCode>
+                                <City>Pedroche</City>
+                            </AddressFix>
+                        </Address>
+                        <Nationality>US</Nationality>
+                        <BirthInfo>
+                            <BirthDate>1963-05-11</BirthDate>
+                            <City>Pedroche</City>
+                            <CountryInfo>
+                                <CountryCode>CA</CountryCode>
+                            </CountryInfo>
+                        </BirthInfo>
+                    </ns2:Individual>
+                </ns2:AccountHolder>
+                <ns2:AccountBalance currCode="USD">855416.33</ns2:AccountBalance>
+                <ns2:Payment>
+                    <ns2:Type>FATCA503</ns2:Type>
+                    <ns2:PaymentAmnt currCode="USD">262044.95</ns2:PaymentAmnt>
+                </ns2:Payment>
+            </ns2:AccountReport>
+            <ns2:AccountReport>
+                <ns2:DocSpec>
+                    <ns2:DocTypeIndic>FATCA1</ns2:DocTypeIndic>
+                    <ns2:DocRefId>5ba5bd08778d484c8e4b5dfd11daff97</ns2:DocRefId>
+                </ns2:DocSpec>
+                <ns2:AccountNumber>7351999951742920925</ns2:AccountNumber>
+                <ns2:AccountHolder>
+                    <ns2:Individual>
+                        <ResCountryCode>CA</ResCountryCode>
+                        <TIN issuedBy="CA">722322805</TIN>
+                        <Name nameType="OECD207">
+                            <FirstName xnlNameType="GivenName">Baptiste</FirstName>
+                            <MiddleName xnlNameType="MiddleInitial">M</MiddleName>
+                            <NamePrefix xnlNameType="NamePrefix">Ms.</NamePrefix>
+                            <LastName xnlNameType="FamilyName">Chatigny</LastName>
+                        </Name>
+                        <Address legalAddressType="OECD301">
+                            <CountryCode>CA</CountryCode>
+                            <AddressFix>
+                                <Street>Dreib????ndenstrasse 74</Street>
+                                <PostCode>6959</PostCode>
+                                <City>Curtina</City>
+                            </AddressFix>
+                        </Address>
+                        <Nationality>US</Nationality>
+                        <BirthInfo>
+                            <BirthDate>1962-03-03</BirthDate>
+                            <City>Curtina</City>
+                            <CountryInfo>
+                                <CountryCode>CA</CountryCode>
+                            </CountryInfo>
+                        </BirthInfo>
+                    </ns2:Individual>
+                </ns2:AccountHolder>
+                <ns2:AccountBalance currCode="USD">1288541.78</ns2:AccountBalance>
+                <ns2:Payment>
+                    <ns2:Type>FATCA501</ns2:Type>
+                    <ns2:PaymentAmnt currCode="USD">588304.40</ns2:PaymentAmnt>
+                </ns2:Payment>
+            </ns2:AccountReport>
+            <ns2:AccountReport>
+                <ns2:DocSpec>
+                    <ns2:DocTypeIndic>FATCA1</ns2:DocTypeIndic>
+                    <ns2:DocRefId>7d1b378920124c75ac3246660065ab58</ns2:DocRefId>
+                </ns2:DocSpec>
+                <ns2:AccountNumber>3915373418514953566</ns2:AccountNumber>
+                <ns2:AccountHolder>
+                    <ns2:Individual>
+                        <ResCountryCode>CA</ResCountryCode>
+                        <TIN issuedBy="CA">577645697</TIN>
+                        <Name nameType="OECD207">
+                            <FirstName xnlNameType="GivenName">Nicole</FirstName>
+                            <MiddleName xnlNameType="MiddleInitial"></MiddleName>
+                            <NamePrefix xnlNameType="NamePrefix">Ms.</NamePrefix>
+                            <LastName xnlNameType="FamilyName">Alcantar</LastName>
+                        </Name>
+                        <Address legalAddressType="OECD301">
+                            <CountryCode>CA</CountryCode>
+                            <AddressFix>
+                                <Street>C/ Domingo Beltr????n 51</Street>
+                                <PostCode>2316</PostCode>
+                                <City>Salobre</City>
+                            </AddressFix>
+                        </Address>
+                        <Nationality>US</Nationality>
+                        <BirthInfo>
+                            <BirthDate>1942-03-03</BirthDate>
+                            <City>Salobre</City>
+                            <CountryInfo>
+                                <CountryCode>CA</CountryCode>
+                            </CountryInfo>
+                        </BirthInfo>
+                    </ns2:Individual>
+                </ns2:AccountHolder>
+                <ns2:AccountBalance currCode="USD">1332692.37</ns2:AccountBalance>
+                <ns2:Payment>
+                    <ns2:Type>FATCA501</ns2:Type>
+                    <ns2:PaymentAmnt currCode="USD">603330.29</ns2:PaymentAmnt>
+                </ns2:Payment>
+            </ns2:AccountReport>
+            <ns2:AccountReport>
+                <ns2:DocSpec>
+                    <ns2:DocTypeIndic>FATCA1</ns2:DocTypeIndic>
+                    <ns2:DocRefId>07bf3e34d4f7419aaaea1ad18932ea9e</ns2:DocRefId>
+                </ns2:DocSpec>
+                <ns2:AccountNumber>6468499253740677659</ns2:AccountNumber>
+                <ns2:AccountHolder>
+                    <ns2:Individual>
+                        <ResCountryCode>CA</ResCountryCode>
+                        <TIN issuedBy="CA">171574110</TIN>
+                        <Name nameType="OECD207">
+                            <FirstName xnlNameType="GivenName">Glenda</FirstName>
+                            <MiddleName xnlNameType="MiddleInitial"></MiddleName>
+                            <NamePrefix xnlNameType="NamePrefix">Mrs.</NamePrefix>
+                            <LastName xnlNameType="FamilyName">Robledo</LastName>
+                        </Name>
+                        <Address legalAddressType="OECD301">
+                            <CountryCode>CA</CountryCode>
+                            <AddressFix>
+                                <Street>71 rue Jean Vilar</Street>
+                                <PostCode>33130</PostCode>
+                                <City>B????GLES</City>
+                            </AddressFix>
+                        </Address>
+                        <Nationality>US</Nationality>
+                        <BirthInfo>
+                            <BirthDate>1959-08-14</BirthDate>
+                            <City>B????GLES</City>
+                            <CountryInfo>
+                                <CountryCode>CA</CountryCode>
+                            </CountryInfo>
+                        </BirthInfo>
+                    </ns2:Individual>
+                </ns2:AccountHolder>
+                <ns2:AccountBalance currCode="USD">1089600.09</ns2:AccountBalance>
+                <ns2:Payment>
+                    <ns2:Type>FATCA502</ns2:Type>
+                    <ns2:PaymentAmnt currCode="USD">166243.57</ns2:PaymentAmnt>
+                </ns2:Payment>
+            </ns2:AccountReport>
+            <ns2:AccountReport>
+                <ns2:DocSpec>
+                    <ns2:DocTypeIndic>FATCA1</ns2:DocTypeIndic>
+                    <ns2:DocRefId>2d99c09ec5454cc9be852b3cef875403</ns2:DocRefId>
+                </ns2:DocSpec>
+                <ns2:AccountNumber>2662035794380451162</ns2:AccountNumber>
+                <ns2:AccountHolder>
+                    <ns2:Individual>
+                        <ResCountryCode>CA</ResCountryCode>
+                        <TIN issuedBy="CA">691914819</TIN>
+                        <Name nameType="OECD207">
+                            <FirstName xnlNameType="GivenName">Jordan</FirstName>
+                            <MiddleName xnlNameType="MiddleInitial"></MiddleName>
+                            <NamePrefix xnlNameType="NamePrefix">Mr.</NamePrefix>
+                            <LastName xnlNameType="FamilyName">Green</LastName>
+                        </Name>
+                        <Address legalAddressType="OECD301">
+                            <CountryCode>CA</CountryCode>
+                            <AddressFix>
+                                <Street>R????a Olmos 48</Street>
+                                <PostCode>37337</PostCode>
+                                <City>Cordovilla</City>
+                            </AddressFix>
+                        </Address>
+                        <Nationality>US</Nationality>
+                        <BirthInfo>
+                            <BirthDate>1943-01-19</BirthDate>
+                            <City>Cordovilla</City>
+                            <CountryInfo>
+                                <CountryCode>CA</CountryCode>
+                            </CountryInfo>
+                        </BirthInfo>
+                    </ns2:Individual>
+                </ns2:AccountHolder>
+                <ns2:AccountBalance currCode="USD">1606275.44</ns2:AccountBalance>
+                <ns2:Payment>
+                    <ns2:Type>FATCA501</ns2:Type>
+                    <ns2:PaymentAmnt currCode="USD">734033.05</ns2:PaymentAmnt>
+                </ns2:Payment>
+            </ns2:AccountReport>
+            <ns2:AccountReport>
+                <ns2:DocSpec>
+                    <ns2:DocTypeIndic>FATCA1</ns2:DocTypeIndic>
+                    <ns2:DocRefId>79938231f83647cebbcaaa6f766cd391</ns2:DocRefId>
+                </ns2:DocSpec>
+                <ns2:AccountNumber>1133991367479105871</ns2:AccountNumber>
+                <ns2:AccountHolder>
+                    <ns2:Individual>
+                        <ResCountryCode>CA</ResCountryCode>
+                        <TIN issuedBy="CA">246902908</TIN>
+                        <Name nameType="OECD207">
+                            <FirstName xnlNameType="GivenName">Isabel</FirstName>
+                            <MiddleName xnlNameType="MiddleInitial">N</MiddleName>
+                            <NamePrefix xnlNameType="NamePrefix">Mrs.</NamePrefix>
+                            <LastName xnlNameType="FamilyName">O'Connor</LastName>
+                        </Name>
+                        <Address legalAddressType="OECD301">
+                            <CountryCode>CA</CountryCode>
+                            <AddressFix>
+                                <Street>64 Rue de la Pompe</Street>
+                                <PostCode>97600</PostCode>
+                                <City>MAMOUDZOU</City>
+                            </AddressFix>
+                        </Address>
+                        <Nationality>US</Nationality>
+                        <BirthInfo>
+                            <BirthDate>1960-07-19</BirthDate>
+                            <City>MAMOUDZOU</City>
+                            <CountryInfo>
+                                <CountryCode>CA</CountryCode>
+                            </CountryInfo>
+                        </BirthInfo>
+                    </ns2:Individual>
+                </ns2:AccountHolder>
+                <ns2:AccountBalance currCode="USD">1070919.12</ns2:AccountBalance>
+                <ns2:Payment>
+                    <ns2:Type>FATCA503</ns2:Type>
+                    <ns2:PaymentAmnt currCode="USD">203439.11</ns2:PaymentAmnt>
+                </ns2:Payment>
+            </ns2:AccountReport>
+            <ns2:AccountReport>
+                <ns2:DocSpec>
+                    <ns2:DocTypeIndic>FATCA1</ns2:DocTypeIndic>
+                    <ns2:DocRefId>bbd72811bde042809bebb0b1f10c5482</ns2:DocRefId>
+                </ns2:DocSpec>
+                <ns2:AccountNumber>2812523434842084938</ns2:AccountNumber>
+                <ns2:AccountHolder>
+                    <ns2:Individual>
+                        <ResCountryCode>CA</ResCountryCode>
+                        <TIN issuedBy="CA">530633930</TIN>
+                        <Name nameType="OECD207">
+                            <FirstName xnlNameType="GivenName">Enzo</FirstName>
+                            <MiddleName xnlNameType="MiddleInitial">C</MiddleName>
+                            <NamePrefix xnlNameType="NamePrefix">Mr.</NamePrefix>
+                            <LastName xnlNameType="FamilyName">Wakker</LastName>
+                        </Name>
+                        <Address legalAddressType="OECD301">
+                            <CountryCode>CA</CountryCode>
+                            <AddressFix>
+                                <Street>81 Plug Street</Street>
+                                <PostCode>2365</PostCode>
+                                <City>GREEN HILLS</City>
+                            </AddressFix>
+                        </Address>
+                        <Nationality>US</Nationality>
+                        <BirthInfo>
+                            <BirthDate>1952-11-10</BirthDate>
+                            <City>GREEN HILLS</City>
+                            <CountryInfo>
+                                <CountryCode>CA</CountryCode>
+                            </CountryInfo>
+                        </BirthInfo>
+                    </ns2:Individual>
+                </ns2:AccountHolder>
+                <ns2:AccountBalance currCode="USD">1092188.91</ns2:AccountBalance>
+                <ns2:Payment>
+                    <ns2:Type>FATCA501</ns2:Type>
+                    <ns2:PaymentAmnt currCode="USD">957961.21</ns2:PaymentAmnt>
+                </ns2:Payment>
+            </ns2:AccountReport>
+            <ns2:AccountReport>
+                <ns2:DocSpec>
+                    <ns2:DocTypeIndic>FATCA1</ns2:DocTypeIndic>
+                    <ns2:DocRefId>03d4f2ddca1c4ff5be1ad8e01f220858</ns2:DocRefId>
+                </ns2:DocSpec>
+                <ns2:AccountNumber>3023536228661454320</ns2:AccountNumber>
+                <ns2:AccountHolder>
+                    <ns2:Individual>
+                        <ResCountryCode>CA</ResCountryCode>
+                        <TIN issuedBy="CA">911441965</TIN>
+                        <Name nameType="OECD207">
+                            <FirstName xnlNameType="GivenName">Savannah</FirstName>
+                            <MiddleName xnlNameType="MiddleInitial">L</MiddleName>
+                            <NamePrefix xnlNameType="NamePrefix">Ms.</NamePrefix>
+                            <LastName xnlNameType="FamilyName">Forbes</LastName>
+                        </Name>
+                        <Address legalAddressType="OECD301">
+                            <CountryCode>CA</CountryCode>
+                            <AddressFix>
+                                <Street>Pra????a Renato Viana 812</Street>
+                                <PostCode>22641</PostCode>
+                                <City>Rio de Janeiro</City>
+                            </AddressFix>
+                        </Address>
+                        <Nationality>US</Nationality>
+                        <BirthInfo>
+                            <BirthDate>1951-09-26</BirthDate>
+                            <City>Rio de Janeiro</City>
+                            <CountryInfo>
+                                <CountryCode>CA</CountryCode>
+                            </CountryInfo>
+                        </BirthInfo>
+                    </ns2:Individual>
+                </ns2:AccountHolder>
+                <ns2:AccountBalance currCode="USD">216478.64</ns2:AccountBalance>
+                <ns2:Payment>
+                    <ns2:Type>FATCA502</ns2:Type>
+                    <ns2:PaymentAmnt currCode="USD">195000.09</ns2:PaymentAmnt>
+                </ns2:Payment>
+            </ns2:AccountReport>
+            <ns2:AccountReport>
+                <ns2:DocSpec>
+                    <ns2:DocTypeIndic>FATCA1</ns2:DocTypeIndic>
+                    <ns2:DocRefId>322b58fb631245a48da6bcc7d8950511</ns2:DocRefId>
+                </ns2:DocSpec>
+                <ns2:AccountNumber>2007691131249447477</ns2:AccountNumber>
+                <ns2:AccountHolder>
+                    <ns2:Individual>
+                        <ResCountryCode>CA</ResCountryCode>
+                        <TIN issuedBy="CA">421904038</TIN>
+                        <Name nameType="OECD207">
+                            <FirstName xnlNameType="GivenName">Liduvina</FirstName>
+                            <MiddleName xnlNameType="MiddleInitial">C</MiddleName>
+                            <NamePrefix xnlNameType="NamePrefix">Ms.</NamePrefix>
+                            <LastName xnlNameType="FamilyName">Torres</LastName>
+                        </Name>
+                        <Address legalAddressType="OECD301">
+                            <CountryCode>CA</CountryCode>
+                            <AddressFix>
+                                <Street>3178 40th Street</Street>
+                                <PostCode>T2A 1</PostCode>
+                                <City>Calgary</City>
+                            </AddressFix>
+                        </Address>
+                        <Nationality>US</Nationality>
+                        <BirthInfo>
+                            <BirthDate>1901-04-15</BirthDate>
+                            <City>Calgary</City>
+                            <CountryInfo>
+                                <CountryCode>CA</CountryCode>
+                            </CountryInfo>
+                        </BirthInfo>
+                    </ns2:Individual>
+                </ns2:AccountHolder>
+                <ns2:AccountBalance currCode="USD">1867434.72</ns2:AccountBalance>
+                <ns2:Payment>
+                    <ns2:Type>FATCA502</ns2:Type>
+                    <ns2:PaymentAmnt currCode="USD">872856.03</ns2:PaymentAmnt>
+                </ns2:Payment>
+            </ns2:AccountReport>
+            <ns2:AccountReport>
+                <ns2:DocSpec>
+                    <ns2:DocTypeIndic>FATCA1</ns2:DocTypeIndic>
+                    <ns2:DocRefId>038f2e4347b14fe3adaa6e75a3142adf</ns2:DocRefId>
+                </ns2:DocSpec>
+                <ns2:AccountNumber>901308584864869536</ns2:AccountNumber>
+                <ns2:AccountHolder>
+                    <ns2:Individual>
+                        <ResCountryCode>CA</ResCountryCode>
+                        <TIN issuedBy="CA">312713538</TIN>
+                        <Name nameType="OECD207">
+                            <FirstName xnlNameType="GivenName">Popea</FirstName>
+                            <MiddleName xnlNameType="MiddleInitial"></MiddleName>
+                            <NamePrefix xnlNameType="NamePrefix">Ms.</NamePrefix>
+                            <LastName xnlNameType="FamilyName">Armend????riz</LastName>
+                        </Name>
+                        <Address legalAddressType="OECD301">
+                            <CountryCode>CA</CountryCode>
+                            <AddressFix>
+                                <Street>65 Barberry Grove</Street>
+                                <PostCode>5010</PostCode>
+                                <City>Kelson</City>
+                            </AddressFix>
+                        </Address>
+                        <Nationality>US</Nationality>
+                        <BirthInfo>
+                            <BirthDate>1913-05-11</BirthDate>
+                            <City>Kelson</City>
+                            <CountryInfo>
+                                <CountryCode>CA</CountryCode>
+                            </CountryInfo>
+                        </BirthInfo>
+                    </ns2:Individual>
+                </ns2:AccountHolder>
+                <ns2:AccountBalance currCode="USD">1397881.85</ns2:AccountBalance>
+                <ns2:Payment>
+                    <ns2:Type>FATCA501</ns2:Type>
+                    <ns2:PaymentAmnt currCode="USD">860584.35</ns2:PaymentAmnt>
+                </ns2:Payment>
+            </ns2:AccountReport>
+            <ns2:AccountReport>
+                <ns2:DocSpec>
+                    <ns2:DocTypeIndic>FATCA1</ns2:DocTypeIndic>
+                    <ns2:DocRefId>30a725f703a34cb58590208e9a4f110b</ns2:DocRefId>
+                </ns2:DocSpec>
+                <ns2:AccountNumber>6732186745196500868</ns2:AccountNumber>
+                <ns2:AccountHolder>
+                    <ns2:Individual>
+                        <ResCountryCode>CA</ResCountryCode>
+                        <TIN issuedBy="CA">347268628</TIN>
+                        <Name nameType="OECD207">
+                            <FirstName xnlNameType="GivenName">Pauli</FirstName>
+                            <MiddleName xnlNameType="MiddleInitial"></MiddleName>
+                            <NamePrefix xnlNameType="NamePrefix">Mr.</NamePrefix>
+                            <LastName xnlNameType="FamilyName">Skogvold</LastName>
+                        </Name>
+                        <Address legalAddressType="OECD301">
+                            <CountryCode>CA</CountryCode>
+                            <AddressFix>
+                                <Street>70 Fulford Road</Street>
+                                <PostCode>LD3 1</PostCode>
+                                <City>PENPONT</City>
+                            </AddressFix>
+                        </Address>
+                        <Nationality>US</Nationality>
+                        <BirthInfo>
+                            <BirthDate>1928-06-14</BirthDate>
+                            <City>PENPONT</City>
+                            <CountryInfo>
+                                <CountryCode>CA</CountryCode>
+                            </CountryInfo>
+                        </BirthInfo>
+                    </ns2:Individual>
+                </ns2:AccountHolder>
+                <ns2:AccountBalance currCode="USD">1408953.27</ns2:AccountBalance>
+                <ns2:Payment>
+                    <ns2:Type>FATCA501</ns2:Type>
+                    <ns2:PaymentAmnt currCode="USD">884879.05</ns2:PaymentAmnt>
+                </ns2:Payment>
+            </ns2:AccountReport>
+            <ns2:AccountReport>
+                <ns2:DocSpec>
+                    <ns2:DocTypeIndic>FATCA1</ns2:DocTypeIndic>
+                    <ns2:DocRefId>7e9685d070ed494cb58e23c20dee37e7</ns2:DocRefId>
+                </ns2:DocSpec>
+                <ns2:AccountNumber>8024376597890848723</ns2:AccountNumber>
+                <ns2:AccountHolder>
+                    <ns2:Individual>
+                        <ResCountryCode>CA</ResCountryCode>
+                        <TIN issuedBy="CA">303322765</TIN>
+                        <Name nameType="OECD207">
+                            <FirstName xnlNameType="GivenName">Jordan</FirstName>
+                            <MiddleName xnlNameType="MiddleInitial"></MiddleName>
+                            <NamePrefix xnlNameType="NamePrefix">Mr.</NamePrefix>
+                            <LastName xnlNameType="FamilyName">Gray</LastName>
+                        </Name>
+                        <Address legalAddressType="OECD301">
+                            <CountryCode>CA</CountryCode>
+                            <AddressFix>
+                                <Street>172 Wicksteed Street</Street>
+                                <PostCode>4310</PostCode>
+                                <City>Spotswood</City>
+                            </AddressFix>
+                        </Address>
+                        <Nationality>US</Nationality>
+                        <BirthInfo>
+                            <BirthDate>1953-10-10</BirthDate>
+                            <City>Spotswood</City>
+                            <CountryInfo>
+                                <CountryCode>CA</CountryCode>
+                            </CountryInfo>
+                        </BirthInfo>
+                    </ns2:Individual>
+                </ns2:AccountHolder>
+                <ns2:AccountBalance currCode="USD">1678776.15</ns2:AccountBalance>
+                <ns2:Payment>
+                    <ns2:Type>FATCA501</ns2:Type>
+                    <ns2:PaymentAmnt currCode="USD">840257.44</ns2:PaymentAmnt>
+                </ns2:Payment>
+            </ns2:AccountReport>
+            <ns2:AccountReport>
+                <ns2:DocSpec>
+                    <ns2:DocTypeIndic>FATCA1</ns2:DocTypeIndic>
+                    <ns2:DocRefId>849ac118178c4f42a38e91c660efe5da</ns2:DocRefId>
+                </ns2:DocSpec>
+                <ns2:AccountNumber>5325320326691131406</ns2:AccountNumber>
+                <ns2:AccountHolder>
+                    <ns2:Individual>
+                        <ResCountryCode>CA</ResCountryCode>
+                        <TIN issuedBy="CA">386566621</TIN>
+                        <Name nameType="OECD207">
+                            <FirstName xnlNameType="GivenName">Lien</FirstName>
+                            <MiddleName xnlNameType="MiddleInitial">O</MiddleName>
+                            <NamePrefix xnlNameType="NamePrefix">Mrs.</NamePrefix>
+                            <LastName xnlNameType="FamilyName">Hao</LastName>
+                        </Name>
+                        <Address legalAddressType="OECD301">
+                            <CountryCode>CA</CountryCode>
+                            <AddressFix>
+                                <Street>70 Elizabeth Street</Street>
+                                <PostCode>4570</PostCode>
+                                <City>ROSS CREEK</City>
+                            </AddressFix>
+                        </Address>
+                        <Nationality>US</Nationality>
+                        <BirthInfo>
+                            <BirthDate>1956-02-07</BirthDate>
+                            <City>ROSS CREEK</City>
+                            <CountryInfo>
+                                <CountryCode>CA</CountryCode>
+                            </CountryInfo>
+                        </BirthInfo>
+                    </ns2:Individual>
+                </ns2:AccountHolder>
+                <ns2:AccountBalance currCode="USD">1176916.98</ns2:AccountBalance>
+                <ns2:Payment>
+                    <ns2:Type>FATCA502</ns2:Type>
+                    <ns2:PaymentAmnt currCode="USD">490102.99</ns2:PaymentAmnt>
+                </ns2:Payment>
+            </ns2:AccountReport>
+            <ns2:AccountReport>
+                <ns2:DocSpec>
+                    <ns2:DocTypeIndic>FATCA1</ns2:DocTypeIndic>
+                    <ns2:DocRefId>a8a125b0ee1540ea97c0f9223fc7a2dc</ns2:DocRefId>
+                </ns2:DocSpec>
+                <ns2:AccountNumber>9088545727031355598</ns2:AccountNumber>
+                <ns2:AccountHolder>
+                    <ns2:Individual>
+                        <ResCountryCode>CA</ResCountryCode>
+                        <TIN issuedBy="CA">738440679</TIN>
+                        <Name nameType="OECD207">
+                            <FirstName xnlNameType="GivenName">Mikayla</FirstName>
+                            <MiddleName xnlNameType="MiddleInitial">C</MiddleName>
+                            <NamePrefix xnlNameType="NamePrefix">Mrs.</NamePrefix>
+                            <LastName xnlNameType="FamilyName">Billson</LastName>
+                        </Name>
+                        <Address legalAddressType="OECD301">
+                            <CountryCode>CA</CountryCode>
+                            <AddressFix>
+                                <Street>17 Healy Road</Street>
+                                <PostCode>6244</PostCode>
+                                <City>DINNINUP</City>
+                            </AddressFix>
+                        </Address>
+                        <Nationality>US</Nationality>
+                        <BirthInfo>
+                            <BirthDate>1961-07-02</BirthDate>
+                            <City>DINNINUP</City>
+                            <CountryInfo>
+                                <CountryCode>CA</CountryCode>
+                            </CountryInfo>
+                        </BirthInfo>
+                    </ns2:Individual>
+                </ns2:AccountHolder>
+                <ns2:AccountBalance currCode="USD">497895.53</ns2:AccountBalance>
+                <ns2:Payment>
+                    <ns2:Type>FATCA501</ns2:Type>
+                    <ns2:PaymentAmnt currCode="USD">33960.60</ns2:PaymentAmnt>
+                </ns2:Payment>
+            </ns2:AccountReport>
+            <ns2:AccountReport>
+                <ns2:DocSpec>
+                    <ns2:DocTypeIndic>FATCA1</ns2:DocTypeIndic>
+                    <ns2:DocRefId>dafc412914eb45aeb6e492d117680958</ns2:DocRefId>
+                </ns2:DocSpec>
+                <ns2:AccountNumber>7689659558943492684</ns2:AccountNumber>
+                <ns2:AccountHolder>
+                    <ns2:Individual>
+                        <ResCountryCode>CA</ResCountryCode>
+                        <TIN issuedBy="CA">703089823</TIN>
+                        <Name nameType="OECD207">
+                            <FirstName xnlNameType="GivenName">Alisia</FirstName>
+                            <MiddleName xnlNameType="MiddleInitial">A</MiddleName>
+                            <NamePrefix xnlNameType="NamePrefix">Ms.</NamePrefix>
+                            <LastName xnlNameType="FamilyName">van Paassen</LastName>
+                        </Name>
+                        <Address legalAddressType="OECD301">
+                            <CountryCode>CA</CountryCode>
+                            <AddressFix>
+                                <Street>40 Park Terrace</Street>
+                                <PostCode>SL3 2</PostCode>
+                                <City>GEORGE GREEN</City>
+                            </AddressFix>
+                        </Address>
+                        <Nationality>US</Nationality>
+                        <BirthInfo>
+                            <BirthDate>1960-01-05</BirthDate>
+                            <City>GEORGE GREEN</City>
+                            <CountryInfo>
+                                <CountryCode>CA</CountryCode>
+                            </CountryInfo>
+                        </BirthInfo>
+                    </ns2:Individual>
+                </ns2:AccountHolder>
+                <ns2:AccountBalance currCode="USD">980035.50</ns2:AccountBalance>
+                <ns2:Payment>
+                    <ns2:Type>FATCA502</ns2:Type>
+                    <ns2:PaymentAmnt currCode="USD">188576.06</ns2:PaymentAmnt>
+                </ns2:Payment>
+            </ns2:AccountReport>
+            <ns2:AccountReport>
+                <ns2:DocSpec>
+                    <ns2:DocTypeIndic>FATCA1</ns2:DocTypeIndic>
+                    <ns2:DocRefId>3f574803054345e484dc74af79145adf</ns2:DocRefId>
+                </ns2:DocSpec>
+                <ns2:AccountNumber>33691749563665342</ns2:AccountNumber>
+                <ns2:AccountHolder>
+                    <ns2:Individual>
+                        <ResCountryCode>CA</ResCountryCode>
+                        <TIN issuedBy="CA">590693130</TIN>
+                        <Name nameType="OECD207">
+                            <FirstName xnlNameType="GivenName">Zo????</FirstName>
+                            <MiddleName xnlNameType="MiddleInitial"></MiddleName>
+                            <NamePrefix xnlNameType="NamePrefix">Ms.</NamePrefix>
+                            <LastName xnlNameType="FamilyName">Tougas</LastName>
+                        </Name>
+                        <Address legalAddressType="OECD301">
+                            <CountryCode>CA</CountryCode>
+                            <AddressFix>
+                                <Street>Grossmatt 87</Street>
+                                <PostCode>3419</PostCode>
+                                <City>Biembach</City>
+                            </AddressFix>
+                        </Address>
+                        <Nationality>US</Nationality>
+                        <BirthInfo>
+                            <BirthDate>1913-01-10</BirthDate>
+                            <City>Biembach</City>
+                            <CountryInfo>
+                                <CountryCode>CA</CountryCode>
+                            </CountryInfo>
+                        </BirthInfo>
+                    </ns2:Individual>
+                </ns2:AccountHolder>
+                <ns2:AccountBalance currCode="USD">460808.16</ns2:AccountBalance>
+                <ns2:Payment>
+                    <ns2:Type>FATCA502</ns2:Type>
+                    <ns2:PaymentAmnt currCode="USD">68887.45</ns2:PaymentAmnt>
+                </ns2:Payment>
+            </ns2:AccountReport>
+            <ns2:AccountReport>
+                <ns2:DocSpec>
+                    <ns2:DocTypeIndic>FATCA1</ns2:DocTypeIndic>
+                    <ns2:DocRefId>3d59f093f0f64e95a06245a6e568ca38</ns2:DocRefId>
+                </ns2:DocSpec>
+                <ns2:AccountNumber>1709129528687260965</ns2:AccountNumber>
+                <ns2:AccountHolder>
+                    <ns2:Individual>
+                        <ResCountryCode>CA</ResCountryCode>
+                        <TIN issuedBy="CA">793234346</TIN>
+                        <Name nameType="OECD207">
+                            <FirstName xnlNameType="GivenName">Kieran</FirstName>
+                            <MiddleName xnlNameType="MiddleInitial">H</MiddleName>
+                            <NamePrefix xnlNameType="NamePrefix">Mr.</NamePrefix>
+                            <LastName xnlNameType="FamilyName">Carter</LastName>
+                        </Name>
+                        <Address legalAddressType="OECD301">
+                            <CountryCode>CA</CountryCode>
+                            <AddressFix>
+                                <Street>182 Cornet Lane</Street>
+                                <PostCode>8061</PostCode>
+                                <City>Shirley</City>
+                            </AddressFix>
+                        </Address>
+                        <Nationality>US</Nationality>
+                        <BirthInfo>
+                            <BirthDate>1924-05-21</BirthDate>
+                            <City>Shirley</City>
+                            <CountryInfo>
+                                <CountryCode>CA</CountryCode>
+                            </CountryInfo>
+                        </BirthInfo>
+                    </ns2:Individual>
+                </ns2:AccountHolder>
+                <ns2:AccountBalance currCode="USD">1049799.07</ns2:AccountBalance>
+                <ns2:Payment>
+                    <ns2:Type>FATCA502</ns2:Type>
+                    <ns2:PaymentAmnt currCode="USD">790207.92</ns2:PaymentAmnt>
+                </ns2:Payment>
+            </ns2:AccountReport>
+            <ns2:AccountReport>
+                <ns2:DocSpec>
+                    <ns2:DocTypeIndic>FATCA1</ns2:DocTypeIndic>
+                    <ns2:DocRefId>7f77bfc5fa61427b86035a30d8188be9</ns2:DocRefId>
+                </ns2:DocSpec>
+                <ns2:AccountNumber>7801079300583808202</ns2:AccountNumber>
+                <ns2:AccountHolder>
+                    <ns2:Individual>
+                        <ResCountryCode>CA</ResCountryCode>
+                        <TIN issuedBy="CA">222121939</TIN>
+                        <Name nameType="OECD207">
+                            <FirstName xnlNameType="GivenName">Jiang Li</FirstName>
+                            <MiddleName xnlNameType="MiddleInitial"></MiddleName>
+                            <NamePrefix xnlNameType="NamePrefix">Ms.</NamePrefix>
+                            <LastName xnlNameType="FamilyName">H????</LastName>
+                        </Name>
+                        <Address legalAddressType="OECD301">
+                            <CountryCode>CA</CountryCode>
+                            <AddressFix>
+                                <Street>Kappelergasse 120</Street>
+                                <PostCode>9315</PostCode>
+                                <City>Aerdhuuse</City>
+                            </AddressFix>
+                        </Address>
+                        <Nationality>US</Nationality>
+                        <BirthInfo>
+                            <BirthDate>1966-02-19</BirthDate>
+                            <City>Aerdhuuse</City>
+                            <CountryInfo>
+                                <CountryCode>CA</CountryCode>
+                            </CountryInfo>
+                        </BirthInfo>
+                    </ns2:Individual>
+                </ns2:AccountHolder>
+                <ns2:AccountBalance currCode="USD">775763.05</ns2:AccountBalance>
+                <ns2:Payment>
+                    <ns2:Type>FATCA501</ns2:Type>
+                    <ns2:PaymentAmnt currCode="USD">115449.85</ns2:PaymentAmnt>
+                </ns2:Payment>
+            </ns2:AccountReport>
+            <ns2:AccountReport>
+                <ns2:DocSpec>
+                    <ns2:DocTypeIndic>FATCA1</ns2:DocTypeIndic>
+                    <ns2:DocRefId>5db9bc363e584bfa87ab0359b8d60375</ns2:DocRefId>
+                </ns2:DocSpec>
+                <ns2:AccountNumber>5776426907222973759</ns2:AccountNumber>
+                <ns2:AccountHolder>
+                    <ns2:Individual>
+                        <ResCountryCode>CA</ResCountryCode>
+                        <TIN issuedBy="CA">428473182</TIN>
+                        <Name nameType="OECD207">
+                            <FirstName xnlNameType="GivenName">Logan</FirstName>
+                            <MiddleName xnlNameType="MiddleInitial"></MiddleName>
+                            <NamePrefix xnlNameType="NamePrefix">Mr.</NamePrefix>
+                            <LastName xnlNameType="FamilyName">Burns</LastName>
+                        </Name>
+                        <Address legalAddressType="OECD301">
+                            <CountryCode>CA</CountryCode>
+                            <AddressFix>
+                                <Street>14 Sutton Wick Lane</Street>
+                                <PostCode>LA8 7</PostCode>
+                                <City>BRIGSTEER</City>
+                            </AddressFix>
+                        </Address>
+                        <Nationality>US</Nationality>
+                        <BirthInfo>
+                            <BirthDate>1903-04-02</BirthDate>
+                            <City>BRIGSTEER</City>
+                            <CountryInfo>
+                                <CountryCode>CA</CountryCode>
+                            </CountryInfo>
+                        </BirthInfo>
+                    </ns2:Individual>
+                </ns2:AccountHolder>
+                <ns2:AccountBalance currCode="USD">824109.51</ns2:AccountBalance>
+                <ns2:Payment>
+                    <ns2:Type>FATCA501</ns2:Type>
+                    <ns2:PaymentAmnt currCode="USD">391041.95</ns2:PaymentAmnt>
+                </ns2:Payment>
+            </ns2:AccountReport>
+            <ns2:AccountReport>
+                <ns2:DocSpec>
+                    <ns2:DocTypeIndic>FATCA1</ns2:DocTypeIndic>
+                    <ns2:DocRefId>487fc9508868436ba233d682bed55674</ns2:DocRefId>
+                </ns2:DocSpec>
+                <ns2:AccountNumber>7483767031146990985</ns2:AccountNumber>
+                <ns2:AccountHolder>
+                    <ns2:Individual>
+                        <ResCountryCode>CA</ResCountryCode>
+                        <TIN issuedBy="CA">414320462</TIN>
+                        <Name nameType="OECD207">
+                            <FirstName xnlNameType="GivenName">Florian</FirstName>
+                            <MiddleName xnlNameType="MiddleInitial"></MiddleName>
+                            <NamePrefix xnlNameType="NamePrefix">Mr.</NamePrefix>
+                            <LastName xnlNameType="FamilyName">Burger</LastName>
+                        </Name>
+                        <Address legalAddressType="OECD301">
+                            <CountryCode>CA</CountryCode>
+                            <AddressFix>
+                                <Street>102 Sundown Crescent</Street>
+                                <PostCode>3206</PostCode>
+                                <City>Fitzroy</City>
+                            </AddressFix>
+                        </Address>
+                        <Nationality>US</Nationality>
+                        <BirthInfo>
+                            <BirthDate>1976-03-16</BirthDate>
+                            <City>Fitzroy</City>
+                            <CountryInfo>
+                                <CountryCode>CA</CountryCode>
+                            </CountryInfo>
+                        </BirthInfo>
+                    </ns2:Individual>
+                </ns2:AccountHolder>
+                <ns2:AccountBalance currCode="USD">1110318.54</ns2:AccountBalance>
+                <ns2:Payment>
+                    <ns2:Type>FATCA501</ns2:Type>
+                    <ns2:PaymentAmnt currCode="USD">440688.84</ns2:PaymentAmnt>
+                </ns2:Payment>
+            </ns2:AccountReport>
+            <ns2:AccountReport>
+                <ns2:DocSpec>
+                    <ns2:DocTypeIndic>FATCA1</ns2:DocTypeIndic>
+                    <ns2:DocRefId>d6f7baff89924833aa4af38376685b22</ns2:DocRefId>
+                </ns2:DocSpec>
+                <ns2:AccountNumber>2405824854448759711</ns2:AccountNumber>
+                <ns2:AccountHolder>
+                    <ns2:Individual>
+                        <ResCountryCode>CA</ResCountryCode>
+                        <TIN issuedBy="CA">282672360</TIN>
+                        <Name nameType="OECD207">
+                            <FirstName xnlNameType="GivenName">Jarand</FirstName>
+                            <MiddleName xnlNameType="MiddleInitial"></MiddleName>
+                            <NamePrefix xnlNameType="NamePrefix">Mr.</NamePrefix>
+                            <LastName xnlNameType="FamilyName">Hidle</LastName>
+                        </Name>
+                        <Address legalAddressType="OECD301">
+                            <CountryCode>CA</CountryCode>
+                            <AddressFix>
+                                <Street>Avda. de la Estaci????n 55</Street>
+                                <PostCode>28649</PostCode>
+                                <City>Rozas de Puerto Real</City>
+                            </AddressFix>
+                        </Address>
+                        <Nationality>US</Nationality>
+                        <BirthInfo>
+                            <BirthDate>1945-06-24</BirthDate>
+                            <City>Rozas de Puerto Real</City>
+                            <CountryInfo>
+                                <CountryCode>CA</CountryCode>
+                            </CountryInfo>
+                        </BirthInfo>
+                    </ns2:Individual>
+                </ns2:AccountHolder>
+                <ns2:AccountBalance currCode="USD">1156281.80</ns2:AccountBalance>
+                <ns2:Payment>
+                    <ns2:Type>FATCA503</ns2:Type>
+                    <ns2:PaymentAmnt currCode="USD">626122.39</ns2:PaymentAmnt>
+                </ns2:Payment>
+            </ns2:AccountReport>
+            <ns2:AccountReport>
+                <ns2:DocSpec>
+                    <ns2:DocTypeIndic>FATCA1</ns2:DocTypeIndic>
+                    <ns2:DocRefId>1d1eee36113a453c82a42e3614cbaf06</ns2:DocRefId>
+                </ns2:DocSpec>
+                <ns2:AccountNumber>3944760122473907764</ns2:AccountNumber>
+                <ns2:AccountHolder>
+                    <ns2:Individual>
+                        <ResCountryCode>CA</ResCountryCode>
+                        <TIN issuedBy="CA">619692678</TIN>
+                        <Name nameType="OECD207">
+                            <FirstName xnlNameType="GivenName">Marion</FirstName>
+                            <MiddleName xnlNameType="MiddleInitial"></MiddleName>
+                            <NamePrefix xnlNameType="NamePrefix">Mr.</NamePrefix>
+                            <LastName xnlNameType="FamilyName">Cole</LastName>
+                        </Name>
+                        <Address legalAddressType="OECD301">
+                            <CountryCode>CA</CountryCode>
+                            <AddressFix>
+                                <Street>Avda. Los llanos 39</Street>
+                                <PostCode>26259</PostCode>
+                                <City>Gra????????n</City>
+                            </AddressFix>
+                        </Address>
+                        <Nationality>US</Nationality>
+                        <BirthInfo>
+                            <BirthDate>1966-03-21</BirthDate>
+                            <City>Gra????????n</City>
+                            <CountryInfo>
+                                <CountryCode>CA</CountryCode>
+                            </CountryInfo>
+                        </BirthInfo>
+                    </ns2:Individual>
+                </ns2:AccountHolder>
+                <ns2:AccountBalance currCode="USD">664425.96</ns2:AccountBalance>
+                <ns2:Payment>
+                    <ns2:Type>FATCA501</ns2:Type>
+                    <ns2:PaymentAmnt currCode="USD">177044.55</ns2:PaymentAmnt>
+                </ns2:Payment>
+            </ns2:AccountReport>
+            <ns2:AccountReport>
+                <ns2:DocSpec>
+                    <ns2:DocTypeIndic>FATCA1</ns2:DocTypeIndic>
+                    <ns2:DocRefId>0dcabd5b22ac405d891e852eab928851</ns2:DocRefId>
+                </ns2:DocSpec>
+                <ns2:AccountNumber>2595558836749986394</ns2:AccountNumber>
+                <ns2:AccountHolder>
+                    <ns2:Individual>
+                        <ResCountryCode>CA</ResCountryCode>
+                        <TIN issuedBy="CA">740295191</TIN>
+                        <Name nameType="OECD207">
+                            <FirstName xnlNameType="GivenName">Gano</FirstName>
+                            <MiddleName xnlNameType="MiddleInitial"></MiddleName>
+                            <NamePrefix xnlNameType="NamePrefix">Mr.</NamePrefix>
+                            <LastName xnlNameType="FamilyName">Cotuand</LastName>
+                        </Name>
+                        <Address legalAddressType="OECD301">
+                            <CountryCode>CA</CountryCode>
+                            <AddressFix>
+                                <Street>Betburweg 62</Street>
+                                <PostCode>1522</PostCode>
+                                <City>Lucens</City>
+                            </AddressFix>
+                        </Address>
+                        <Nationality>US</Nationality>
+                        <BirthInfo>
+                            <BirthDate>1917-01-17</BirthDate>
+                            <City>Lucens</City>
+                            <CountryInfo>
+                                <CountryCode>CA</CountryCode>
+                            </CountryInfo>
+                        </BirthInfo>
+                    </ns2:Individual>
+                </ns2:AccountHolder>
+                <ns2:AccountBalance currCode="USD">1414711.70</ns2:AccountBalance>
+                <ns2:Payment>
+                    <ns2:Type>FATCA502</ns2:Type>
+                    <ns2:PaymentAmnt currCode="USD">966685.83</ns2:PaymentAmnt>
+                </ns2:Payment>
+            </ns2:AccountReport>
+            <ns2:AccountReport>
+                <ns2:DocSpec>
+                    <ns2:DocTypeIndic>FATCA1</ns2:DocTypeIndic>
+                    <ns2:DocRefId>082538b394ad4d459536044646719780</ns2:DocRefId>
+                </ns2:DocSpec>
+                <ns2:AccountNumber>6653554480929940587</ns2:AccountNumber>
+                <ns2:AccountHolder>
+                    <ns2:Individual>
+                        <ResCountryCode>CA</ResCountryCode>
+                        <TIN issuedBy="CA">835880765</TIN>
+                        <Name nameType="OECD207">
+                            <FirstName xnlNameType="GivenName">Birgit</FirstName>
+                            <MiddleName xnlNameType="MiddleInitial"></MiddleName>
+                            <NamePrefix xnlNameType="NamePrefix">Ms.</NamePrefix>
+                            <LastName xnlNameType="FamilyName">Reinhard</LastName>
+                        </Name>
+                        <Address legalAddressType="OECD301">
+                            <CountryCode>CA</CountryCode>
+                            <AddressFix>
+                                <Street>2219 Kinchant St</Street>
+                                <PostCode>V2N 4</PostCode>
+                                <City>Chilako River</City>
+                            </AddressFix>
+                        </Address>
+                        <Nationality>US</Nationality>
+                        <BirthInfo>
+                            <BirthDate>1901-09-24</BirthDate>
+                            <City>Chilako River</City>
+                            <CountryInfo>
+                                <CountryCode>CA</CountryCode>
+                            </CountryInfo>
+                        </BirthInfo>
+                    </ns2:Individual>
+                </ns2:AccountHolder>
+                <ns2:AccountBalance currCode="USD">847307.60</ns2:AccountBalance>
+                <ns2:Payment>
+                    <ns2:Type>FATCA501</ns2:Type>
+                    <ns2:PaymentAmnt currCode="USD">799511.89</ns2:PaymentAmnt>
+                </ns2:Payment>
+            </ns2:AccountReport>
+            <ns2:AccountReport>
+                <ns2:DocSpec>
+                    <ns2:DocTypeIndic>FATCA1</ns2:DocTypeIndic>
+                    <ns2:DocRefId>7dccd58a23be446d8be771bbf7b17b67</ns2:DocRefId>
+                </ns2:DocSpec>
+                <ns2:AccountNumber>6870729260545263565</ns2:AccountNumber>
+                <ns2:AccountHolder>
+                    <ns2:Individual>
+                        <ResCountryCode>CA</ResCountryCode>
+                        <TIN issuedBy="CA">662254355</TIN>
+                        <Name nameType="OECD207">
+                            <FirstName xnlNameType="GivenName">Marouane</FirstName>
+                            <MiddleName xnlNameType="MiddleInitial"></MiddleName>
+                            <NamePrefix xnlNameType="NamePrefix">Mr.</NamePrefix>
+                            <LastName xnlNameType="FamilyName">Jekel</LastName>
+                        </Name>
+                        <Address legalAddressType="OECD301">
+                            <CountryCode>CA</CountryCode>
+                            <AddressFix>
+                                <Street>Alcon Molina 59</Street>
+                                <PostCode>30890</PostCode>
+                                <City>Puerto Lumbreras</City>
+                            </AddressFix>
+                        </Address>
+                        <Nationality>US</Nationality>
+                        <BirthInfo>
+                            <BirthDate>1939-11-10</BirthDate>
+                            <City>Puerto Lumbreras</City>
+                            <CountryInfo>
+                                <CountryCode>CA</CountryCode>
+                            </CountryInfo>
+                        </BirthInfo>
+                    </ns2:Individual>
+                </ns2:AccountHolder>
+                <ns2:AccountBalance currCode="USD">1466076.44</ns2:AccountBalance>
+                <ns2:Payment>
+                    <ns2:Type>FATCA501</ns2:Type>
+                    <ns2:PaymentAmnt currCode="USD">564470.91</ns2:PaymentAmnt>
+                </ns2:Payment>
+            </ns2:AccountReport>
+            <ns2:AccountReport>
+                <ns2:DocSpec>
+                    <ns2:DocTypeIndic>FATCA1</ns2:DocTypeIndic>
+                    <ns2:DocRefId>fe36c7d29e024e3caff23c4e63871f2b</ns2:DocRefId>
+                </ns2:DocSpec>
+                <ns2:AccountNumber>3798943744847401739</ns2:AccountNumber>
+                <ns2:AccountHolder>
+                    <ns2:Individual>
+                        <ResCountryCode>CA</ResCountryCode>
+                        <TIN issuedBy="CA">530199191</TIN>
+                        <Name nameType="OECD207">
+                            <FirstName xnlNameType="GivenName">Blake</FirstName>
+                            <MiddleName xnlNameType="MiddleInitial">S</MiddleName>
+                            <NamePrefix xnlNameType="NamePrefix">Mr.</NamePrefix>
+                            <LastName xnlNameType="FamilyName">Puddy</LastName>
+                        </Name>
+                        <Address legalAddressType="OECD301">
+                            <CountryCode>CA</CountryCode>
+                            <AddressFix>
+                                <Street>3214 rue Ontario Ouest</Street>
+                                <PostCode>H2X 1</PostCode>
+                                <City>Montreal</City>
+                            </AddressFix>
+                        </Address>
+                        <Nationality>US</Nationality>
+                        <BirthInfo>
+                            <BirthDate>1908-08-08</BirthDate>
+                            <City>Montreal</City>
+                            <CountryInfo>
+                                <CountryCode>CA</CountryCode>
+                            </CountryInfo>
+                        </BirthInfo>
+                    </ns2:Individual>
+                </ns2:AccountHolder>
+                <ns2:AccountBalance currCode="USD">1125112.93</ns2:AccountBalance>
+                <ns2:Payment>
+                    <ns2:Type>FATCA503</ns2:Type>
+                    <ns2:PaymentAmnt currCode="USD">776683.82</ns2:PaymentAmnt>
+                </ns2:Payment>
+            </ns2:AccountReport>
+            <ns2:AccountReport>
+                <ns2:DocSpec>
+                    <ns2:DocTypeIndic>FATCA1</ns2:DocTypeIndic>
+                    <ns2:DocRefId>85402cfaa284424cac393245bb7162ae</ns2:DocRefId>
+                </ns2:DocSpec>
+                <ns2:AccountNumber>9174393517507661415</ns2:AccountNumber>
+                <ns2:AccountHolder>
+                    <ns2:Individual>
+                        <ResCountryCode>CA</ResCountryCode>
+                        <TIN issuedBy="CA">976801363</TIN>
+                        <Name nameType="OECD207">
+                            <FirstName xnlNameType="GivenName">Li</FirstName>
+                            <MiddleName xnlNameType="MiddleInitial">S</MiddleName>
+                            <NamePrefix xnlNameType="NamePrefix">Mr.</NamePrefix>
+                            <LastName xnlNameType="FamilyName">Ch'ang</LastName>
+                        </Name>
+                        <Address legalAddressType="OECD301">
+                            <CountryCode>CA</CountryCode>
+                            <AddressFix>
+                                <Street>105 Cowper Road</Street>
+                                <PostCode>4930</PostCode>
+                                <City>Dannevirke</City>
+                            </AddressFix>
+                        </Address>
+                        <Nationality>US</Nationality>
+                        <BirthInfo>
+                            <BirthDate>1925-06-02</BirthDate>
+                            <City>Dannevirke</City>
+                            <CountryInfo>
+                                <CountryCode>CA</CountryCode>
+                            </CountryInfo>
+                        </BirthInfo>
+                    </ns2:Individual>
+                </ns2:AccountHolder>
+                <ns2:AccountBalance currCode="USD">1175369.24</ns2:AccountBalance>
+                <ns2:Payment>
+                    <ns2:Type>FATCA503</ns2:Type>
+                    <ns2:PaymentAmnt currCode="USD">639151.36</ns2:PaymentAmnt>
+                </ns2:Payment>
+            </ns2:AccountReport>
+            <ns2:AccountReport>
+                <ns2:DocSpec>
+                    <ns2:DocTypeIndic>FATCA1</ns2:DocTypeIndic>
+                    <ns2:DocRefId>934d1bd8e1a24ce092461b51404d7d0c</ns2:DocRefId>
+                </ns2:DocSpec>
+                <ns2:AccountNumber>1966921645170063211</ns2:AccountNumber>
+                <ns2:AccountHolder>
+                    <ns2:Individual>
+                        <ResCountryCode>CA</ResCountryCode>
+                        <TIN issuedBy="CA">296542695</TIN>
+                        <Name nameType="OECD207">
+                            <FirstName xnlNameType="GivenName">Eric</FirstName>
+                            <MiddleName xnlNameType="MiddleInitial"></MiddleName>
+                            <NamePrefix xnlNameType="NamePrefix">Mr.</NamePrefix>
+                            <LastName xnlNameType="FamilyName">Bergmann</LastName>
+                        </Name>
+                        <Address legalAddressType="OECD301">
+                            <CountryCode>CA</CountryCode>
+                            <AddressFix>
+                                <Street>B????singstrasse 66</Street>
+                                <PostCode>85650</PostCode>
+                                <City>Pliening</City>
+                            </AddressFix>
+                        </Address>
+                        <Nationality>US</Nationality>
+                        <BirthInfo>
+                            <BirthDate>1927-03-07</BirthDate>
+                            <City>Pliening</City>
+                            <CountryInfo>
+                                <CountryCode>CA</CountryCode>
+                            </CountryInfo>
+                        </BirthInfo>
+                    </ns2:Individual>
+                </ns2:AccountHolder>
+                <ns2:AccountBalance currCode="USD">1320436.60</ns2:AccountBalance>
+                <ns2:Payment>
+                    <ns2:Type>FATCA502</ns2:Type>
+                    <ns2:PaymentAmnt currCode="USD">511203.37</ns2:PaymentAmnt>
+                </ns2:Payment>
+            </ns2:AccountReport>
+            <ns2:AccountReport>
+                <ns2:DocSpec>
+                    <ns2:DocTypeIndic>FATCA1</ns2:DocTypeIndic>
+                    <ns2:DocRefId>2677968439804ebcbf2848ac559537f6</ns2:DocRefId>
+                </ns2:DocSpec>
+                <ns2:AccountNumber>3918707845275235385</ns2:AccountNumber>
+                <ns2:AccountHolder>
+                    <ns2:Individual>
+                        <ResCountryCode>CA</ResCountryCode>
+                        <TIN issuedBy="CA">194536442</TIN>
+                        <Name nameType="OECD207">
+                            <FirstName xnlNameType="GivenName">Wang</FirstName>
+                            <MiddleName xnlNameType="MiddleInitial">H</MiddleName>
+                            <NamePrefix xnlNameType="NamePrefix">Mr.</NamePrefix>
+                            <LastName xnlNameType="FamilyName">Chin</LastName>
+                        </Name>
+                        <Address legalAddressType="OECD301">
+                            <CountryCode>CA</CountryCode>
+                            <AddressFix>
+                                <Street>46 Seafield Street</Street>
+                                <PostCode>LD1 6</PostCode>
+                                <City>LLANWRTHWL</City>
+                            </AddressFix>
+                        </Address>
+                        <Nationality>US</Nationality>
+                        <BirthInfo>
+                            <BirthDate>1959-06-11</BirthDate>
+                            <City>LLANWRTHWL</City>
+                            <CountryInfo>
+                                <CountryCode>CA</CountryCode>
+                            </CountryInfo>
+                        </BirthInfo>
+                    </ns2:Individual>
+                </ns2:AccountHolder>
+                <ns2:AccountBalance currCode="USD">986620.24</ns2:AccountBalance>
+                <ns2:Payment>
+                    <ns2:Type>FATCA501</ns2:Type>
+                    <ns2:PaymentAmnt currCode="USD">881720.93</ns2:PaymentAmnt>
+                </ns2:Payment>
+            </ns2:AccountReport>
+            <ns2:AccountReport>
+                <ns2:DocSpec>
+                    <ns2:DocTypeIndic>FATCA1</ns2:DocTypeIndic>
+                    <ns2:DocRefId>387dc1d802814aaba7d72efd2ce6034d</ns2:DocRefId>
+                </ns2:DocSpec>
+                <ns2:AccountNumber>9108508649785023805</ns2:AccountNumber>
+                <ns2:AccountHolder>
+                    <ns2:Individual>
+                        <ResCountryCode>CA</ResCountryCode>
+                        <TIN issuedBy="CA">231061574</TIN>
+                        <Name nameType="OECD207">
+                            <FirstName xnlNameType="GivenName">Laura</FirstName>
+                            <MiddleName xnlNameType="MiddleInitial">B</MiddleName>
+                            <NamePrefix xnlNameType="NamePrefix">Mrs.</NamePrefix>
+                            <LastName xnlNameType="FamilyName">Julius</LastName>
+                        </Name>
+                        <Address legalAddressType="OECD301">
+                            <CountryCode>CA</CountryCode>
+                            <AddressFix>
+                                <Street>Rua SC 12 371</Street>
+                                <PostCode>74860</PostCode>
+                                <City>Goi????nia</City>
+                            </AddressFix>
+                        </Address>
+                        <Nationality>US</Nationality>
+                        <BirthInfo>
+                            <BirthDate>1949-06-25</BirthDate>
+                            <City>Goi????nia</City>
+                            <CountryInfo>
+                                <CountryCode>CA</CountryCode>
+                            </CountryInfo>
+                        </BirthInfo>
+                    </ns2:Individual>
+                </ns2:AccountHolder>
+                <ns2:AccountBalance currCode="USD">1110242.89</ns2:AccountBalance>
+                <ns2:Payment>
+                    <ns2:Type>FATCA502</ns2:Type>
+                    <ns2:PaymentAmnt currCode="USD">400174.62</ns2:PaymentAmnt>
+                </ns2:Payment>
+            </ns2:AccountReport>
+            <ns2:AccountReport>
+                <ns2:DocSpec>
+                    <ns2:DocTypeIndic>FATCA1</ns2:DocTypeIndic>
+                    <ns2:DocRefId>e2c3795393fb445cbd7fc092ddf4c326</ns2:DocRefId>
+                </ns2:DocSpec>
+                <ns2:AccountNumber>1738939194397781375</ns2:AccountNumber>
+                <ns2:AccountHolder>
+                    <ns2:Individual>
+                        <ResCountryCode>CA</ResCountryCode>
+                        <TIN issuedBy="CA">602874514</TIN>
+                        <Name nameType="OECD207">
+                            <FirstName xnlNameType="GivenName">Diana</FirstName>
+                            <MiddleName xnlNameType="MiddleInitial"></MiddleName>
+                            <NamePrefix xnlNameType="NamePrefix">Mrs.</NamePrefix>
+                            <LastName xnlNameType="FamilyName">Lenders</LastName>
+                        </Name>
+                        <Address legalAddressType="OECD301">
+                            <CountryCode>CA</CountryCode>
+                            <AddressFix>
+                                <Street>7 Ariesdale Terrace</Street>
+                                <PostCode>7010</PostCode>
+                                <City>The Wood</City>
+                            </AddressFix>
+                        </Address>
+                        <Nationality>US</Nationality>
+                        <BirthInfo>
+                            <BirthDate>1976-01-09</BirthDate>
+                            <City>The Wood</City>
+                            <CountryInfo>
+                                <CountryCode>CA</CountryCode>
+                            </CountryInfo>
+                        </BirthInfo>
+                    </ns2:Individual>
+                </ns2:AccountHolder>
+                <ns2:AccountBalance currCode="USD">95447.91</ns2:AccountBalance>
+                <ns2:Payment>
+                    <ns2:Type>FATCA502</ns2:Type>
+                    <ns2:PaymentAmnt currCode="USD">10925.49</ns2:PaymentAmnt>
+                </ns2:Payment>
+            </ns2:AccountReport>
+            <ns2:AccountReport>
+                <ns2:DocSpec>
+                    <ns2:DocTypeIndic>FATCA1</ns2:DocTypeIndic>
+                    <ns2:DocRefId>7f55de3c64aa43cba4b8ed2976bb05b9</ns2:DocRefId>
+                </ns2:DocSpec>
+                <ns2:AccountNumber>1477123555172730219</ns2:AccountNumber>
+                <ns2:AccountHolder>
+                    <ns2:Individual>
+                        <ResCountryCode>CA</ResCountryCode>
+                        <TIN issuedBy="CA">194417372</TIN>
+                        <Name nameType="OECD207">
+                            <FirstName xnlNameType="GivenName">Kevin</FirstName>
+                            <MiddleName xnlNameType="MiddleInitial">L</MiddleName>
+                            <NamePrefix xnlNameType="NamePrefix">Mr.</NamePrefix>
+                            <LastName xnlNameType="FamilyName">Schulze</LastName>
+                        </Name>
+                        <Address legalAddressType="OECD301">
+                            <CountryCode>CA</CountryCode>
+                            <AddressFix>
+                                <Street>66 Fox Lane</Street>
+                                <PostCode>TA24 </PostCode>
+                                <City>BLUE ANCHOR</City>
+                            </AddressFix>
+                        </Address>
+                        <Nationality>US</Nationality>
+                        <BirthInfo>
+                            <BirthDate>1907-06-12</BirthDate>
+                            <City>BLUE ANCHOR</City>
+                            <CountryInfo>
+                                <CountryCode>CA</CountryCode>
+                            </CountryInfo>
+                        </BirthInfo>
+                    </ns2:Individual>
+                </ns2:AccountHolder>
+                <ns2:AccountBalance currCode="USD">1124470.74</ns2:AccountBalance>
+                <ns2:Payment>
+                    <ns2:Type>FATCA501</ns2:Type>
+                    <ns2:PaymentAmnt currCode="USD">512081.82</ns2:PaymentAmnt>
+                </ns2:Payment>
+            </ns2:AccountReport>
+            <ns2:AccountReport>
+                <ns2:DocSpec>
+                    <ns2:DocTypeIndic>FATCA1</ns2:DocTypeIndic>
+                    <ns2:DocRefId>11a54e2dbbb04a7882aa3df9254eaafc</ns2:DocRefId>
+                </ns2:DocSpec>
+                <ns2:AccountNumber>3891983715185344559</ns2:AccountNumber>
+                <ns2:AccountHolder>
+                    <ns2:Individual>
+                        <ResCountryCode>CA</ResCountryCode>
+                        <TIN issuedBy="CA">345962310</TIN>
+                        <Name nameType="OECD207">
+                            <FirstName xnlNameType="GivenName">Malagigi</FirstName>
+                            <MiddleName xnlNameType="MiddleInitial">V</MiddleName>
+                            <NamePrefix xnlNameType="NamePrefix">Mr.</NamePrefix>
+                            <LastName xnlNameType="FamilyName">Richard</LastName>
+                        </Name>
+                        <Address legalAddressType="OECD301">
+                            <CountryCode>CA</CountryCode>
+                            <AddressFix>
+                                <Street>163 Westridge Court</Street>
+                                <PostCode>5032</PostCode>
+                                <City>Paraparaumu Beach</City>
+                            </AddressFix>
+                        </Address>
+                        <Nationality>US</Nationality>
+                        <BirthInfo>
+                            <BirthDate>1929-03-14</BirthDate>
+                            <City>Paraparaumu Beach</City>
+                            <CountryInfo>
+                                <CountryCode>CA</CountryCode>
+                            </CountryInfo>
+                        </BirthInfo>
+                    </ns2:Individual>
+                </ns2:AccountHolder>
+                <ns2:AccountBalance currCode="USD">1305468.93</ns2:AccountBalance>
+                <ns2:Payment>
+                    <ns2:Type>FATCA501</ns2:Type>
+                    <ns2:PaymentAmnt currCode="USD">746510.97</ns2:PaymentAmnt>
+                </ns2:Payment>
+            </ns2:AccountReport>
+            <ns2:AccountReport>
+                <ns2:DocSpec>
+                    <ns2:DocTypeIndic>FATCA1</ns2:DocTypeIndic>
+                    <ns2:DocRefId>6c26897c3b2543aa8e48bb68cad03fdb</ns2:DocRefId>
+                </ns2:DocSpec>
+                <ns2:AccountNumber>362440059535039348</ns2:AccountNumber>
+                <ns2:AccountHolder>
+                    <ns2:Individual>
+                        <ResCountryCode>CA</ResCountryCode>
+                        <TIN issuedBy="CA">610104208</TIN>
+                        <Name nameType="OECD207">
+                            <FirstName xnlNameType="GivenName">Roberto</FirstName>
+                            <MiddleName xnlNameType="MiddleInitial"></MiddleName>
+                            <NamePrefix xnlNameType="NamePrefix">Mr.</NamePrefix>
+                            <LastName xnlNameType="FamilyName">Buckley</LastName>
+                        </Name>
+                        <Address legalAddressType="OECD301">
+                            <CountryCode>CA</CountryCode>
+                            <AddressFix>
+                                <Street>Cercas Bajas 15</Street>
+                                <PostCode>7820</PostCode>
+                                <City>Sant Antoni de Portmany</City>
+                            </AddressFix>
+                        </Address>
+                        <Nationality>US</Nationality>
+                        <BirthInfo>
+                            <BirthDate>1934-04-03</BirthDate>
+                            <City>Sant Antoni de Portmany</City>
+                            <CountryInfo>
+                                <CountryCode>CA</CountryCode>
+                            </CountryInfo>
+                        </BirthInfo>
+                    </ns2:Individual>
+                </ns2:AccountHolder>
+                <ns2:AccountBalance currCode="USD">985580.94</ns2:AccountBalance>
+                <ns2:Payment>
+                    <ns2:Type>FATCA501</ns2:Type>
+                    <ns2:PaymentAmnt currCode="USD">246014.80</ns2:PaymentAmnt>
+                </ns2:Payment>
+            </ns2:AccountReport>
+            <ns2:AccountReport>
+                <ns2:DocSpec>
+                    <ns2:DocTypeIndic>FATCA1</ns2:DocTypeIndic>
+                    <ns2:DocRefId>3e29c05e73c3421d94368fadf7030ea1</ns2:DocRefId>
+                </ns2:DocSpec>
+                <ns2:AccountNumber>3919678280449483140</ns2:AccountNumber>
+                <ns2:AccountHolder>
+                    <ns2:Individual>
+                        <ResCountryCode>CA</ResCountryCode>
+                        <TIN issuedBy="CA">841389738</TIN>
+                        <Name nameType="OECD207">
+                            <FirstName xnlNameType="GivenName">Leuter</FirstName>
+                            <MiddleName xnlNameType="MiddleInitial">V</MiddleName>
+                            <NamePrefix xnlNameType="NamePrefix">Mr.</NamePrefix>
+                            <LastName xnlNameType="FamilyName">Alva</LastName>
+                        </Name>
+                        <Address legalAddressType="OECD301">
+                            <CountryCode>CA</CountryCode>
+                            <AddressFix>
+                                <Street>Caltgadira 11</Street>
+                                <PostCode>4245</PostCode>
+                                <City>Ober Huggerwald</City>
+                            </AddressFix>
+                        </Address>
+                        <Nationality>US</Nationality>
+                        <BirthInfo>
+                            <BirthDate>1979-01-04</BirthDate>
+                            <City>Ober Huggerwald</City>
+                            <CountryInfo>
+                                <CountryCode>CA</CountryCode>
+                            </CountryInfo>
+                        </BirthInfo>
+                    </ns2:Individual>
+                </ns2:AccountHolder>
+                <ns2:AccountBalance currCode="USD">669568.93</ns2:AccountBalance>
+                <ns2:Payment>
+                    <ns2:Type>FATCA503</ns2:Type>
+                    <ns2:PaymentAmnt currCode="USD">623290.60</ns2:PaymentAmnt>
+                </ns2:Payment>
+            </ns2:AccountReport>
+            <ns2:AccountReport>
+                <ns2:DocSpec>
+                    <ns2:DocTypeIndic>FATCA1</ns2:DocTypeIndic>
+                    <ns2:DocRefId>15063865241a479492a53136c3aa369d</ns2:DocRefId>
+                </ns2:DocSpec>
+                <ns2:AccountNumber>3415370351400692515</ns2:AccountNumber>
+                <ns2:AccountHolder>
+                    <ns2:Individual>
+                        <ResCountryCode>CA</ResCountryCode>
+                        <TIN issuedBy="CA">702617405</TIN>
+                        <Name nameType="OECD207">
+                            <FirstName xnlNameType="GivenName">Inni</FirstName>
+                            <MiddleName xnlNameType="MiddleInitial">R</MiddleName>
+                            <NamePrefix xnlNameType="NamePrefix">Mrs.</NamePrefix>
+                            <LastName xnlNameType="FamilyName">Brobakken</LastName>
+                        </Name>
+                        <Address legalAddressType="OECD301">
+                            <CountryCode>CA</CountryCode>
+                            <AddressFix>
+                                <Street>2985 rue des ?????glises Est</Street>
+                                <PostCode>J0W 1</PostCode>
+                                <City>Parc De La Verendrye</City>
+                            </AddressFix>
+                        </Address>
+                        <Nationality>US</Nationality>
+                        <BirthInfo>
+                            <BirthDate>1920-08-12</BirthDate>
+                            <City>Parc De La Verendrye</City>
+                            <CountryInfo>
+                                <CountryCode>CA</CountryCode>
+                            </CountryInfo>
+                        </BirthInfo>
+                    </ns2:Individual>
+                </ns2:AccountHolder>
+                <ns2:AccountBalance currCode="USD">990505.65</ns2:AccountBalance>
+                <ns2:Payment>
+                    <ns2:Type>FATCA501</ns2:Type>
+                    <ns2:PaymentAmnt currCode="USD">369730.45</ns2:PaymentAmnt>
+                </ns2:Payment>
+            </ns2:AccountReport>
+            <ns2:AccountReport>
+                <ns2:DocSpec>
+                    <ns2:DocTypeIndic>FATCA1</ns2:DocTypeIndic>
+                    <ns2:DocRefId>a2522cfd3c1742bf99e1c5bcb6b8d1ab</ns2:DocRefId>
+                </ns2:DocSpec>
+                <ns2:AccountNumber>4977737941737011885</ns2:AccountNumber>
+                <ns2:AccountHolder>
+                    <ns2:Individual>
+                        <ResCountryCode>CA</ResCountryCode>
+                        <TIN issuedBy="CA">173879557</TIN>
+                        <Name nameType="OECD207">
+                            <FirstName xnlNameType="GivenName">Varda</FirstName>
+                            <MiddleName xnlNameType="MiddleInitial">E</MiddleName>
+                            <NamePrefix xnlNameType="NamePrefix">Ms.</NamePrefix>
+                            <LastName xnlNameType="FamilyName">Lundestad</LastName>
+                        </Name>
+                        <Address legalAddressType="OECD301">
+                            <CountryCode>CA</CountryCode>
+                            <AddressFix>
+                                <Street>Kastanienallee 63</Street>
+                                <PostCode>26844</PostCode>
+                                <City>Jemgum</City>
+                            </AddressFix>
+                        </Address>
+                        <Nationality>US</Nationality>
+                        <BirthInfo>
+                            <BirthDate>1900-06-07</BirthDate>
+                            <City>Jemgum</City>
+                            <CountryInfo>
+                                <CountryCode>CA</CountryCode>
+                            </CountryInfo>
+                        </BirthInfo>
+                    </ns2:Individual>
+                </ns2:AccountHolder>
+                <ns2:AccountBalance currCode="USD">1008067.03</ns2:AccountBalance>
+                <ns2:Payment>
+                    <ns2:Type>FATCA501</ns2:Type>
+                    <ns2:PaymentAmnt currCode="USD">947902.41</ns2:PaymentAmnt>
+                </ns2:Payment>
+            </ns2:AccountReport>
+            <ns2:AccountReport>
+                <ns2:DocSpec>
+                    <ns2:DocTypeIndic>FATCA1</ns2:DocTypeIndic>
+                    <ns2:DocRefId>b16368c5cdb049bd8e387ca760e53211</ns2:DocRefId>
+                </ns2:DocSpec>
+                <ns2:AccountNumber>7893002065606520282</ns2:AccountNumber>
+                <ns2:AccountHolder>
+                    <ns2:Individual>
+                        <ResCountryCode>CA</ResCountryCode>
+                        <TIN issuedBy="CA">588914341</TIN>
+                        <Name nameType="OECD207">
+                            <FirstName xnlNameType="GivenName">Lee</FirstName>
+                            <MiddleName xnlNameType="MiddleInitial"></MiddleName>
+                            <NamePrefix xnlNameType="NamePrefix">Mr.</NamePrefix>
+                            <LastName xnlNameType="FamilyName">Tan</LastName>
+                        </Name>
+                        <Address legalAddressType="OECD301">
+                            <CountryCode>CA</CountryCode>
+                            <AddressFix>
+                                <Street>Brandenburgische Stra????e 51</Street>
+                                <PostCode>10961</PostCode>
+                                <City>Berlin Neuk????lln</City>
+                            </AddressFix>
+                        </Address>
+                        <Nationality>US</Nationality>
+                        <BirthInfo>
+                            <BirthDate>1925-05-09</BirthDate>
+                            <City>Berlin Neuk????lln</City>
+                            <CountryInfo>
+                                <CountryCode>CA</CountryCode>
+                            </CountryInfo>
+                        </BirthInfo>
+                    </ns2:Individual>
+                </ns2:AccountHolder>
+                <ns2:AccountBalance currCode="USD">815399.05</ns2:AccountBalance>
+                <ns2:Payment>
+                    <ns2:Type>FATCA501</ns2:Type>
+                    <ns2:PaymentAmnt currCode="USD">524309.01</ns2:PaymentAmnt>
+                </ns2:Payment>
+            </ns2:AccountReport>
+            <ns2:AccountReport>
+                <ns2:DocSpec>
+                    <ns2:DocTypeIndic>FATCA1</ns2:DocTypeIndic>
+                    <ns2:DocRefId>9cd176bc73914b9fb61c9420794805be</ns2:DocRefId>
+                </ns2:DocSpec>
+                <ns2:AccountNumber>1381866331822932903</ns2:AccountNumber>
+                <ns2:AccountHolder>
+                    <ns2:Individual>
+                        <ResCountryCode>CA</ResCountryCode>
+                        <TIN issuedBy="CA">539666117</TIN>
+                        <Name nameType="OECD207">
+                            <FirstName xnlNameType="GivenName">Sibyla</FirstName>
+                            <MiddleName xnlNameType="MiddleInitial">D</MiddleName>
+                            <NamePrefix xnlNameType="NamePrefix">Ms.</NamePrefix>
+                            <LastName xnlNameType="FamilyName">Gilbert</LastName>
+                        </Name>
+                        <Address legalAddressType="OECD301">
+                            <CountryCode>CA</CountryCode>
+                            <AddressFix>
+                                <Street>68 Witney Way</Street>
+                                <PostCode>CB3 5</PostCode>
+                                <City>KNAPWELL</City>
+                            </AddressFix>
+                        </Address>
+                        <Nationality>US</Nationality>
+                        <BirthInfo>
+                            <BirthDate>1970-04-02</BirthDate>
+                            <City>KNAPWELL</City>
+                            <CountryInfo>
+                                <CountryCode>CA</CountryCode>
+                            </CountryInfo>
+                        </BirthInfo>
+                    </ns2:Individual>
+                </ns2:AccountHolder>
+                <ns2:AccountBalance currCode="USD">207593.35</ns2:AccountBalance>
+                <ns2:Payment>
+                    <ns2:Type>FATCA501</ns2:Type>
+                    <ns2:PaymentAmnt currCode="USD">58235.68</ns2:PaymentAmnt>
+                </ns2:Payment>
+            </ns2:AccountReport>
+            <ns2:AccountReport>
+                <ns2:DocSpec>
+                    <ns2:DocTypeIndic>FATCA1</ns2:DocTypeIndic>
+                    <ns2:DocRefId>060a28bf726c4ecc93b53330f509c59a</ns2:DocRefId>
+                </ns2:DocSpec>
+                <ns2:AccountNumber>8783397727400990936</ns2:AccountNumber>
+                <ns2:AccountHolder>
+                    <ns2:Individual>
+                        <ResCountryCode>CA</ResCountryCode>
+                        <TIN issuedBy="CA">954481073</TIN>
+                        <Name nameType="OECD207">
+                            <FirstName xnlNameType="GivenName">Simplicio</FirstName>
+                            <MiddleName xnlNameType="MiddleInitial">L</MiddleName>
+                            <NamePrefix xnlNameType="NamePrefix">Mr.</NamePrefix>
+                            <LastName xnlNameType="FamilyName">Cab????n</LastName>
+                        </Name>
+                        <Address legalAddressType="OECD301">
+                            <CountryCode>CA</CountryCode>
+                            <AddressFix>
+                                <Street>51 Boobialla Street</Street>
+                                <PostCode>2712</PostCode>
+                                <City>BERRIGAN</City>
+                            </AddressFix>
+                        </Address>
+                        <Nationality>US</Nationality>
+                        <BirthInfo>
+                            <BirthDate>1957-01-22</BirthDate>
+                            <City>BERRIGAN</City>
+                            <CountryInfo>
+                                <CountryCode>CA</CountryCode>
+                            </CountryInfo>
+                        </BirthInfo>
+                    </ns2:Individual>
+                </ns2:AccountHolder>
+                <ns2:AccountBalance currCode="USD">1782303.58</ns2:AccountBalance>
+                <ns2:Payment>
+                    <ns2:Type>FATCA502</ns2:Type>
+                    <ns2:PaymentAmnt currCode="USD">913778.42</ns2:PaymentAmnt>
+                </ns2:Payment>
+            </ns2:AccountReport>
+            <ns2:AccountReport>
+                <ns2:DocSpec>
+                    <ns2:DocTypeIndic>FATCA1</ns2:DocTypeIndic>
+                    <ns2:DocRefId>d3f4dfcb18e8434aa9428283a6fed008</ns2:DocRefId>
+                </ns2:DocSpec>
+                <ns2:AccountNumber>4050150614962689954</ns2:AccountNumber>
+                <ns2:AccountHolder>
+                    <ns2:Individual>
+                        <ResCountryCode>CA</ResCountryCode>
+                        <TIN issuedBy="CA">242786877</TIN>
+                        <Name nameType="OECD207">
+                            <FirstName xnlNameType="GivenName">Dirk</FirstName>
+                            <MiddleName xnlNameType="MiddleInitial"></MiddleName>
+                            <NamePrefix xnlNameType="NamePrefix">Dr.</NamePrefix>
+                            <LastName xnlNameType="FamilyName">Wagner</LastName>
+                        </Name>
+                        <Address legalAddressType="OECD301">
+                            <CountryCode>CA</CountryCode>
+                            <AddressFix>
+                                <Street>Rua Jacarand???? 1778</Street>
+                                <PostCode>52071</PostCode>
+                                <City>Recife</City>
+                            </AddressFix>
+                        </Address>
+                        <Nationality>US</Nationality>
+                        <BirthInfo>
+                            <BirthDate>1962-07-18</BirthDate>
+                            <City>Recife</City>
+                            <CountryInfo>
+                                <CountryCode>CA</CountryCode>
+                            </CountryInfo>
+                        </BirthInfo>
+                    </ns2:Individual>
+                </ns2:AccountHolder>
+                <ns2:AccountBalance currCode="USD">1609376.12</ns2:AccountBalance>
+                <ns2:Payment>
+                    <ns2:Type>FATCA503</ns2:Type>
+                    <ns2:PaymentAmnt currCode="USD">888402.15</ns2:PaymentAmnt>
+                </ns2:Payment>
+            </ns2:AccountReport>
+            <ns2:AccountReport>
+                <ns2:DocSpec>
+                    <ns2:DocTypeIndic>FATCA1</ns2:DocTypeIndic>
+                    <ns2:DocRefId>1feed054def64cbd8ef5104c5f2fd49b</ns2:DocRefId>
+                </ns2:DocSpec>
+                <ns2:AccountNumber>2928490056271410497</ns2:AccountNumber>
+                <ns2:AccountHolder>
+                    <ns2:Individual>
+                        <ResCountryCode>CA</ResCountryCode>
+                        <TIN issuedBy="CA">486961205</TIN>
+                        <Name nameType="OECD207">
+                            <FirstName xnlNameType="GivenName">Yue Ying</FirstName>
+                            <MiddleName xnlNameType="MiddleInitial"></MiddleName>
+                            <NamePrefix xnlNameType="NamePrefix">Ms.</NamePrefix>
+                            <LastName xnlNameType="FamilyName">Kang</LastName>
+                        </Name>
+                        <Address legalAddressType="OECD301">
+                            <CountryCode>CA</CountryCode>
+                            <AddressFix>
+                                <Street>61 Boughton Rd</Street>
+                                <PostCode>SN8 7</PostCode>
+                                <City>WHITTONDITCH</City>
+                            </AddressFix>
+                        </Address>
+                        <Nationality>US</Nationality>
+                        <BirthInfo>
+                            <BirthDate>1955-10-14</BirthDate>
+                            <City>WHITTONDITCH</City>
+                            <CountryInfo>
+                                <CountryCode>CA</CountryCode>
+                            </CountryInfo>
+                        </BirthInfo>
+                    </ns2:Individual>
+                </ns2:AccountHolder>
+                <ns2:AccountBalance currCode="USD">1130319.25</ns2:AccountBalance>
+                <ns2:Payment>
+                    <ns2:Type>FATCA501</ns2:Type>
+                    <ns2:PaymentAmnt currCode="USD">247885.09</ns2:PaymentAmnt>
+                </ns2:Payment>
+            </ns2:AccountReport>
+            <ns2:AccountReport>
+                <ns2:DocSpec>
+                    <ns2:DocTypeIndic>FATCA1</ns2:DocTypeIndic>
+                    <ns2:DocRefId>9cea098f35ac493dac0fce61710d5c28</ns2:DocRefId>
+                </ns2:DocSpec>
+                <ns2:AccountNumber>680473587976335139</ns2:AccountNumber>
+                <ns2:AccountHolder>
+                    <ns2:Individual>
+                        <ResCountryCode>CA</ResCountryCode>
+                        <TIN issuedBy="CA">609449492</TIN>
+                        <Name nameType="OECD207">
+                            <FirstName xnlNameType="GivenName">Lucy</FirstName>
+                            <MiddleName xnlNameType="MiddleInitial">M</MiddleName>
+                            <NamePrefix xnlNameType="NamePrefix">Ms.</NamePrefix>
+                            <LastName xnlNameType="FamilyName">Elliott</LastName>
+                        </Name>
+                        <Address legalAddressType="OECD301">
+                            <CountryCode>CA</CountryCode>
+                            <AddressFix>
+                                <Street>Spinatsch 15</Street>
+                                <PostCode>6295</PostCode>
+                                <City>Mosen</City>
+                            </AddressFix>
+                        </Address>
+                        <Nationality>US</Nationality>
+                        <BirthInfo>
+                            <BirthDate>1947-04-27</BirthDate>
+                            <City>Mosen</City>
+                            <CountryInfo>
+                                <CountryCode>CA</CountryCode>
+                            </CountryInfo>
+                        </BirthInfo>
+                    </ns2:Individual>
+                </ns2:AccountHolder>
+                <ns2:AccountBalance currCode="USD">656773.88</ns2:AccountBalance>
+                <ns2:Payment>
+                    <ns2:Type>FATCA503</ns2:Type>
+                    <ns2:PaymentAmnt currCode="USD">252662.52</ns2:PaymentAmnt>
+                </ns2:Payment>
+            </ns2:AccountReport>
+            <ns2:AccountReport>
+                <ns2:DocSpec>
+                    <ns2:DocTypeIndic>FATCA1</ns2:DocTypeIndic>
+                    <ns2:DocRefId>47482ef2ca9a4e78ba1d17789ca652f6</ns2:DocRefId>
+                </ns2:DocSpec>
+                <ns2:AccountNumber>2134181974863898046</ns2:AccountNumber>
+                <ns2:AccountHolder>
+                    <ns2:Individual>
+                        <ResCountryCode>CA</ResCountryCode>
+                        <TIN issuedBy="CA">210400704</TIN>
+                        <Name nameType="OECD207">
+                            <FirstName xnlNameType="GivenName">Carlo</FirstName>
+                            <MiddleName xnlNameType="MiddleInitial">E</MiddleName>
+                            <NamePrefix xnlNameType="NamePrefix">Mr.</NamePrefix>
+                            <LastName xnlNameType="FamilyName">Maya</LastName>
+                        </Name>
+                        <Address legalAddressType="OECD301">
+                            <CountryCode>CA</CountryCode>
+                            <AddressFix>
+                                <Street>145 Trent Street</Street>
+                                <PostCode>1026</PostCode>
+                                <City>Avondale</City>
+                            </AddressFix>
+                        </Address>
+                        <Nationality>US</Nationality>
+                        <BirthInfo>
+                            <BirthDate>1979-02-16</BirthDate>
+                            <City>Avondale</City>
+                            <CountryInfo>
+                                <CountryCode>CA</CountryCode>
+                            </CountryInfo>
+                        </BirthInfo>
+                    </ns2:Individual>
+                </ns2:AccountHolder>
+                <ns2:AccountBalance currCode="USD">590490.50</ns2:AccountBalance>
+                <ns2:Payment>
+                    <ns2:Type>FATCA503</ns2:Type>
+                    <ns2:PaymentAmnt currCode="USD">403401.67</ns2:PaymentAmnt>
+                </ns2:Payment>
+            </ns2:AccountReport>
+            <ns2:AccountReport>
+                <ns2:DocSpec>
+                    <ns2:DocTypeIndic>FATCA1</ns2:DocTypeIndic>
+                    <ns2:DocRefId>14069a33217e475eb747ac2dce1053d5</ns2:DocRefId>
+                </ns2:DocSpec>
+                <ns2:AccountNumber>2486312524168677470</ns2:AccountNumber>
+                <ns2:AccountHolder>
+                    <ns2:Individual>
+                        <ResCountryCode>CA</ResCountryCode>
+                        <TIN issuedBy="CA">334551156</TIN>
+                        <Name nameType="OECD207">
+                            <FirstName xnlNameType="GivenName">Eric</FirstName>
+                            <MiddleName xnlNameType="MiddleInitial"></MiddleName>
+                            <NamePrefix xnlNameType="NamePrefix">Mr.</NamePrefix>
+                            <LastName xnlNameType="FamilyName">Schmidt</LastName>
+                        </Name>
+                        <Address legalAddressType="OECD301">
+                            <CountryCode>CA</CountryCode>
+                            <AddressFix>
+                                <Street>77 Spring Creek Road</Street>
+                                <PostCode>3821</PostCode>
+                                <City>LARDNER</City>
+                            </AddressFix>
+                        </Address>
+                        <Nationality>US</Nationality>
+                        <BirthInfo>
+                            <BirthDate>1918-11-09</BirthDate>
+                            <City>LARDNER</City>
+                            <CountryInfo>
+                                <CountryCode>CA</CountryCode>
+                            </CountryInfo>
+                        </BirthInfo>
+                    </ns2:Individual>
+                </ns2:AccountHolder>
+                <ns2:AccountBalance currCode="USD">947438.26</ns2:AccountBalance>
+                <ns2:Payment>
+                    <ns2:Type>FATCA502</ns2:Type>
+                    <ns2:PaymentAmnt currCode="USD">878934.35</ns2:PaymentAmnt>
+                </ns2:Payment>
+            </ns2:AccountReport>
+            <ns2:AccountReport>
+                <ns2:DocSpec>
+                    <ns2:DocTypeIndic>FATCA1</ns2:DocTypeIndic>
+                    <ns2:DocRefId>ed24ae68988440f7a6e2c369caa005ae</ns2:DocRefId>
+                </ns2:DocSpec>
+                <ns2:AccountNumber>1600351337637654996</ns2:AccountNumber>
+                <ns2:AccountHolder>
+                    <ns2:Individual>
+                        <ResCountryCode>CA</ResCountryCode>
+                        <TIN issuedBy="CA">119439421</TIN>
+                        <Name nameType="OECD207">
+                            <FirstName xnlNameType="GivenName">Kathryn</FirstName>
+                            <MiddleName xnlNameType="MiddleInitial">A</MiddleName>
+                            <NamePrefix xnlNameType="NamePrefix">Ms.</NamePrefix>
+                            <LastName xnlNameType="FamilyName">Murphy</LastName>
+                        </Name>
+                        <Address legalAddressType="OECD301">
+                            <CountryCode>CA</CountryCode>
+                            <AddressFix>
+                                <Street>2948 Weston Rd</Street>
+                                <PostCode>M9N 1</PostCode>
+                                <City>Toronto</City>
+                            </AddressFix>
+                        </Address>
+                        <Nationality>US</Nationality>
+                        <BirthInfo>
+                            <BirthDate>1968-04-04</BirthDate>
+                            <City>Toronto</City>
+                            <CountryInfo>
+                                <CountryCode>CA</CountryCode>
+                            </CountryInfo>
+                        </BirthInfo>
+                    </ns2:Individual>
+                </ns2:AccountHolder>
+                <ns2:AccountBalance currCode="USD">35741.47</ns2:AccountBalance>
+                <ns2:Payment>
+                    <ns2:Type>FATCA502</ns2:Type>
+                    <ns2:PaymentAmnt currCode="USD">7433.26</ns2:PaymentAmnt>
+                </ns2:Payment>
+            </ns2:AccountReport>
+            <ns2:AccountReport>
+                <ns2:DocSpec>
+                    <ns2:DocTypeIndic>FATCA1</ns2:DocTypeIndic>
+                    <ns2:DocRefId>acb2f30839fd4359acd1eeef86ac1460</ns2:DocRefId>
+                </ns2:DocSpec>
+                <ns2:AccountNumber>2867644181106109473</ns2:AccountNumber>
+                <ns2:AccountHolder>
+                    <ns2:Individual>
+                        <ResCountryCode>CA</ResCountryCode>
+                        <TIN issuedBy="CA">542693408</TIN>
+                        <Name nameType="OECD207">
+                            <FirstName xnlNameType="GivenName">Sam</FirstName>
+                            <MiddleName xnlNameType="MiddleInitial"></MiddleName>
+                            <NamePrefix xnlNameType="NamePrefix">Mr.</NamePrefix>
+                            <LastName xnlNameType="FamilyName">Hodgetts</LastName>
+                        </Name>
+                        <Address legalAddressType="OECD301">
+                            <CountryCode>CA</CountryCode>
+                            <AddressFix>
+                                <Street>55 Rue du Palais</Street>
+                                <PostCode>88000</PostCode>
+                                <City>?????PINAL</City>
+                            </AddressFix>
+                        </Address>
+                        <Nationality>US</Nationality>
+                        <BirthInfo>
+                            <BirthDate>1919-03-13</BirthDate>
+                            <City>?????PINAL</City>
+                            <CountryInfo>
+                                <CountryCode>CA</CountryCode>
+                            </CountryInfo>
+                        </BirthInfo>
+                    </ns2:Individual>
+                </ns2:AccountHolder>
+                <ns2:AccountBalance currCode="USD">1354792.48</ns2:AccountBalance>
+                <ns2:Payment>
+                    <ns2:Type>FATCA502</ns2:Type>
+                    <ns2:PaymentAmnt currCode="USD">734779.56</ns2:PaymentAmnt>
+                </ns2:Payment>
+            </ns2:AccountReport>
+            <ns2:AccountReport>
+                <ns2:DocSpec>
+                    <ns2:DocTypeIndic>FATCA1</ns2:DocTypeIndic>
+                    <ns2:DocRefId>15aa545939384ff3ba6c1e4eb8a27b35</ns2:DocRefId>
+                </ns2:DocSpec>
+                <ns2:AccountNumber>6320038931993388530</ns2:AccountNumber>
+                <ns2:AccountHolder>
+                    <ns2:Individual>
+                        <ResCountryCode>CA</ResCountryCode>
+                        <TIN issuedBy="CA">556712313</TIN>
+                        <Name nameType="OECD207">
+                            <FirstName xnlNameType="GivenName">You</FirstName>
+                            <MiddleName xnlNameType="MiddleInitial">G</MiddleName>
+                            <NamePrefix xnlNameType="NamePrefix">Mr.</NamePrefix>
+                            <LastName xnlNameType="FamilyName">Yin</LastName>
+                        </Name>
+                        <Address legalAddressType="OECD301">
+                            <CountryCode>CA</CountryCode>
+                            <AddressFix>
+                                <Street>Scheidweg 10</Street>
+                                <PostCode>3804</PostCode>
+                                <City>Habkern</City>
+                            </AddressFix>
+                        </Address>
+                        <Nationality>US</Nationality>
+                        <BirthInfo>
+                            <BirthDate>1953-03-06</BirthDate>
+                            <City>Habkern</City>
+                            <CountryInfo>
+                                <CountryCode>CA</CountryCode>
+                            </CountryInfo>
+                        </BirthInfo>
+                    </ns2:Individual>
+                </ns2:AccountHolder>
+                <ns2:AccountBalance currCode="USD">831146.93</ns2:AccountBalance>
+                <ns2:Payment>
+                    <ns2:Type>FATCA503</ns2:Type>
+                    <ns2:PaymentAmnt currCode="USD">182795.48</ns2:PaymentAmnt>
+                </ns2:Payment>
+            </ns2:AccountReport>
+            <ns2:AccountReport>
+                <ns2:DocSpec>
+                    <ns2:DocTypeIndic>FATCA1</ns2:DocTypeIndic>
+                    <ns2:DocRefId>7bd88d5a3e6e4e19abda9fbc037922fa</ns2:DocRefId>
+                </ns2:DocSpec>
+                <ns2:AccountNumber>913911138948405042</ns2:AccountNumber>
+                <ns2:AccountHolder>
+                    <ns2:Individual>
+                        <ResCountryCode>CA</ResCountryCode>
+                        <TIN issuedBy="CA">432388198</TIN>
+                        <Name nameType="OECD207">
+                            <FirstName xnlNameType="GivenName">Anathon</FirstName>
+                            <MiddleName xnlNameType="MiddleInitial"></MiddleName>
+                            <NamePrefix xnlNameType="NamePrefix">Mr.</NamePrefix>
+                            <LastName xnlNameType="FamilyName">Rognli</LastName>
+                        </Name>
+                        <Address legalAddressType="OECD301">
+                            <CountryCode>CA</CountryCode>
+                            <AddressFix>
+                                <Street>29 Seaford Road</Street>
+                                <PostCode>S42 8</PostCode>
+                                <City>CUTTHORPE</City>
+                            </AddressFix>
+                        </Address>
+                        <Nationality>US</Nationality>
+                        <BirthInfo>
+                            <BirthDate>1933-06-23</BirthDate>
+                            <City>CUTTHORPE</City>
+                            <CountryInfo>
+                                <CountryCode>CA</CountryCode>
+                            </CountryInfo>
+                        </BirthInfo>
+                    </ns2:Individual>
+                </ns2:AccountHolder>
+                <ns2:AccountBalance currCode="USD">1225208.90</ns2:AccountBalance>
+                <ns2:Payment>
+                    <ns2:Type>FATCA501</ns2:Type>
+                    <ns2:PaymentAmnt currCode="USD">981259.16</ns2:PaymentAmnt>
+                </ns2:Payment>
+            </ns2:AccountReport>
+            <ns2:AccountReport>
+                <ns2:DocSpec>
+                    <ns2:DocTypeIndic>FATCA1</ns2:DocTypeIndic>
+                    <ns2:DocRefId>4749e5a2f0db49c6ab139acd1c8f094c</ns2:DocRefId>
+                </ns2:DocSpec>
+                <ns2:AccountNumber>3586003122474177759</ns2:AccountNumber>
+                <ns2:AccountHolder>
+                    <ns2:Individual>
+                        <ResCountryCode>CA</ResCountryCode>
+                        <TIN issuedBy="CA">305321716</TIN>
+                        <Name nameType="OECD207">
+                            <FirstName xnlNameType="GivenName">Diego</FirstName>
+                            <MiddleName xnlNameType="MiddleInitial">F</MiddleName>
+                            <NamePrefix xnlNameType="NamePrefix">Mr.</NamePrefix>
+                            <LastName xnlNameType="FamilyName">van Aanholt</LastName>
+                        </Name>
+                        <Address legalAddressType="OECD301">
+                            <CountryCode>CA</CountryCode>
+                            <AddressFix>
+                                <Street>81 Redfern Lane</Street>
+                                <PostCode>629</PostCode>
+                                <City>Marlborough</City>
+                            </AddressFix>
+                        </Address>
+                        <Nationality>US</Nationality>
+                        <BirthInfo>
+                            <BirthDate>1919-06-03</BirthDate>
+                            <City>Marlborough</City>
+                            <CountryInfo>
+                                <CountryCode>CA</CountryCode>
+                            </CountryInfo>
+                        </BirthInfo>
+                    </ns2:Individual>
+                </ns2:AccountHolder>
+                <ns2:AccountBalance currCode="USD">1139450.49</ns2:AccountBalance>
+                <ns2:Payment>
+                    <ns2:Type>FATCA501</ns2:Type>
+                    <ns2:PaymentAmnt currCode="USD">543255.22</ns2:PaymentAmnt>
+                </ns2:Payment>
+            </ns2:AccountReport>
+            <ns2:AccountReport>
+                <ns2:DocSpec>
+                    <ns2:DocTypeIndic>FATCA1</ns2:DocTypeIndic>
+                    <ns2:DocRefId>90d96932f4ba4d93b32db75a14a1ac95</ns2:DocRefId>
+                </ns2:DocSpec>
+                <ns2:AccountNumber>5199707315480150888</ns2:AccountNumber>
+                <ns2:AccountHolder>
+                    <ns2:Individual>
+                        <ResCountryCode>CA</ResCountryCode>
+                        <TIN issuedBy="CA">564354678</TIN>
+                        <Name nameType="OECD207">
+                            <FirstName xnlNameType="GivenName">Alicia</FirstName>
+                            <MiddleName xnlNameType="MiddleInitial">P</MiddleName>
+                            <NamePrefix xnlNameType="NamePrefix">Ms.</NamePrefix>
+                            <LastName xnlNameType="FamilyName">Richmond</LastName>
+                        </Name>
+                        <Address legalAddressType="OECD301">
+                            <CountryCode>CA</CountryCode>
+                            <AddressFix>
+                                <Street>21 Redesdale Rd</Street>
+                                <PostCode>3551</PostCode>
+                                <City>AXEDALE</City>
+                            </AddressFix>
+                        </Address>
+                        <Nationality>US</Nationality>
+                        <BirthInfo>
+                            <BirthDate>1952-11-20</BirthDate>
+                            <City>AXEDALE</City>
+                            <CountryInfo>
+                                <CountryCode>CA</CountryCode>
+                            </CountryInfo>
+                        </BirthInfo>
+                    </ns2:Individual>
+                </ns2:AccountHolder>
+                <ns2:AccountBalance currCode="USD">980422.17</ns2:AccountBalance>
+                <ns2:Payment>
+                    <ns2:Type>FATCA501</ns2:Type>
+                    <ns2:PaymentAmnt currCode="USD">350618.54</ns2:PaymentAmnt>
+                </ns2:Payment>
+            </ns2:AccountReport>
+            <ns2:AccountReport>
+                <ns2:DocSpec>
+                    <ns2:DocTypeIndic>FATCA1</ns2:DocTypeIndic>
+                    <ns2:DocRefId>6c6c1ff68a8f4e6dafafa5d5428f48be</ns2:DocRefId>
+                </ns2:DocSpec>
+                <ns2:AccountNumber>3836627299133939930</ns2:AccountNumber>
+                <ns2:AccountHolder>
+                    <ns2:Individual>
+                        <ResCountryCode>CA</ResCountryCode>
+                        <TIN issuedBy="CA">594066803</TIN>
+                        <Name nameType="OECD207">
+                            <FirstName xnlNameType="GivenName">Loren</FirstName>
+                            <MiddleName xnlNameType="MiddleInitial"></MiddleName>
+                            <NamePrefix xnlNameType="NamePrefix">Mrs.</NamePrefix>
+                            <LastName xnlNameType="FamilyName">Manley</LastName>
+                        </Name>
+                        <Address legalAddressType="OECD301">
+                            <CountryCode>CA</CountryCode>
+                            <AddressFix>
+                                <Street>44 Healy Road</Street>
+                                <PostCode>6258</PostCode>
+                                <City>GLENORAN</City>
+                            </AddressFix>
+                        </Address>
+                        <Nationality>US</Nationality>
+                        <BirthInfo>
+                            <BirthDate>1924-02-05</BirthDate>
+                            <City>GLENORAN</City>
+                            <CountryInfo>
+                                <CountryCode>CA</CountryCode>
+                            </CountryInfo>
+                        </BirthInfo>
+                    </ns2:Individual>
+                </ns2:AccountHolder>
+                <ns2:AccountBalance currCode="USD">1006002.72</ns2:AccountBalance>
+                <ns2:Payment>
+                    <ns2:Type>FATCA503</ns2:Type>
+                    <ns2:PaymentAmnt currCode="USD">131123.34</ns2:PaymentAmnt>
+                </ns2:Payment>
+            </ns2:AccountReport>
+            <ns2:AccountReport>
+                <ns2:DocSpec>
+                    <ns2:DocTypeIndic>FATCA1</ns2:DocTypeIndic>
+                    <ns2:DocRefId>c37c996fce35499eb4f14a41a897c9a8</ns2:DocRefId>
+                </ns2:DocSpec>
+                <ns2:AccountNumber>677275381077415978</ns2:AccountNumber>
+                <ns2:AccountHolder>
+                    <ns2:Individual>
+                        <ResCountryCode>CA</ResCountryCode>
+                        <TIN issuedBy="CA">498281452</TIN>
+                        <Name nameType="OECD207">
+                            <FirstName xnlNameType="GivenName">Tanja</FirstName>
+                            <MiddleName xnlNameType="MiddleInitial">T</MiddleName>
+                            <NamePrefix xnlNameType="NamePrefix">Ms.</NamePrefix>
+                            <LastName xnlNameType="FamilyName">Amsel</LastName>
+                        </Name>
+                        <Address legalAddressType="OECD301">
+                            <CountryCode>CA</CountryCode>
+                            <AddressFix>
+                                <Street>Obere Haltenstrasse 133</Street>
+                                <PostCode>6902</PostCode>
+                                <City>Lugano</City>
+                            </AddressFix>
+                        </Address>
+                        <Nationality>US</Nationality>
+                        <BirthInfo>
+                            <BirthDate>1967-08-27</BirthDate>
+                            <City>Lugano</City>
+                            <CountryInfo>
+                                <CountryCode>CA</CountryCode>
+                            </CountryInfo>
+                        </BirthInfo>
+                    </ns2:Individual>
+                </ns2:AccountHolder>
+                <ns2:AccountBalance currCode="USD">976107.50</ns2:AccountBalance>
+                <ns2:Payment>
+                    <ns2:Type>FATCA501</ns2:Type>
+                    <ns2:PaymentAmnt currCode="USD">444953.59</ns2:PaymentAmnt>
+                </ns2:Payment>
+            </ns2:AccountReport>
+            <ns2:AccountReport>
+                <ns2:DocSpec>
+                    <ns2:DocTypeIndic>FATCA1</ns2:DocTypeIndic>
+                    <ns2:DocRefId>6f91b9d17f1a4273ba8c309a7671b68b</ns2:DocRefId>
+                </ns2:DocSpec>
+                <ns2:AccountNumber>9010862311315263368</ns2:AccountNumber>
+                <ns2:AccountHolder>
+                    <ns2:Individual>
+                        <ResCountryCode>CA</ResCountryCode>
+                        <TIN issuedBy="CA">670098372</TIN>
+                        <Name nameType="OECD207">
+                            <FirstName xnlNameType="GivenName">Peter</FirstName>
+                            <MiddleName xnlNameType="MiddleInitial">T</MiddleName>
+                            <NamePrefix xnlNameType="NamePrefix">Mr.</NamePrefix>
+                            <LastName xnlNameType="FamilyName">Moran</LastName>
+                        </Name>
+                        <Address legalAddressType="OECD301">
+                            <CountryCode>CA</CountryCode>
+                            <AddressFix>
+                                <Street>Comandante Izarduy 18</Street>
+                                <PostCode>8860</PostCode>
+                                <City>Castelldefels</City>
+                            </AddressFix>
+                        </Address>
+                        <Nationality>US</Nationality>
+                        <BirthInfo>
+                            <BirthDate>1975-09-04</BirthDate>
+                            <City>Castelldefels</City>
+                            <CountryInfo>
+                                <CountryCode>CA</CountryCode>
+                            </CountryInfo>
+                        </BirthInfo>
+                    </ns2:Individual>
+                </ns2:AccountHolder>
+                <ns2:AccountBalance currCode="USD">492312.01</ns2:AccountBalance>
+                <ns2:Payment>
+                    <ns2:Type>FATCA503</ns2:Type>
+                    <ns2:PaymentAmnt currCode="USD">260785.04</ns2:PaymentAmnt>
+                </ns2:Payment>
+            </ns2:AccountReport>
+            <ns2:AccountReport>
+                <ns2:DocSpec>
+                    <ns2:DocTypeIndic>FATCA1</ns2:DocTypeIndic>
+                    <ns2:DocRefId>2cef6b614d2f4b098e3327f2a01cb1a0</ns2:DocRefId>
+                </ns2:DocSpec>
+                <ns2:AccountNumber>4383606805711088052</ns2:AccountNumber>
+                <ns2:AccountHolder>
+                    <ns2:Individual>
+                        <ResCountryCode>CA</ResCountryCode>
+                        <TIN issuedBy="CA">499628921</TIN>
+                        <Name nameType="OECD207">
+                            <FirstName xnlNameType="GivenName">Philipp</FirstName>
+                            <MiddleName xnlNameType="MiddleInitial"></MiddleName>
+                            <NamePrefix xnlNameType="NamePrefix">Mr.</NamePrefix>
+                            <LastName xnlNameType="FamilyName">Fuchs</LastName>
+                        </Name>
+                        <Address legalAddressType="OECD301">
+                            <CountryCode>CA</CountryCode>
+                            <AddressFix>
+                                <Street>4647 Eglinton Avenue</Street>
+                                <PostCode>M4P 1</PostCode>
+                                <City>Toronto</City>
+                            </AddressFix>
+                        </Address>
+                        <Nationality>US</Nationality>
+                        <BirthInfo>
+                            <BirthDate>1921-02-26</BirthDate>
+                            <City>Toronto</City>
+                            <CountryInfo>
+                                <CountryCode>CA</CountryCode>
+                            </CountryInfo>
+                        </BirthInfo>
+                    </ns2:Individual>
+                </ns2:AccountHolder>
+                <ns2:AccountBalance currCode="USD">379424.13</ns2:AccountBalance>
+                <ns2:Payment>
+                    <ns2:Type>FATCA502</ns2:Type>
+                    <ns2:PaymentAmnt currCode="USD">10998.51</ns2:PaymentAmnt>
+                </ns2:Payment>
+            </ns2:AccountReport>
+            <ns2:AccountReport>
+                <ns2:DocSpec>
+                    <ns2:DocTypeIndic>FATCA1</ns2:DocTypeIndic>
+                    <ns2:DocRefId>0e408d78c89f43b6a6fcd056e929cbec</ns2:DocRefId>
+                </ns2:DocSpec>
+                <ns2:AccountNumber>2021064646652901357</ns2:AccountNumber>
+                <ns2:AccountHolder>
+                    <ns2:Individual>
+                        <ResCountryCode>CA</ResCountryCode>
+                        <TIN issuedBy="CA">549013172</TIN>
+                        <Name nameType="OECD207">
+                            <FirstName xnlNameType="GivenName">Ingolv</FirstName>
+                            <MiddleName xnlNameType="MiddleInitial"></MiddleName>
+                            <NamePrefix xnlNameType="NamePrefix">Mr.</NamePrefix>
+                            <LastName xnlNameType="FamilyName">Fiksdal</LastName>
+                        </Name>
+                        <Address legalAddressType="OECD301">
+                            <CountryCode>CA</CountryCode>
+                            <AddressFix>
+                                <Street>Via Franscini 28</Street>
+                                <PostCode>7064</PostCode>
+                                <City>Tschiertschen</City>
+                            </AddressFix>
+                        </Address>
+                        <Nationality>US</Nationality>
+                        <BirthInfo>
+                            <BirthDate>1912-01-18</BirthDate>
+                            <City>Tschiertschen</City>
+                            <CountryInfo>
+                                <CountryCode>CA</CountryCode>
+                            </CountryInfo>
+                        </BirthInfo>
+                    </ns2:Individual>
+                </ns2:AccountHolder>
+                <ns2:AccountBalance currCode="USD">1006606.91</ns2:AccountBalance>
+                <ns2:Payment>
+                    <ns2:Type>FATCA501</ns2:Type>
+                    <ns2:PaymentAmnt currCode="USD">805441.09</ns2:PaymentAmnt>
+                </ns2:Payment>
+            </ns2:AccountReport>
+            <ns2:AccountReport>
+                <ns2:DocSpec>
+                    <ns2:DocTypeIndic>FATCA1</ns2:DocTypeIndic>
+                    <ns2:DocRefId>32fa8a9e82444bcfa85fe43e78d7e409</ns2:DocRefId>
+                </ns2:DocSpec>
+                <ns2:AccountNumber>7550419471507169447</ns2:AccountNumber>
+                <ns2:AccountHolder>
+                    <ns2:Individual>
+                        <ResCountryCode>CA</ResCountryCode>
+                        <TIN issuedBy="CA">176668932</TIN>
+                        <Name nameType="OECD207">
+                            <FirstName xnlNameType="GivenName">Aucan</FirstName>
+                            <MiddleName xnlNameType="MiddleInitial">R</MiddleName>
+                            <NamePrefix xnlNameType="NamePrefix">Mrs.</NamePrefix>
+                            <LastName xnlNameType="FamilyName">Alcantar</LastName>
+                        </Name>
+                        <Address legalAddressType="OECD301">
+                            <CountryCode>CA</CountryCode>
+                            <AddressFix>
+                                <Street>27 Walter Crescent</Street>
+                                <PostCode>2530</PostCode>
+                                <City>KANAHOOKA</City>
+                            </AddressFix>
+                        </Address>
+                        <Nationality>US</Nationality>
+                        <BirthInfo>
+                            <BirthDate>1920-06-01</BirthDate>
+                            <City>KANAHOOKA</City>
+                            <CountryInfo>
+                                <CountryCode>CA</CountryCode>
+                            </CountryInfo>
+                        </BirthInfo>
+                    </ns2:Individual>
+                </ns2:AccountHolder>
+                <ns2:AccountBalance currCode="USD">1623004.94</ns2:AccountBalance>
+                <ns2:Payment>
+                    <ns2:Type>FATCA503</ns2:Type>
+                    <ns2:PaymentAmnt currCode="USD">703174.76</ns2:PaymentAmnt>
+                </ns2:Payment>
+            </ns2:AccountReport>
+            <ns2:AccountReport>
+                <ns2:DocSpec>
+                    <ns2:DocTypeIndic>FATCA1</ns2:DocTypeIndic>
+                    <ns2:DocRefId>a4648ca5db944fae96d1906cb2b9f76a</ns2:DocRefId>
+                </ns2:DocSpec>
+                <ns2:AccountNumber>3357267170442388722</ns2:AccountNumber>
+                <ns2:AccountHolder>
+                    <ns2:Individual>
+                        <ResCountryCode>CA</ResCountryCode>
+                        <TIN issuedBy="CA">442485274</TIN>
+                        <Name nameType="OECD207">
+                            <FirstName xnlNameType="GivenName">Katja</FirstName>
+                            <MiddleName xnlNameType="MiddleInitial"></MiddleName>
+                            <NamePrefix xnlNameType="NamePrefix">Ms.</NamePrefix>
+                            <LastName xnlNameType="FamilyName">Dreher</LastName>
+                        </Name>
+                        <Address legalAddressType="OECD301">
+                            <CountryCode>CA</CountryCode>
+                            <AddressFix>
+                                <Street>Nuernbergerstrasse 18</Street>
+                                <PostCode>22967</PostCode>
+                                <City>Tremsb????ttel</City>
+                            </AddressFix>
+                        </Address>
+                        <Nationality>US</Nationality>
+                        <BirthInfo>
+                            <BirthDate>1947-10-01</BirthDate>
+                            <City>Tremsb????ttel</City>
+                            <CountryInfo>
+                                <CountryCode>CA</CountryCode>
+                            </CountryInfo>
+                        </BirthInfo>
+                    </ns2:Individual>
+                </ns2:AccountHolder>
+                <ns2:AccountBalance currCode="USD">745785.01</ns2:AccountBalance>
+                <ns2:Payment>
+                    <ns2:Type>FATCA503</ns2:Type>
+                    <ns2:PaymentAmnt currCode="USD">418885.60</ns2:PaymentAmnt>
+                </ns2:Payment>
+            </ns2:AccountReport>
+            <ns2:AccountReport>
+                <ns2:DocSpec>
+                    <ns2:DocTypeIndic>FATCA1</ns2:DocTypeIndic>
+                    <ns2:DocRefId>538decb0f0254452984c185b44b1476e</ns2:DocRefId>
+                </ns2:DocSpec>
+                <ns2:AccountNumber>4849736304580549622</ns2:AccountNumber>
+                <ns2:AccountHolder>
+                    <ns2:Individual>
+                        <ResCountryCode>CA</ResCountryCode>
+                        <TIN issuedBy="CA">900905863</TIN>
+                        <Name nameType="OECD207">
+                            <FirstName xnlNameType="GivenName">Ferdinand</FirstName>
+                            <MiddleName xnlNameType="MiddleInitial">R</MiddleName>
+                            <NamePrefix xnlNameType="NamePrefix">Dr.</NamePrefix>
+                            <LastName xnlNameType="FamilyName">Herben</LastName>
+                        </Name>
+                        <Address legalAddressType="OECD301">
+                            <CountryCode>CA</CountryCode>
+                            <AddressFix>
+                                <Street>59 Prince Consort Road</Street>
+                                <PostCode>CA2 0</PostCode>
+                                <City>KENDERCHURCH</City>
+                            </AddressFix>
+                        </Address>
+                        <Nationality>US</Nationality>
+                        <BirthInfo>
+                            <BirthDate>1976-11-18</BirthDate>
+                            <City>KENDERCHURCH</City>
+                            <CountryInfo>
+                                <CountryCode>CA</CountryCode>
+                            </CountryInfo>
+                        </BirthInfo>
+                    </ns2:Individual>
+                </ns2:AccountHolder>
+                <ns2:AccountBalance currCode="USD">1170200.96</ns2:AccountBalance>
+                <ns2:Payment>
+                    <ns2:Type>FATCA502</ns2:Type>
+                    <ns2:PaymentAmnt currCode="USD">348019.07</ns2:PaymentAmnt>
+                </ns2:Payment>
+            </ns2:AccountReport>
+            <ns2:AccountReport>
+                <ns2:DocSpec>
+                    <ns2:DocTypeIndic>FATCA1</ns2:DocTypeIndic>
+                    <ns2:DocRefId>db054159a20647b3873a2832c138faac</ns2:DocRefId>
+                </ns2:DocSpec>
+                <ns2:AccountNumber>5411052296032265777</ns2:AccountNumber>
+                <ns2:AccountHolder>
+                    <ns2:Individual>
+                        <ResCountryCode>CA</ResCountryCode>
+                        <TIN issuedBy="CA">146587643</TIN>
+                        <Name nameType="OECD207">
+                            <FirstName xnlNameType="GivenName">Konradine</FirstName>
+                            <MiddleName xnlNameType="MiddleInitial">L</MiddleName>
+                            <NamePrefix xnlNameType="NamePrefix">Mrs.</NamePrefix>
+                            <LastName xnlNameType="FamilyName">Rognlien</LastName>
+                        </Name>
+                        <Address legalAddressType="OECD301">
+                            <CountryCode>CA</CountryCode>
+                            <AddressFix>
+                                <Street>Betburweg 101</Street>
+                                <PostCode>8224</PostCode>
+                                <City>L????hningen</City>
+                            </AddressFix>
+                        </Address>
+                        <Nationality>US</Nationality>
+                        <BirthInfo>
+                            <BirthDate>1962-08-02</BirthDate>
+                            <City>L????hningen</City>
+                            <CountryInfo>
+                                <CountryCode>CA</CountryCode>
+                            </CountryInfo>
+                        </BirthInfo>
+                    </ns2:Individual>
+                </ns2:AccountHolder>
+                <ns2:AccountBalance currCode="USD">1386704.68</ns2:AccountBalance>
+                <ns2:Payment>
+                    <ns2:Type>FATCA501</ns2:Type>
+                    <ns2:PaymentAmnt currCode="USD">805377.74</ns2:PaymentAmnt>
+                </ns2:Payment>
+            </ns2:AccountReport>
+            <ns2:AccountReport>
+                <ns2:DocSpec>
+                    <ns2:DocTypeIndic>FATCA1</ns2:DocTypeIndic>
+                    <ns2:DocRefId>3fa9ce15f96a4e0da086194ed4349522</ns2:DocRefId>
+                </ns2:DocSpec>
+                <ns2:AccountNumber>3831113601453003883</ns2:AccountNumber>
+                <ns2:AccountHolder>
+                    <ns2:Individual>
+                        <ResCountryCode>CA</ResCountryCode>
+                        <TIN issuedBy="CA">682622350</TIN>
+                        <Name nameType="OECD207">
+                            <FirstName xnlNameType="GivenName">Finley</FirstName>
+                            <MiddleName xnlNameType="MiddleInitial"></MiddleName>
+                            <NamePrefix xnlNameType="NamePrefix">Mr.</NamePrefix>
+                            <LastName xnlNameType="FamilyName">Alexander</LastName>
+                        </Name>
+                        <Address legalAddressType="OECD301">
+                            <CountryCode>CA</CountryCode>
+                            <AddressFix>
+                                <Street>2572 11th Ave</Street>
+                                <PostCode>T2P 1</PostCode>
+                                <City>Calgary</City>
+                            </AddressFix>
+                        </Address>
+                        <Nationality>US</Nationality>
+                        <BirthInfo>
+                            <BirthDate>1964-07-03</BirthDate>
+                            <City>Calgary</City>
+                            <CountryInfo>
+                                <CountryCode>CA</CountryCode>
+                            </CountryInfo>
+                        </BirthInfo>
+                    </ns2:Individual>
+                </ns2:AccountHolder>
+                <ns2:AccountBalance currCode="USD">602539.52</ns2:AccountBalance>
+                <ns2:Payment>
+                    <ns2:Type>FATCA501</ns2:Type>
+                    <ns2:PaymentAmnt currCode="USD">217065.06</ns2:PaymentAmnt>
+                </ns2:Payment>
+            </ns2:AccountReport>
+        </ns2:ReportingGroup>
+    </ns2:FATCA>
+</ns2:FATCA_OECD>

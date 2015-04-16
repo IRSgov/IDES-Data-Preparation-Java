@@ -1,0 +1,16 @@
+
+
+
+Keystore    	   KSprivateCA.jks
+keystore password: pwd123
+
+	Alias: 	   CANADAcert
+	password:  CAN2014
+
+
+
+Keystore:	   KSpublicCA.jks
+Keystore Password: pwd123
+
+	Alias:	   CANADAcert
+		   IRScert

@@ -1,0 +1,16 @@
+
+
+
+Keystore    	   KSprivateMX.jks
+keystore password: pwd123
+
+	Alias: 	   MEXICOcert
+	password:  MEX2014
+
+
+
+Keystore:	   KSpublicMX.jks
+Keystore Password: pwd123
+
+	Alias:	   MEXICOcert
+		   IRScert

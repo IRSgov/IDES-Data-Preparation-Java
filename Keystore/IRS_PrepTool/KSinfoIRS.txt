@@ -1,0 +1,16 @@
+
+Keystore:          KSprivateUS.jks
+Keystore Password: pwd123
+
+	Alias:     IRScert	
+	Password:  password
+ 
+	
+Keystore:          KSpublicUS.jks
+Keystore Password: pwd123
+
+	Alias:     CANADAcert 			
+                   MEXICOcert 		
+		   IRScert 		
+		   
+	
