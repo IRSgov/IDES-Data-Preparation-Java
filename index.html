@@ -43,7 +43,24 @@
 <p>Please note that there are many open market tools that produce the same results; however, the IRS does not endorse any commercial products, including the frameworks used in the example.  </p>
 
 <h3>
+<a id="application-setup" class="anchor" href="#application-setup" aria-hidden="true"><span class="octicon octicon-link"></span></a>Application Setup</h3>
+
+<p>The sample application was created using Eclipse 4.4.1 and JRE version 1.8.0_40. </p>
+
+<p>This repository includes a .zip file that contains several files necessary to this sample application. While some files can be copied and pasted from this guide, some must be downloaded from the .zip file and placed as indicated by the guide.</p>
+
+<p>Keystore - This folder contains a set of .jks files containing self-signed test public and private keys used by the application.</p>
+
+<p>lib - This folder contains the log4j-1.2.16.jar file which provides the console logging for the application.</p>
+
+<p>generated - This folder has a set of .java files related to the metadata used by the application.</p>
+
+<p>src - This folder has the main set of .java files, including testmain.java which is used to start the application.</p>
+
+<h3>
 <a id="create-a-new-project" class="anchor" href="#create-a-new-project" aria-hidden="true"><span class="octicon octicon-link"></span></a>Create a New Project</h3>
+
+<p>000000.00000.TA.124_0_Payload.xml - This is the FATCA XML that will be signed, encrypted, and packaged by the application. This is a test file for the application and is not intended to portray a specific business case.</p>
 
 <p><img src="http://irsgov.github.io/IDES-Data-Preparation-Java/images/image1.png" alt="Image 1"><br>
 Figure 1   </p>
