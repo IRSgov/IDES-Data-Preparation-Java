@@ -51,6 +51,17 @@ import com.sun.org.apache.xml.internal.security.c14n.Canonicalizer;
 import com.sun.org.apache.xml.internal.security.utils.Base64;
 import com.sun.org.apache.xml.internal.security.utils.IgnoreAllErrorHandler;
 
+import java.io.FileReader;
+import java.io.StringReader;
+import org.xml.sax.InputSource;
+import org.xml.sax.SAXParseException;
+import javax.xml.stream.XMLInputFactory;
+import javax.xml.stream.XMLStreamConstants;
+import javax.xml.stream.XMLStreamReader;
+import java.util.Arrays;
+import java.io.BufferedReader;
+import javax.xml.namespace.QName;
+
 public class FATCAXmlSigner {
 	public static String SIGNATURE_OBJECT_ID = "FATCA";
 	public static String SIGNATUER_ALGO = "SHA256withRSA";
@@ -68,6 +79,10 @@ public class FATCAXmlSigner {
 	protected static final int STARTTAG = 0;
 	protected static final int ENDTAG = 1;
 	protected static final int CHUNK = 2;
+	
+	public boolean useStrmXmlDigestCalcOption1OptionA = true;
+	protected ArrayList<String> xmlChunkToCalcDigest = new ArrayList<String>(Arrays.asList(
+			"MessageSpec", "ReportingFI", "Sponsor", "Intermediary", "AccountReport", "PoolReport"));
 	
 	// for debug
 	public StringBuilder digestBuf  = null;
@@ -127,9 +142,162 @@ public class FATCAXmlSigner {
     }
 
 	protected void calcMsgDigestByParsingDoc(String infile) throws Exception {
-		throw new Exception ("not yet implemented");
+		logger.debug("--> calcMsgDigestByParsingDoc(). infile=" + infile);
+		boolean isStartTag = false, isXmlTagClosed = true;
+		StringBuilder parseBuf = new StringBuilder();
+		QName qname = null;
+		String prefix, tag, qnameS, lastStartTag = null;
+		XMLStreamReader reader = null;
+		boolean isXmlChunkToCalcDigest = false;
+		DocumentBuilder docBuilderNSTrue = null, docBuilderNSFalse = null;
+		try {
+			DocumentBuilderFactory dbfNSTrue = DocumentBuilderFactory.newInstance();
+	        dbfNSTrue.setNamespaceAware(true);
+	        DocumentBuilderFactory dbfNSFalse = DocumentBuilderFactory.newInstance();
+	        dbfNSFalse.setNamespaceAware(false);
+
+            Canonicalizer canonicalizer = Canonicalizer.getInstance(CANONICALIZATION_METHOD);
+    		docBuilderNSTrue = dbfNSTrue.newDocumentBuilder();
+			docBuilderNSTrue.setErrorHandler(new IgnoreAllErrorHandler());
+			docBuilderNSFalse = dbfNSFalse.newDocumentBuilder();
+			docBuilderNSFalse.setErrorHandler(new IgnoreAllErrorHandler());
+			initMessageDigest();
+			XMLInputFactory xmlInputFactory = XMLInputFactory.newFactory();
+			reader = xmlInputFactory.createXMLStreamReader(new BufferedReader(new FileReader(infile)));
+			while(reader.hasNext()) {
+				switch(reader.getEventType()) {
+				case XMLStreamConstants.START_ELEMENT:
+					qname = reader.getName();
+					prefix = qname.getPrefix();
+					tag = qname.getLocalPart();
+					qnameS = (prefix==""?"":prefix+":") + tag;
+					if (isStartTag) {
+			        	if (!isXmlTagClosed)
+			        		parseBuf.append('>');
+			       		isXmlTagClosed = true;
+			       		if (!isXmlChunkToCalcDigest) {
+				       		processXmlFrag(STARTTAG, lastStartTag==null?qnameS:lastStartTag, parseBuf.toString(), messageDigest, 
+				       				canonicalizer, docBuilderNSTrue, docBuilderNSFalse);
+				       		parseBuf.setLength(0);
+			       		}
+				    }
+			    	if (!isXmlChunkToCalcDigest && xmlChunkToCalcDigest.contains(tag))
+			       			isXmlChunkToCalcDigest = true;
+				    if (!isXmlTagClosed)
+			        	parseBuf.append('>');
+				    parseBuf.append('<');
+					prefix = qname.getPrefix();
+					parseBuf.append(qnameS);
+					for (int i = 0; i < reader.getNamespaceCount(); i++) {
+						prefix = reader.getNamespacePrefix(i);
+						parseBuf.append(" " + (prefix==null?"xmlns":"xmlns:" + prefix) + "=\"" + reader.getNamespaceURI(i) + "\"");
+					}
+					for (int i = 0; i < reader.getAttributeCount(); i++) {
+						prefix = reader.getAttributePrefix(i);
+						parseBuf.append(" " + (prefix==""?"":prefix+":") + reader.getAttributeLocalName(i) + "=" + "\""  + reader.getAttributeValue(i) + "\"");
+					}
+					isXmlTagClosed = false;
+					isStartTag = true;
+			    	lastStartTag = qnameS;
+			    	break;
+				case XMLStreamConstants.CHARACTERS:
+				case XMLStreamConstants.COMMENT:
+					if (!isXmlTagClosed) {
+						parseBuf.append(">");
+						isXmlTagClosed = true;
+					}
+					parseBuf.append(reader.getText());
+					break;
+				case XMLStreamConstants.END_ELEMENT:
+					qname = reader.getName();
+					prefix = qname.getPrefix();
+					tag = qname.getLocalPart();
+					qnameS = (prefix==""?"":prefix+":") + tag;
+				   	isStartTag = false;
+					if (isXmlTagClosed) {
+						parseBuf.append("</");
+						parseBuf.append(qnameS);
+					} else {
+						parseBuf.append('/');
+					}
+					parseBuf.append('>');
+			    	isXmlTagClosed = true;
+			    	if (isXmlChunkToCalcDigest && xmlChunkToCalcDigest.contains(tag)) {
+		       			isXmlChunkToCalcDigest = false;
+	       				processXmlFrag(CHUNK, qnameS, parseBuf.toString(), messageDigest, canonicalizer, docBuilderNSTrue, docBuilderNSFalse);
+			    		parseBuf.setLength(0);
+			    	} else if (!isXmlChunkToCalcDigest) {
+			    		if (qnameS.equals(lastStartTag)) {
+		       				processXmlFrag(CHUNK, qnameS, parseBuf.toString(), messageDigest, canonicalizer, docBuilderNSTrue, docBuilderNSFalse);
+			    		}
+			    		else {
+		       				processXmlFrag(ENDTAG, qnameS, parseBuf.toString(), messageDigest, canonicalizer, docBuilderNSTrue, docBuilderNSFalse);
+			    		}
+			    		parseBuf.setLength(0);
+			    	}
+			    	lastStartTag = null;
+			    	break;
+				}
+				reader.next();
+			}
+			reader.close();
+			reader = null;
+			finalizeMessageDigest();
+		} finally {
+			if (reader != null) try{reader.close();}catch(Exception e){}
+		}
+		logger.debug("<-- calcMsgDigestByParsingDoc()");
 	}
 	
+    protected void processXmlFrag(int type, String tag, String val, MessageDigest messageDigest, Canonicalizer canonicalizer, 
+    		DocumentBuilder docBuilderNSTrue, DocumentBuilder docBuilderNSFalse) throws Exception {
+		logger.trace("--> processXmlFragOption1(). type=" + type + ", tag=" + tag + ", val=" + val);
+		Document doc;
+		String addedStartTag = "", addedEndTag = "", modifiedval = val;
+		if (type == STARTTAG) {
+			addedEndTag = "</" + tag + ">";
+		}
+		else if (type == ENDTAG) {
+			addedStartTag = "<" + tag + ">";
+		}
+		addedStartTag = "<elem>" + addedStartTag;
+		addedEndTag = addedEndTag + "</elem>";
+		modifiedval = addedStartTag + val + addedEndTag;
+		if (logLevel <= Level.TRACE_INT) {
+			logger.trace("modifiedval=" + modifiedval);
+		}
+		String digestval = null;
+		//both useOption1OptionA = true|false should work. If one fails, try the other
+		if (useStrmXmlDigestCalcOption1OptionA) {
+			try {
+				doc = docBuilderNSTrue.parse(new InputSource(new StringReader(modifiedval)));
+				digestval = new String(canonicalizer.canonicalizeSubtree(doc));
+			} catch(SAXParseException e) {
+				//logger.trace("SAXParseException=" + e.getMessage());
+				doc = docBuilderNSFalse.parse(new InputSource(new StringReader(modifiedval)));
+				digestval = new String(canonicalizer.canonicalizeSubtree(doc));
+			}
+		} else {
+			if (type == STARTTAG && modifiedval.contains("xmlns")) {
+				doc = docBuilderNSTrue.parse(new InputSource(new StringReader(modifiedval)));
+			}
+			else {
+				doc = docBuilderNSFalse.parse(new InputSource(new StringReader(modifiedval)));
+			}
+			digestval = new String(canonicalizer.canonicalizeSubtree(doc));
+		}
+		digestval = new String(canonicalizer.canonicalizeSubtree(doc));
+		digestval = digestval.replace(addedStartTag, "").replace(addedEndTag, "");
+		if (logLevel <= Level.TRACE_INT) {
+			logger.trace("digestval=" + digestval);
+		}
+		messageDigest.update(digestval.getBytes());
+		if (logLevel <= Level.DEBUG_INT && digestBuf != null) {
+			digestBuf.append(digestval);
+		}
+		logger.trace("<-- processXmlFragOption1()");
+    }
+    
     protected void calcMsgDigestNoTransformation(String xmlInputFile) throws Exception {
 		logger.debug("--> calcMsgDigestNoTransformation(). xmlInputFile=" + xmlInputFile);
 		int len;
@@ -228,15 +396,10 @@ public class FATCAXmlSigner {
     		Node node;
     		Transformer trans;
     		NodeList nodeList;
-    		boolean isTransformed = false;
-            if (transformXml) {
-	            logger.debug("parsing xml...." + new Date());
-	            calcMsgDigestByParsingDoc(xmlInputFile);
-	            isTransformed = true;
-	    		logger.debug("parsing xml....done. " + new Date());
-    		} else
-    			calcMsgDigestNoTransformation(xmlInputFile);
-            Document doc = createSignedDoc(isTransformed, signatureKey, signaturePublicCert);
+            logger.debug("parsing xml...." + new Date());
+            calcMsgDigestByParsingDoc(xmlInputFile);
+    		logger.debug("parsing xml....done. " + new Date());
+            Document doc = createSignedDoc(transformXml, signatureKey, signaturePublicCert);
     		nodeList = doc.getElementsByTagName("DigestValue");
             if (nodeList.getLength() > 0) {
             	node = nodeList.item(0);
