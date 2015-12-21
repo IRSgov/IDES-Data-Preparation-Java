@@ -1,24 +1,54 @@
 package fatca;
 
+import java.io.BufferedOutputStream;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.StringWriter;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.security.Key;
+import java.security.KeyException;
 import java.security.KeyStore;
 import java.security.PrivateKey;
 import java.security.PublicKey;
+import java.security.cert.Certificate;
+import java.security.cert.CertificateFactory;
 import java.security.cert.X509Certificate;
 import java.util.Enumeration;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Random;
 import java.util.UUID;
 
+import javax.xml.crypto.AlgorithmMethod;
+import javax.xml.crypto.KeySelector;
+import javax.xml.crypto.KeySelectorException;
+import javax.xml.crypto.KeySelectorResult;
+import javax.xml.crypto.XMLCryptoContext;
+import javax.xml.crypto.XMLStructure;
 import javax.xml.crypto.dsig.Reference;
 import javax.xml.crypto.dsig.Transform;
 import javax.xml.crypto.dsig.XMLSignature;
 import javax.xml.crypto.dsig.XMLSignatureFactory;
 import javax.xml.crypto.dsig.XMLSignature.SignatureValue;
 import javax.xml.crypto.dsig.dom.DOMValidateContext;
+import javax.xml.crypto.dsig.keyinfo.KeyInfo;
+import javax.xml.crypto.dsig.keyinfo.KeyValue;
+import javax.xml.crypto.dsig.keyinfo.X509Data;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.stream.XMLInputFactory;
+import javax.xml.stream.XMLStreamConstants;
+import javax.xml.stream.XMLStreamReader;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 
 import org.apache.log4j.Logger;
 import org.w3c.dom.Document;
@@ -26,24 +56,151 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import com.sun.org.apache.xml.internal.security.Init;
 import com.sun.org.apache.xml.internal.security.utils.Base64;
 
+/*
+ * @author	Subir Paul (IT:ES:SE:PE)
+ * 
+ */
 public class UtilShared {
 	protected static Logger logger = Logger.getLogger(new Object(){}.getClass().getEnclosingClass().getName());
 
-	public static String AES_TRANSFORMATION = "AES/ECB/PKCS5Padding";
-	public static String RSA_TRANSFORMATION = "RSA";
+	protected static String KEYSTORE_TYPE = "pkcs12";
+	protected static String CERTIFICATE_TYPE = "X.509";
 	
-	public static String SECRET_KEY_ALGO = "AES";
-	public static int SECRET_KEY_SIZE = 256;
+	protected static int maxAttemptsToCreateNewFile = 10;
 	
-	public static String KEYSTORE_TYPE = "pkcs12";
-	public static String CERTIFICATE_TYPE = "X.509";
+	private static Random randomInt = new Random(System.currentTimeMillis());
+	private static Random randomLong = new Random(System.currentTimeMillis());
+	private static Random randomBoolean = new Random(System.currentTimeMillis());
+	private static Random randomDouble = new Random(System.currentTimeMillis());
 	
-	public static String genRandomId() {
+	protected static String stripXmlHeader(String tmp) {
+		if (tmp.startsWith("<?xml")) {
+			int pos = tmp.indexOf(">");
+			if (pos != -1) {
+				tmp = tmp.substring(pos+1);
+				boolean stripWS = false;
+				int i;
+				for (i = 0; i < tmp.length(); i++) {
+					if (Character.isWhitespace(tmp.charAt(i)))
+						stripWS = true;
+					else
+						break;
+				}
+				if (stripWS)
+					tmp = tmp.substring(i);
+			}
+		}
+		return tmp;
+	}
+	
+	protected static String genRandomId() {
 		UUID uuid = UUID.randomUUID();
 		return uuid + "@" + System.identityHashCode(uuid);
 	}
+	
+	protected static BigDecimal genRandomDecimal(double low, double high) {
+		double d;
+		synchronized (randomDouble) {
+			d = randomDouble.nextDouble();
+		}
+		d = low + d * (high - low);
+		return new BigDecimal(d).setScale(2, RoundingMode.HALF_EVEN);
+	}
+	
+	protected static long genRandomPositiveLong() {
+		long l;
+		synchronized (randomLong) {
+			l = randomLong.nextLong();
+		}
+		if (l < 0)
+			l *= -1;
+		return l;
+	}
+
+	protected static boolean genRandomBoolean() {
+		synchronized (randomBoolean) {
+			return randomBoolean.nextBoolean();
+		}
+	}
+
+	protected static int genRandomPositiveInt() {
+		int i;
+		synchronized (randomInt) {
+			i = randomInt.nextInt();
+		}
+		if (i < 0)
+			i *= -1;
+		return i;
+	}
+
+	protected static int genRandomInt(int low, int high) {
+		if (low >= high)
+			return low;
+		synchronized (randomInt) {
+			return randomInt.nextInt(high-low) + low;
+		}
+	}
+	
+	protected static void cleanFolder(File dir) {
+		if (dir.exists() && dir.isDirectory()) {
+			String[] files = dir.list();
+			File file;
+			for (int i = 0; i < files.length; i++) {
+				file = new File(dir.getAbsolutePath() + File.separator + files[i]);
+				if (!file.isDirectory())
+					file.delete();
+			}
+		}
+	}
+	
+	protected static void deleteDestAndRenameFile(File src, File dest) throws Exception {
+		if (!src.getAbsolutePath().equals(dest.getAbsolutePath())) {
+			int attempts = maxAttemptsToCreateNewFile;
+			while (attempts-- > 0 && dest.exists() && !dest.delete())
+				Thread.sleep(100);
+			if (attempts <= 0)
+				throw new Exception("unable to rename " + src.getAbsolutePath() + " to " + dest.getAbsolutePath());
+			attempts = maxAttemptsToCreateNewFile;
+			while (attempts-- > 0 && !src.renameTo(dest))
+				Thread.sleep(100);
+			if (attempts <= 0)
+				throw new Exception("unable to rename " + src.getAbsolutePath() + " to " + dest.getAbsolutePath());
+			if (src.exists() && !src.delete()) src.deleteOnExit();
+		}
+	}
+	
+    protected static void printNode(Node node) {
+		logger.debug("--> printNode() " + node.getNodeName());
+		logger.debug("prefix=" + node.getPrefix() + ", baseuri=" + node.getBaseURI() + ", nsuri=" + node.getNamespaceURI() + ", value=" + node.getNodeValue());
+		if (node.getFirstChild() != null) {
+			logger.debug("--> Child of " + node.getNodeName() );
+			printNode(node.getFirstChild());
+			logger.debug("<-- Child of " + node.getNodeName() );
+		}
+		if (node.getNextSibling() != null) {
+			logger.debug("--> Sibling of " + node.getNodeName() );
+			printNode(node.getNextSibling());
+			logger.debug("<-- Sibling of " + node.getNodeName() );
+		}
+		logger.debug("<-- printNode() " + node.getNodeName());
+	}
+	
+	public static Certificate getCert(String certfile) throws Exception {
+		try {
+			CertificateFactory cf = CertificateFactory.getInstance(CERTIFICATE_TYPE);
+		    FileInputStream fs = new FileInputStream(new File(certfile));
+		    Certificate cert = cf.generateCertificate(fs);
+		    fs.close();
+		    return cert;
+		} catch (Exception e) {
+			logger.error(e.getMessage(), e);
+			throw e;
+		}
+	}
+	
 	public static X509Certificate getCert(String keystorefile, String keystorepwd) throws Exception {
 		return getCert(KEYSTORE_TYPE, keystorefile, keystorepwd, null);
 	}
@@ -56,7 +213,7 @@ public class UtilShared {
 		try {
 			//KeyStore keystore = KeyStore.getInstance(KeyStore.getDefaultType());
 			KeyStore keystore = KeyStore.getInstance(keystoretype);
-			FileInputStream fis = new FileInputStream(keystorefile);
+			FileInputStream fis = new FileInputStream(new File(keystorefile));
 			keystore.load(fis, keystorepwd.toCharArray());
 			fis.close();
 			if (alias == null) {
@@ -74,6 +231,7 @@ public class UtilShared {
 		}
 		return null;
 	}
+
 	public static PrivateKey getPrivateKey(String keystorefile, String keystorepwd, String keypwd, String alias) throws Exception {
 		return getPrivateKey(KEYSTORE_TYPE, keystorefile, keystorepwd, keypwd, alias);
 	}
@@ -86,7 +244,7 @@ public class UtilShared {
 		try {
 			//KeyStore keystore = KeyStore.getInstance(KeyStore.getDefaultType());
 			KeyStore keystore = KeyStore.getInstance(keystoretype);
-			FileInputStream fis = new FileInputStream(keystorefile);
+			FileInputStream fis = new FileInputStream(new File(keystorefile));
 			keystore.load(fis, keystorepwd.toCharArray());
 			fis.close();
 			if (alias == null) {
@@ -106,83 +264,303 @@ public class UtilShared {
 		}
 		return null;
 	}
+	
+	protected static class KeyValueKeySelector extends KeySelector {
+		public KeySelectorResult select(KeyInfo keyInfo, KeySelector.Purpose purpose, 
+				AlgorithmMethod method, XMLCryptoContext context) throws KeySelectorException {
+			if (keyInfo == null)
+				throw new KeySelectorException("Null KeyInfo");
+			List<?> list = keyInfo.getContent();
+			PublicKey pk = null;
 
-	public static boolean verifySignatureDOM(String signedPlainTextFile, PublicKey sigkey) throws Exception  {
-		logger.debug("--> verifySignatureDOM()");
+			for (int i = 0; i < list.size(); i++) {
+				XMLStructure xmlStructure = (XMLStructure) list.get(i);
+				if (xmlStructure instanceof KeyValue) {
+					try {
+						pk = ((KeyValue)xmlStructure).getPublicKey();
+					} catch(KeyException ke) {
+						throw new KeySelectorException(ke.getMessage());
+					}
+					final PublicKey retpk = pk;
+					return new KeySelectorResult() {public Key getKey(){return retpk;}};
+				} else if (xmlStructure instanceof X509Data) {
+					X509Data x509data = (X509Data)xmlStructure;
+					List<?> x509datalist = x509data.getContent();
+					for (int j = 0; j < x509datalist.size(); j++) {
+						if (x509datalist.get(j) instanceof X509Certificate) {
+							X509Certificate cert = (X509Certificate)x509datalist.get(j);
+							pk = cert.getPublicKey();
+							final PublicKey retpk = pk;
+							return new KeySelectorResult() {public Key getKey(){return retpk;}};
+						}
+					}
+				}
+			}
+			throw new KeySelectorException("Missing KeyValue");
+		}
+	}
+	
+	public static String getNodeXml(Node node) throws Exception {
+        TransformerFactory transformerFactory = TransformerFactory.newInstance();
+        Transformer trans = transformerFactory.newTransformer();
+        trans.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
+        StringWriter sw = new StringWriter();
+        trans.transform(new DOMSource(node), new StreamResult(sw));
+        return sw.getBuffer().toString();
+	}
+	   
+	public static boolean verifySignatureDOM(String signedPlainTextFile) throws Exception  {
+		return verifySignatureDOM(signedPlainTextFile, null);
+	}
+	
+	public static boolean verifySignatureDOM(String signedFile, PublicKey sigkey) throws Exception  {
+		return verifySignatureDOM(signedFile, sigkey, true);
+	}
+	
+	public static boolean verifySignatureDOM(String signedFile, PublicKey sigkey, boolean useFakeElem) throws Exception  {
+		logger.debug("--> verifySignatureDOM(). signedFile=" + signedFile);
 		boolean ret = false;
-		XMLSignatureFactory xmlsigfac;
+		XMLSignatureFactory xmlSigFactory;
 		XMLSignature signature;
 		NodeList nl;
 		DocumentBuilderFactory dbf;
 		Document doc;
 		DOMValidateContext valContext;
-		boolean coreValidity, sv, refValid;
+		boolean coreValidity, sigValValidity, refValid;
 		Iterator<?> iter;
+		Element objNode=null, fakeObjNode=null;
+		boolean isFakeElem = useFakeElem;
 		try {
-			xmlsigfac = XMLSignatureFactory.getInstance();
-			
-		    dbf = DocumentBuilderFactory.newInstance();
+			if (FATCAXmlSigner.defaultSignatureFactoryProvider != null) 
+				xmlSigFactory = XMLSignatureFactory.getInstance("DOM", FATCAXmlSigner.defaultSignatureFactoryProvider);
+			else
+				xmlSigFactory = XMLSignatureFactory.getInstance();
+			dbf = DocumentBuilderFactory.newInstance();
 	        dbf.setNamespaceAware(true);
 	        DocumentBuilder db = dbf.newDocumentBuilder();
-	        
-	        doc = db.parse(new File(signedPlainTextFile));
+	        doc = db.parse(new File(signedFile));
+	        //fakeObjNode is to reduce memory foot print
 	        nl = doc.getElementsByTagNameNS(XMLSignature.XMLNS, "Object");
 			if (nl.getLength() == 0)
+				nl = doc.getElementsByTagName("Object");
+			if (nl.getLength() == 0)
 			    throw new Exception("Cannot find Object element");
-			Node objNode = nl.item(0);
-	    
-	        String id = "";
-	        Node attrId = objNode.getAttributes().getNamedItem("Id");
-	        if (attrId  != null)
-	        	id = attrId.getTextContent();
-			Element fakeObjNode = doc.createElementNS(XMLSignature.XMLNS, "Object");
-			fakeObjNode.setAttribute("Id", id);
-			doc.getDocumentElement().replaceChild(fakeObjNode, objNode);
-	    	nl = doc.getElementsByTagNameNS(XMLSignature.XMLNS, "Signature");
-			if (nl.getLength() == 0) {
-			    throw new Exception("Cannot find Signature element");
+			if (isFakeElem) {
+				// this reduces foot print
+				objNode = (Element)nl.item(0);
+				String id = "";
+				Node attrId = objNode.getAttributes().getNamedItem("Id");
+				if (attrId  != null)
+					id = attrId.getTextContent();
+				fakeObjNode = doc.createElementNS(XMLSignature.XMLNS, "Object");
+				fakeObjNode.setAttribute("Id", id);
+				try {
+					doc.getDocumentElement().replaceChild(fakeObjNode, objNode);
+				} catch(Exception e) {
+					isFakeElem = false;
+				}
 			}
+	    	nl = doc.getElementsByTagNameNS(XMLSignature.XMLNS, "Signature");
+			if (nl.getLength() == 0)
+			    throw new Exception("Cannot find Signature element");
 			Node sigNode = nl.item(0);
-
-			valContext = new DOMValidateContext(sigkey, sigNode);
-
-	        //very important
-	        doc.getDocumentElement().replaceChild(objNode, fakeObjNode);
-			signature = xmlsigfac.unmarshalXMLSignature(valContext);
-			coreValidity = signature.validate(valContext);
-			 
+	    	if(sigkey != null)
+				valContext = new DOMValidateContext(sigkey, sigNode);
+			else
+				valContext = new DOMValidateContext(new KeyValueKeySelector(), sigNode);
+			logger.debug("isFakeElem=" + isFakeElem);
+			if (isFakeElem) {
+				//very important - replace fakeobject with real one
+				doc.getDocumentElement().replaceChild(objNode, fakeObjNode);
+			}
+	        signature = xmlSigFactory.unmarshalXMLSignature(valContext);
+		    coreValidity = signature.validate(valContext);
 			logger.debug("Signature core validation " + coreValidity);
-			//if (coreValidity == false) {
-			    SignatureValue sigval = signature.getSignatureValue();
-			    sv = sigval.validate(valContext);
-			    logger.debug("SignatureValue validation status: " + sv);
-			    //if (sv == false) {
-			        // Check the validation status of each Reference.
-			        iter = signature.getSignedInfo().getReferences().iterator();
-			        Reference ref;
-			        for (int j=0; iter.hasNext(); j++) {
-			        	ref = (Reference) iter.next();
-			        	refValid = ref.validate(valContext);
-			        	logger.debug("ref["+j+"] validity status: " + refValid);
-			        	logger.debug("ref.getURI()=" + ref.getURI());
-			        	logger.debug("ref.getCalculatedDigestValue()=" + Base64.encode(ref.getCalculatedDigestValue()));
-			        	logger.debug("ref.getDigestValue()=" + Base64.encode(ref.getDigestValue()));
-			        	List<?> lt = ref.getTransforms();
-			        	Transform tr;
-			        	for (int i = 0; i < lt.size(); i++) {
-			        		tr = (Transform)lt.get(i);
-			        		logger.debug("transform.getAlgorithm()=" + tr.getAlgorithm());
-			        	}
-			        }
-			    //}
-			//}
-			ret = coreValidity;
+		    SignatureValue sigval = signature.getSignatureValue();
+		    sigValValidity = sigval.validate(valContext);
+		    logger.debug("SignatureValue validation status: " + sigValValidity);
+	        iter = signature.getSignedInfo().getReferences().iterator();
+	        Reference ref;
+	        boolean refValidFlag = true;
+	        for (int j=0; iter.hasNext(); j++) {
+	        	ref = (Reference) iter.next();
+	        	refValid = ref.validate(valContext);
+	        	logger.debug("ref["+j+"] validity status: " + refValid);
+	        	refValidFlag = refValidFlag && refValid;
+	        	logger.debug("ref.getURI()=" + ref.getURI());
+	        	logger.debug("ref.getCalculatedDigestValue()=" + Base64.encode(ref.getCalculatedDigestValue()));
+	        	logger.debug("ref.getReferencedDigestValue()=" + Base64.encode(ref.getDigestValue()));
+	        	List<?> lt = ref.getTransforms();
+	        	Transform tr;
+	        	for (int i = 0; i < lt.size(); i++) {
+	        		tr = (Transform)lt.get(i);
+	        		logger.debug("transform.getAlgorithm()=" + tr.getAlgorithm());
+	        	}
+	        }
+			ret = coreValidity & sigValValidity & refValidFlag;
+			logger.debug("signature validated=" + ret);
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw e;
+			//throw e; // do not throw
 		} finally {
 		}
 		logger.debug("<-- verifySignatureDOM()");
 		return ret;
+	}
+	
+	public static void createBinaryFileFromSignedBase64BinaryFile(String infile, String outfile) throws Exception {
+		logger.debug("--> createBinaryFileFromSignedBase64BinaryFile(). infile=" + infile + ", outfile=" + outfile);
+		BufferedReader br = null;
+		BufferedOutputStream bos = null;
+		try {
+			if (!Init.isInitialized())
+				Init.init();
+			String line; int pos;
+			boolean isBase64StartFound = false;
+			byte[] buf;
+			br = new BufferedReader(new FileReader(new File(infile)));
+			bos = new BufferedOutputStream(new FileOutputStream(new File(outfile)));
+			while((line = br.readLine()) != null) {
+				line = line.trim();
+				if (!isBase64StartFound && (pos = line.indexOf("Object")) != -1) {
+					line = line.substring(pos+"Object".length());
+					pos = line.indexOf('>');
+					if (pos == -1)
+						throw new Exception("'>' closing bracket is missing for <Object");
+					line = line.substring(pos+1);
+					// <Object><SignatureProperties Id="FATCA"><SignatureProperty Target="#SignatureId">JVBERi0xLjYNJeLjz9MNCjI0IDAgb2JqDTw8L0xpbmVhcml6ZWQgMS9MIDcyMzYvTyAyNi9FIDIz
+					while(true) {
+						if (line.length() == 0) {
+							line = br.readLine();
+							if (line == null)
+								throw new Exception("unexpected EOF encountered");
+							line = line.trim();
+						}
+						if (line.startsWith("<")) {
+							pos = line.indexOf('>');
+							if (pos != -1)
+								line = line.substring(pos+1);
+							else 
+								throw new Exception ("missing > in " + line);
+						} else {
+							isBase64StartFound = true;
+							break;
+						}
+					}
+				}
+				if (isBase64StartFound) {
+					//check for end tag/s
+					pos = line.indexOf('<');
+					if (pos != -1)
+						line = line.substring(0, pos);
+					buf = Base64.decode(line.getBytes());
+					bos.write(buf);
+					if (pos != -1)
+						break;
+				}
+			}
+			br.close(); br = null;
+			bos.close(); bos = null;
+		} finally {
+			if (br != null) try{br.close();}catch(Exception e){}
+			if (bos != null) try{bos.close();}catch(Exception e){}
+		}
+		logger.debug("<-- createBinaryFileFromSignedBase64BinaryFile()");
+	}
+
+	protected static String getTmpFileName(String folder, String prefix, String suffix) throws Exception {
+		if (folder == null)
+			folder = "";
+		if (!"".equals(folder) && !folder.endsWith("/") && !folder.endsWith("\\"))
+			folder += File.separator;
+		int attempts = maxAttemptsToCreateNewFile;
+		String xmlfilename = null; 
+		File file;
+		if (prefix != null && !"".equals(prefix))
+			prefix += ".";
+		if (suffix != null && !"".equals(suffix) && !suffix.startsWith("."))
+			suffix = "." + suffix;
+		while(attempts-- > 0) {
+			xmlfilename = folder + prefix + UUID.randomUUID() + suffix;
+			file = new File(xmlfilename);
+			if (!file.exists() && file.createNewFile())
+				break;
+		}
+		if (attempts <= 0)
+			throw new Exception ("Unable to getFileName()");
+		return xmlfilename;
+	}
+
+	protected static String getTmpFileName(String infile, String suffix) throws Exception {
+		File file = new File(infile);
+		String folder = "";
+		if (file.getParent() != null)
+			folder = file.getAbsoluteFile().getParent();
+		return getTmpFileName(folder, file.getName(), suffix);
+	}
+
+	protected static File renameToNextSequencedFile(String srcfile) throws Exception {
+		return renameToNextSequencedFile(srcfile, null, null, null);
+	}
+	
+	private static String renameToNextSequencedFileLock = "renameToNextSequencedFile";
+	protected static File renameToNextSequencedFile(String srcfile, String destfolder, String prefix, String suffix) throws Exception {
+		synchronized (renameToNextSequencedFileLock) {
+			File src = new File(srcfile);
+			File dest = null;
+			int count = 0;
+			if (destfolder == null) {
+				if (src.getParent() != null)
+					destfolder = src.getAbsoluteFile().getParent();
+				else
+					destfolder = "";
+			}
+			int pos;
+			if (prefix == null) {
+				if ((pos = srcfile.lastIndexOf('.')) != -1) {
+					prefix = srcfile.substring(0, pos);
+					if (suffix == null)
+						suffix = srcfile.substring(pos);
+				}
+			}
+			while (true) {
+				dest = new File(destfolder + prefix + "_" + count++ + suffix);
+				if (!dest.exists()) {
+					 break;
+				}
+			}
+			if (!src.renameTo(dest))
+				throw new Exception("unable to rename " + src + " to " + dest);
+			if (src.exists() && !src.delete()) src.deleteOnExit();
+			return dest;
+		}
+	}
+
+	protected static HashMap<String, String> getXmlInfo(String xml) throws Exception {
+		HashMap<String, String> hash = new HashMap<String, String>();
+		BufferedReader br = new BufferedReader(new FileReader(new File(xml)));
+		XMLStreamReader reader = XMLInputFactory.newFactory().createXMLStreamReader(br);
+		String key = null, val = null;
+		while(reader.hasNext()) {
+			switch(reader.getEventType()) {
+			case XMLStreamConstants.START_ELEMENT:
+				key = reader.getName().getLocalPart();
+				val = null;
+				break;
+			case XMLStreamConstants.CHARACTERS:
+				val = reader.getText();
+				break;
+			case XMLStreamConstants.END_ELEMENT:
+				if (key != null && val != null && key.equals(reader.getName().getLocalPart())) {
+					hash.put(key, val);
+				}
+				key = val = null;
+				break;
+			}
+			reader.next();
+		}
+		reader.close();
+		br.close();
+		return hash;
 	}
 }

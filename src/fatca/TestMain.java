@@ -5,11 +5,16 @@ import java.security.cert.X509Certificate;
 
 import org.apache.log4j.Logger;
 
+import fatca.FATCAXmlSigner.SigRefIdPos;
+import fatca.FATCAXmlSigner.SigXmlTransform;
+
+/*
+ * @author	Subir Paul (IT:ES:SE:PE)
+ * 
+ */
 public class TestMain {
 	protected static Logger logger = Logger.getLogger(new Object(){}.getClass().getEnclosingClass().getName());
 
-	
-	
 	private FATCAXmlSigner signer = null;
 	private FATCAPackager pkger = null;
 
@@ -42,14 +47,29 @@ public class TestMain {
 	public static void main(String[] args) throws Exception {
 		String canadaXml = "000000.00000.TA.124_0_Payload.xml";
 		String signedCanadaXml = canadaXml + ".signed";
-		
-		FATCAPackager.isCanonicalization = false;
+		boolean signatureSuccess = true;
 		
 		TestMain m = new TestMain();
 		
-		m.signer.signStreaming(canadaXml, signedCanadaXml, m.canadaSigKey, m.canadaPubCert);
-		m.signer.signDOM(canadaXml, signedCanadaXml, m.canadaSigKey, m.canadaPubCert);
+		m.signer.signXmlFileStreaming(canadaXml, signedCanadaXml, m.canadaSigKey, m.canadaPubCert);
+		signatureSuccess = signatureSuccess & UtilShared.verifySignatureDOM(signedCanadaXml, m.canadaPubCert.getPublicKey());
 		
+		m.signer.signXmlFileStreaming(canadaXml, signedCanadaXml, m.canadaSigKey, m.canadaPubCert, SigRefIdPos.Object, SigXmlTransform.Inclusive);
+		signatureSuccess = signatureSuccess & UtilShared.verifySignatureDOM(signedCanadaXml, m.canadaPubCert.getPublicKey());
+		
+		m.signer.signXmlFileStreaming(canadaXml, signedCanadaXml, m.canadaSigKey, m.canadaPubCert, SigRefIdPos.Object, SigXmlTransform.Exclusive);
+		signatureSuccess = signatureSuccess & UtilShared.verifySignatureDOM(signedCanadaXml, m.canadaPubCert.getPublicKey());
+		
+		//DOM based signature
+		m.signer.signXmlFile(canadaXml, signedCanadaXml, m.canadaSigKey, m.canadaPubCert);
+		signatureSuccess = signatureSuccess & UtilShared.verifySignatureDOM(signedCanadaXml, m.canadaPubCert.getPublicKey());
+		
+		m.signer.signXmlFile(canadaXml, signedCanadaXml, m.canadaSigKey, m.canadaPubCert, SigRefIdPos.Object, SigXmlTransform.Inclusive);
+		signatureSuccess = signatureSuccess & UtilShared.verifySignatureDOM(signedCanadaXml, m.canadaPubCert.getPublicKey());
+		
+		m.signer.signXmlFile(canadaXml, signedCanadaXml, m.canadaSigKey, m.canadaPubCert, SigRefIdPos.Object, SigXmlTransform.Exclusive);
+		signatureSuccess = signatureSuccess & UtilShared.verifySignatureDOM(signedCanadaXml, m.canadaPubCert.getPublicKey());
+
 		String idesOutFile = m.pkger.createPkg(signedCanadaXml, m.canadaGiin, m.usaGiin, m.usaCert, 2014);
 		logger.debug(idesOutFile);
 
@@ -60,7 +80,7 @@ public class TestMain {
 
 		m.pkger.unpackForApprover(idesOutFile, m.mexicoPrivateKey);
 		
-		idesOutFile = m.pkger.signAndCreatePkg(canadaXml, m.canadaSigKey, m.canadaPubCert, m.canadaGiin, m.usaGiin, m.usaCert, 2014);
+		idesOutFile = m.pkger.signAndCreatePkgStreaming(canadaXml, m.canadaSigKey, m.canadaPubCert, m.canadaGiin, m.usaGiin, m.usaCert, 2014);
 		logger.debug(idesOutFile);
 
 		m.pkger.unpack(idesOutFile, m.usaPrivateKey);
@@ -69,5 +89,7 @@ public class TestMain {
 		logger.debug(idesOutFile);
 	
 		m.pkger.unpackForApprover(idesOutFile, m.mexicoPrivateKey);
+
+		logger.info("signatureSuccess=" + signatureSuccess);
 	}
 }
