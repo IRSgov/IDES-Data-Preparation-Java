@@ -1,0 +1,13 @@
+approverPrivateKSType=jks
+approverPrivateKSFile=Keystore/Mexico_PrepTool/KSprivateMX.jks
+approverPrivateKSPwd=pwd123
+approverPrivateKeyPwd=MEX2014
+approverPrivateKeyAlias=MEXICOcert
+
+senderPublicCertName=Certs/000000.00000.TA.124.crt
+
+aesCipherOpMode=CBC
+
+unpackForApprover Sample_CBC_20160307T212652260Z_000000.00000.TA.124.zip
+
+validateSignature input=000000.00000.TA.124_Payload.xml sigPublicCert=senderPublicCert

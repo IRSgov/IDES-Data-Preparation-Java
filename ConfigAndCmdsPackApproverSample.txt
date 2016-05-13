@@ -1,0 +1,21 @@
+senderPrivateKSType=jks
+senderPrivateKSFile=Keystore/Canada_PrepTool/KSprivateCA.jks
+senderPrivateKSPwd=pwd123
+senderPrivateKeyAlias=CANADAcert
+senderPrivateKeyPwd=CAN2014
+
+senderPublicCertName=Certs/000000.00000.TA.124.crt
+approverPublicCertName=Certs/000000.00000.TA.484.crt
+receiverPublicCertName=Certs/000000.00000.TA.840.crt
+
+senderGiin=000000.00000.TA.124
+receiverGiin=000000.00000.TA.840
+approverGiin=000000.00000.TA.484
+taxYear=2015
+
+//IsValidateAllSignature=true
+aesCipherOpMode=CBC
+
+keepSignedXmlAfterSignAndCreatePkgFlag=true
+
+signAndCreatePkgWithApproverStreaming input=Sample.000000.00000.TA.124_Payload.xml

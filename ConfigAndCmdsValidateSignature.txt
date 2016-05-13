@@ -1,0 +1,1 @@
+validateSignature input=Sample.000000.00000.TA.124_Payload.signed.xml sigPublicCert=Certs/000000.00000.TA.124.crt

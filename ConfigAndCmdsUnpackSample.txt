@@ -1,0 +1,13 @@
+receiverPrivateKSType=jks
+receiverPrivateKSFile=Keystore/IRS_PrepTool/KSprivateUS.jks
+receiverPrivateKSPwd=pwd123
+receiverPrivateKeyPwd=password
+receiverPrivateKeyAlias=IRScert
+
+senderPublicCertName=Certs/000000.00000.TA.124.crt
+
+aesCipherOpMode=CBC
+
+unpack Sample_CBC_20160307T212652260Z_000000.00000.TA.124.zip
+
+validateSignature input=000000.00000.TA.124_Payload.xml sigPublicCert=senderPublicCert

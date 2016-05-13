@@ -9,8 +9,11 @@ Keystore Password: pwd123
 Keystore:          KSpublicUS.jks
 Keystore Password: pwd123
 
-	Alias:     CANADAcert 			
+	Alias:     CANADAcert 		
+                   FINLANDcert		
+		   GERMANYcert		
                    MEXICOcert 		
+                   NETHERLANDScert	
 		   IRScert 		
 		   
 	

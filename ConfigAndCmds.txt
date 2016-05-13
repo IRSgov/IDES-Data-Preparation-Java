@@ -1,0 +1,296 @@
+senderPrivateKSType=jks
+senderPublicKSType=jks
+receiverPrivateKSType=jks
+receiverPublicKSType=jks
+approverPrivateKSType=jks
+approverPublicKSType=jks
+
+senderPrivateKSFile=Keystore/Canada_PrepTool/KSprivateCA.jks
+senderPublicKSFile=Keystore/Canada_PrepTool/KSpublicCA.jks
+receiverPrivateKSFile=Keystore/IRS_PrepTool/KSprivateUS.jks
+receiverPublicKSFile=Keystore/IRS_PrepTool/KSpublicUS.jks
+approverPrivateKSFile=Keystore/Mexico_PrepTool/KSprivateMX.jks
+approverPublicKSFile=Keystore/Mexico_PrepTool/KSpublicMX.jks
+
+senderPrivateKSPwd=pwd123
+senderPublicKSPwd=pwd123
+receiverPrivateKSPwd=pwd123
+receiverPublicKSPwd=pwd123
+approverPrivateKSPwd=pwd123
+approverPublicKSPwd=pwd123
+
+senderPrivateKeyPwd=CAN2014
+receiverPrivateKeyPwd=password
+approverPrivateKeyPwd=MEX2014
+
+senderPrivateKeyAlias=CANADAcert
+senderPublicKeyAlias=CANADAcert
+receiverPrivateKeyAlias=IRScert
+receiverPublicKeyAlias=IRScert
+approverPrivateKeyAlias=MEXICOcert
+approverPublicKeyAlias=MEXICOcert
+
+senderGiin=000000.00000.TA.124
+receiverGiin=000000.00000.TA.840
+approverGiin=000000.00000.TA.484
+taxYear=2015
+
+aesCipherOpMode=CBC
+
+//senderPublicCertName=Certs/000000.00000.TA.124.crt
+//approverPublicCertName=Certs/000000.00000.TA.484.crt
+//receiverPublicCertName=Certs/000000.00000.TA.840.crt
+
+isValidateAllSignature=true
+
+// comment line
+
+/* 
+block comment lines
+*/
+// output from a command is default input to next command
+
+//sigRefIdPos=Object|SignatureProperty|SignatureProperties
+sigRefIdPos=Object
+//sigXmlTransform=Inclusive|InclusiveWithComments|Exclusive|ExclusiveWithComments|None 
+sigXmlTransform=Inclusive
+
+//usage: signXml input=<xml> output=An<signed xml> sigKey=senderPrivateKey sigPublicCert=senderPublicCert
+signXml input=Sample.000000.00000.TA.124_Payload.xml output=AnOutput.000000.00000.TA.124_Payload.signed.xml sigKey=senderPrivateKey sigPublicCert=senderPublicCert
+validateSignature
+sigXmlTransform=InclusiveWithComments
+signXml input=Sample.000000.00000.TA.124_Payload.xml output=AnOutput.000000.00000.TA.124_Payload.signed.xml sigKey=senderPrivateKey sigPublicCert=senderPublicCert
+validateSignature
+sigXmlTransform=Exclusive
+signXml input=Sample.000000.00000.TA.124_Payload.xml output=AnOutput.000000.00000.TA.124_Payload.signed.xml sigKey=senderPrivateKey sigPublicCert=senderPublicCert
+validateSignature
+sigXmlTransform=ExclusiveWithComments 
+signXml input=Sample.000000.00000.TA.124_Payload.xml output=AnOutput.000000.00000.TA.124_Payload.signed.xml sigKey=senderPrivateKey sigPublicCert=senderPublicCert
+validateSignature
+
+sigXmlTransform=None
+signXml input=Sample.000000.00000.TA.124_Payload.xml output=AnOutput.000000.00000.TA.124_Payload.signed.xml sigKey=senderPrivateKey sigPublicCert=senderPublicCert
+validateSignature
+
+sigRefIdPos=SignatureProperty
+sigXmlTransform=Inclusive
+signXml input=Sample.000000.00000.TA.124_Payload.xml output=AnOutput.000000.00000.TA.124_Payload.signed.xml sigKey=senderPrivateKey sigPublicCert=senderPublicCert
+validateSignature
+sigXmlTransform=InclusiveWithComments
+signXml input=Sample.000000.00000.TA.124_Payload.xml output=AnOutput.000000.00000.TA.124_Payload.signed.xml sigKey=senderPrivateKey sigPublicCert=senderPublicCert
+validateSignature
+sigXmlTransform=Exclusive
+signXml input=Sample.000000.00000.TA.124_Payload.xml output=AnOutput.000000.00000.TA.124_Payload.signed.xml sigKey=senderPrivateKey sigPublicCert=senderPublicCert
+validateSignature
+sigXmlTransform=ExclusiveWithComments
+signXml input=Sample.000000.00000.TA.124_Payload.xml output=AnOutput.000000.00000.TA.124_Payload.signed.xml sigKey=senderPrivateKey sigPublicCert=senderPublicCert
+validateSignature
+sigXmlTransform=None
+signXml input=Sample.000000.00000.TA.124_Payload.xml output=AnOutput.000000.00000.TA.124_Payload.signed.xml sigKey=senderPrivateKey sigPublicCert=senderPublicCert
+validateSignature
+
+sigRefIdPos=SignatureProperties
+sigXmlTransform=Inclusive
+signXml input=Sample.000000.00000.TA.124_Payload.xml output=AnOutput.000000.00000.TA.124_Payload.signed.xml sigKey=senderPrivateKey sigPublicCert=senderPublicCert
+validateSignature
+sigXmlTransform=InclusiveWithComments
+signXml input=Sample.000000.00000.TA.124_Payload.xml output=AnOutput.000000.00000.TA.124_Payload.signed.xml sigKey=senderPrivateKey sigPublicCert=senderPublicCert
+validateSignature
+sigXmlTransform=Exclusive
+signXml input=Sample.000000.00000.TA.124_Payload.xml output=AnOutput.000000.00000.TA.124_Payload.signed.xml sigKey=senderPrivateKey sigPublicCert=senderPublicCert
+validateSignature
+sigXmlTransform=ExclusiveWithComments
+signXml input=Sample.000000.00000.TA.124_Payload.xml output=AnOutput.000000.00000.TA.124_Payload.signed.xml sigXmlTransform=ExclusiveWithComments sigKey=senderPrivateKey sigPublicCert=senderPublicCert
+validateSignature
+sigXmlTransform=None
+signXml input=Sample.000000.00000.TA.124_Payload.xml output=AnOutput.000000.00000.TA.124_Payload.signed.xml sigXmlTransform=None sigKey=senderPrivateKey sigPublicCert=senderPublicCert
+validateSignature
+
+sigRefIdPos=Object
+//usage: wrapTextInXmlAndSign input=<txt> output=An<signed xml> sigKey=senderPrivateKey sigPublicCert=senderPublicCert
+wrapTextInXmlAndSign input=Sample.txt output=AnOutput.txt.signed.xml sigKey=senderPrivateKey sigPublicCert=senderPublicCert
+validateSignature
+sigRefIdPos=SignatureProperty
+wrapTextInXmlAndSign input=Sample.txt output=AnOutput.txt.signed.xml sigKey=senderPrivateKey sigPublicCert=senderPublicCert
+validateSignature
+sigRefIdPos=SignatureProperties
+wrapTextInXmlAndSign input=Sample.txt output=AnOutput.txt.signed.xml sigKey=senderPrivateKey sigPublicCert=senderPublicCert
+validateSignature
+
+sigRefIdPos=Object
+//usage: wrapBinaryInXmlAndSign input=<txt> output=An<signed xml> sigKey=senderPrivateKey sigPublicCert=senderPublicCert
+wrapBinaryInXmlAndSign input=Sample.pdf output=AnOutput.pdf.signed.xml sigKey=senderPrivateKey sigPublicCert=senderPublicCert
+validateSignature
+sigRefIdPos=SignatureProperty
+wrapBinaryInXmlAndSign input=Sample.pdf output=AnOutput.pdf.signed.xml sigKey=senderPrivateKey sigPublicCert=senderPublicCert
+validateSignature
+sigRefIdPos=SignatureProperties
+wrapBinaryInXmlAndSign input=Sample.pdf output=AnOutput.pdf.signed.xml sigKey=senderPrivateKey sigPublicCert=senderPublicCert
+validateSignature
+
+sigRefIdPos=Object
+sigXmlTransform=Inclusive 
+//usage: signXmlStreaming input=<xml> output=An<signed xml> sigKey=senderPrivateKey sigPublicCert=senderPublicCert
+signXmlStreaming input=Sample.000000.00000.TA.124_Payload.xml output=AnOutput.000000.00000.TA.124_Payload.signed.xml sigKey=senderPrivateKey sigPublicCert=senderPublicCert
+validateSignature
+sigRefIdPos=SignatureProperty
+signXmlStreaming input=Sample.000000.00000.TA.124_Payload.xml output=AnOutput.000000.00000.TA.124_Payload.signed.xml sigKey=senderPrivateKey sigPublicCert=senderPublicCert
+validateSignature
+sigRefIdPos=SignatureProperties
+signXmlStreaming input=Sample.000000.00000.TA.124_Payload.xml output=AnOutput.000000.00000.TA.124_Payload.signed.xml sigXmlTransform=Inclusive sigKey=senderPrivateKey sigPublicCert=senderPublicCert
+validateSignature
+
+sigRefIdPos=Object
+sigXmlTransform=None 
+signXmlStreaming input=Sample.000000.00000.TA.124_Payload.xml output=AnOutput.000000.00000.TA.124_Payload.signed.xml sigKey=senderPrivateKey sigPublicCert=senderPublicCert
+validateSignature
+sigRefIdPos=SignatureProperty
+signXmlStreaming input=Sample.000000.00000.TA.124_Payload.xml output=AnOutput.000000.00000.TA.124_Payload.signed.xml sigKey=senderPrivateKey sigPublicCert=senderPublicCert
+validateSignature
+sigRefIdPos=SignatureProperties
+signXmlStreaming input=Sample.000000.00000.TA.124_Payload.xml output=AnOutput.000000.00000.TA.124_Payload.signed.xml sigKey=senderPrivateKey sigPublicCert=senderPublicCert
+validateSignature
+
+sigRefIdPos=Object
+//usage: wrapTextInXmlAndSignStreaming input=<txt> output=An<signed xml> sigKey=senderPrivateKey sigPublicCert=senderPublicCert
+wrapTextInXmlAndSignStreaming input=Sample.txt output=AnOutput.txt.signed.xml sigKey=senderPrivateKey sigPublicCert=senderPublicCert
+validateSignature
+sigRefIdPos=SignatureProperty
+wrapTextInXmlAndSignStreaming input=Sample.txt output=AnOutput.txt.signed.xml sigKey=senderPrivateKey sigPublicCert=senderPublicCert
+validateSignature
+sigRefIdPos=SignatureProperties
+wrapTextInXmlAndSignStreaming input=Sample.txt output=AnOutput.txt.signed.xml sigKey=senderPrivateKey sigPublicCert=senderPublicCert
+validateSignature
+
+sigRefIdPos=Object
+//usage: wrapBinaryInXmlAndSignStreaming input=<txt> output=An<signed xml> sigKey=senderPrivateKey sigPublicCert=senderPublicCert
+wrapBinaryInXmlAndSignStreaming input=Sample.pdf output=AnOutput.pdf.signed.xml sigRefIdPos=Object sigKey=senderPrivateKey sigPublicCert=senderPublicCert
+validateSignature
+sigRefIdPos=SignatureProperty
+wrapBinaryInXmlAndSignStreaming input=Sample.pdf output=AnOutput.pdf.signed.xml sigKey=senderPrivateKey sigPublicCert=senderPublicCert
+validateSignature
+sigRefIdPos=SignatureProperties
+wrapBinaryInXmlAndSignStreaming input=Sample.pdf output=AnOutput.pdf.signed.xml sigKey=senderPrivateKey sigPublicCert=senderPublicCert
+validateSignature
+
+// usage: validateSignature [input=<signed xml>] [sigPublicCert=senderPublicCert]
+validateSignature input=AnOutput.pdf.signed.xml sigPublicCert=senderPublicCert
+
+// usage: createBinaryFromSignedBase64Binary [input=<signed xml base64 encoded binary>] output=<binary output>
+createBinaryFromSignedBase64Binary input=AnOutput.pdf.signed.xml output=AnOutput.pdf
+
+// for all packaging commands, if either fileFormat OR binaryEncoding exists them metadata 1.1 schema is used; otherwise metadata 1.0 schema is uses
+
+// usage: createPkg [input=<signex xml>]
+createPkg input=AnOutput.000000.00000.TA.124_Payload.signed.xml
+
+// usage: createPkgWithApprover [input=<signed xml>]
+createPkgWithApprover input=AnOutput.000000.00000.TA.124_Payload.signed.xml
+
+// usage: signAndCreatePkg [input=<xml>]
+sigRefIdPos=SignatureProperties
+sigXmlTransform=Inclusive 
+signAndCreatePkg input=Sample.000000.00000.TA.124_Payload.xml
+
+// usage: signAndCreatePkgStreaming [input=<xml>]
+sigRefIdPos=SignatureProperty
+sigXmlTransform=Inclusive 
+signAndCreatePkgStreaming input=Sample.000000.00000.TA.124_Payload.xml
+
+// usage: signAndCreatePkgWithApprover [input=<xml>]
+sigRefIdPos=SignatureProperties
+sigXmlTransform=Inclusive
+signAndCreatePkgWithApprover input=Sample.000000.00000.TA.124_Payload.xml
+
+// usage: signAndCreatePkgWithApproverStreaming [input=<xml>]
+sigRefIdPos=SignatureProperties
+sigXmlTransform=Inclusive
+signAndCreatePkgWithApproverStreaming input=Sample.000000.00000.TA.124_Payload.xml
+
+// usage: signBinaryAndCreatePkg [input=<binary>] [fileFormat=PDF|RTF|JPG]
+sigRefIdPos=SignatureProperties
+signBinaryAndCreatePkg input=Sample.pdf fileFormat=PDF
+
+// usage: signBinaryAndCreatePkgStreaming [input=<binary>] [fileFormat=PDF|RTF|JPG]
+sigRefIdPos=SignatureProperties
+signBinaryAndCreatePkgStreaming input=Sample.pdf fileFormat=PDF
+
+// usage: signBinaryAndCreatePkg [input=<txt>]
+sigRefIdPos=SignatureProperties
+signTextAndCreatePkg input=Sample.txt 
+
+// usage: signBinaryAndCreatePkgStreaming [input=<txt>]
+sigRefIdPos=SignatureProperties
+signTextAndCreatePkgStreaming input=Sample.txt
+
+aesCipherOpMode=CBC
+// usage: unpack [input=<ides package>]
+unpack input=Sample_CBC_20160307T212652260Z_000000.00000.TA.124.zip
+
+// usage: unpackForApprover [input=<ides package built with approver>]
+unpackForApprover input=Sample_CBC_20160307T212652260Z_000000.00000.TA.124.zip
+
+// usage: createZipPkg [input=<file OR files separated with |>] [output=An<out zip file>]
+// default 'output' is <senderGiin>_Payload.zip
+createZipPkg input=AnOutput.000000.00000.TA.124_Payload.signed.xml
+
+// usage: encryptZipPkg [input=<zipped file>]
+encryptZipPkg input=000000.00000.TA.124_Payload.zip
+
+// usage: encryptZipPkgWithApprover [input=<zipped file>]
+encryptZipPkgWithApprover input=000000.00000.TA.124_Payload.zip
+
+// usage: unencryptZipPkg [input=<ides package>]
+unencryptZipPkg input=Sample_CBC_20160307T212652260Z_000000.00000.TA.124.zip
+
+// usage: unencryptZipPkgForApprover [input=<ides package built with approver>]
+unencryptZipPkgForApprover input=Sample_CBC_20160307T212652260Z_000000.00000.TA.124.zip
+
+// specify files to zip separated by |
+createZipPkg input=AnOutput.txt.signed.xml|AnOutput.000000.00000.TA.124_Payload.signed.xml output=AnOutput.zip
+encryptZipPkg
+unencryptZipPkg
+
+// usage: extractZipPkg [input=<zipped file>]
+extractZipPkg
+
+//stop jvm
+//stop
+
+// NOT USED IN FATCA
+sigRefIdPos=Object
+signText input=Sample.txt output=AnOutput.txt.signed.xml sigKey=senderPrivateKey sigPublicCert=senderPublicCert
+validateSignature
+sigRefIdPos=SignatureProperty
+signText input=Sample.txt output=AnOutput.txt.signed.xml sigKey=senderPrivateKey sigPublicCert=senderPublicCert
+validateSignature
+sigRefIdPos=SignatureProperties
+signText input=Sample.txt output=AnOutput.txt.signed.xml sigKey=senderPrivateKey sigPublicCert=senderPublicCert
+validateSignature
+sigRefIdPos=Object
+signBinary input=Sample.pdf output=AnOutput.pdf.signed.xml sigKey=senderPrivateKey sigPublicCert=senderPublicCert
+validateSignature
+sigRefIdPos=SignatureProperty
+signBinary input=Sample.pdf output=AnOutput.pdf.signed.xml sigKey=senderPrivateKey sigPublicCert=senderPublicCert
+validateSignature
+sigRefIdPos=SignatureProperties
+signBinary input=Sample.pdf output=AnOutput.pdf.signed.xml sigKey=senderPrivateKey sigPublicCert=senderPublicCert
+validateSignature
+sigRefIdPos=Object
+signTextStreaming input=Sample.txt output=AnOutput.txt.signed.xml sigKey=senderPrivateKey sigPublicCert=senderPublicCert
+validateSignature
+sigRefIdPos=SignatureProperty
+signTextStreaming input=Sample.txt output=AnOutput.txt.signed.xml sigKey=senderPrivateKey sigPublicCert=senderPublicCert
+validateSignature
+sigRefIdPos=SignatureProperties
+signTextStreaming input=Sample.txt output=AnOutput.txt.signed.xml sigKey=senderPrivateKey sigPublicCert=senderPublicCert
+validateSignature
+sigRefIdPos=Object
+signBinaryStreaming input=Sample.pdf output=AnOutput.pdf.signed.xml sigKey=senderPrivateKey sigPublicCert=senderPublicCert
+validateSignature
+sigRefIdPos=SignatureProperty
+signBinaryStreaming input=Sample.pdf output=AnOutput.pdf.signed.xml sigKey=senderPrivateKey sigPublicCert=senderPublicCert
+validateSignature
+sigRefIdPos=SignatureProperties
+signBinaryStreaming input=Sample.pdf output=AnOutput.pdf.signed.xml sigKey=senderPrivateKey sigPublicCert=senderPublicCert
+validateSignature
