@@ -48,8 +48,10 @@ import javax.xml.crypto.dsig.spec.TransformParameterSpec;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.stream.XMLInputFactory;
+import javax.xml.stream.XMLOutputFactory;
 import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamReader;
+import javax.xml.stream.XMLStreamWriter;
 import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
@@ -463,14 +465,19 @@ public class FATCAXmlSigner implements ISigner {
 		return tags;
 	}
 	
+	private class ParseXmlReturn {
+		public String encoding = "UTF-8", version = "1.0", endXml = null;
+	}
+	
 	//used with streaming based signing. XML is parsed and message digest is calculated.
 	//this method parses a xml, reads a chunk of doc, say 8192 or more bytes, and transforms xml and updates digest  
-	protected String calcCanonicalizedXmlMsgDigestByParsingDocChunk(String infile, MessageDigest messageDigest, 
+	protected ParseXmlReturn calcCanonicalizedXmlMsgDigestByParsingDocChunk(String infile, MessageDigest messageDigest, 
 			SigXmlTransform sigXmlTransform) throws Exception {
 		logger.debug("--> calcCanonicalizedXmlMsgDigestByParsingDocChunk(). infile=" + infile + ", sigXmlTransform=" + sigXmlTransform);
     	StringBuilder sbns = new StringBuilder(), sbChunk = new StringBuilder(), parseBuf = new StringBuilder();
 		String startPrefixTags, endSuffixTags, prefix, localname, nsuri, qnameS, retEndXml = null, tmpS;
 		XMLStreamReader reader = null;
+		ParseXmlReturn ret = new ParseXmlReturn();
 		//hashNS is created at start elem and destroyed at end elem. It contains all inherited NS and new ones, if defined 
 		//hashChunkNS is created at start elem of a chunk and destroyed once chunk is processed. It contains only new NS defined in the chunk
 		//for chunk processing, we need to add prefix start tags with those NS exists in hashNS but not in hashChunkNS  
@@ -496,10 +503,14 @@ public class FATCAXmlSigner implements ISigner {
 	        dbfNSTrue.setNamespaceAware(true);
 	        DocumentBuilder docBuilderNSTrue = dbfNSTrue.newDocumentBuilder();
 			docBuilderNSTrue.setErrorHandler(new IgnoreAllErrorHandler());
-			reader = XMLInputFactory.newFactory().createXMLStreamReader(new FileReader(new File(infile)));
+			reader = XMLInputFactory.newFactory().createXMLStreamReader(new FileInputStream(new File(infile)));
 			while(!isEndDoc) {
 				sbChunk.setLength(0);
 				switch(reader.getEventType()) {
+				case XMLStreamConstants.START_DOCUMENT:
+				    ret.encoding = reader.getEncoding();
+				    ret.version = reader.getVersion();
+					break;
 				case XMLStreamConstants.START_ELEMENT:
 					prefix = reader.getPrefix();
 					localname = reader.getLocalName();
@@ -653,13 +664,14 @@ public class FATCAXmlSigner implements ISigner {
 		} finally {
 			if (reader != null) try{reader.close();}catch(Exception e){}
 		}
+		ret.endXml = retEndXml;
 		logger.debug("<-- calcCanonicalizedXmlMsgDigestByParsingDocChunk()");
-		return retEndXml;
+		return ret;
 	}
 
 	//used with streaming based signing. XML is parsed and message digest is calculated.
 	//this method parses a xml, and for every start tag or end tag or characters/value invokes processXmlFrag which transforms data and updates digest  
-	protected String calcCanonicalizedXmlMsgDigestByParsingDocNoChunk(String infile, MessageDigest messageDigest, 
+	protected ParseXmlReturn calcCanonicalizedXmlMsgDigestByParsingDocNoChunk(String infile, MessageDigest messageDigest, 
 			SigXmlTransform sigXmlTransform) throws Exception {
 		logger.debug("--> calcCanonicalizedXmlMsgDigestByParsingDocNoChunk(). infile=" + infile + ", sigXmlTransform=" + sigXmlTransform);
 		String retEndXml = null;
@@ -667,6 +679,7 @@ public class FATCAXmlSigner implements ISigner {
 		String prefix, localname, nsuri, qnameS, tmpS;
 		XMLStreamReader reader = null;
 		DocumentBuilder docBuilderNSTrue = null;
+		ParseXmlReturn ret = new ParseXmlReturn();
 		int count;
 		try {
 	    	DocumentBuilderFactory dbfNSTrue = DocumentBuilderFactory.newInstance();
@@ -674,9 +687,7 @@ public class FATCAXmlSigner implements ISigner {
             Canonicalizer canonicalizer = Canonicalizer.getInstance(getCanonicalizationMethod(sigXmlTransform));
     		docBuilderNSTrue = dbfNSTrue.newDocumentBuilder();
 			docBuilderNSTrue.setErrorHandler(new IgnoreAllErrorHandler());
-			XMLInputFactory xmlInputFactory = XMLInputFactory.newFactory();
-			BufferedReader br = new BufferedReader(new FileReader(new File(infile)));
-			reader = xmlInputFactory.createXMLStreamReader(br);
+			reader = XMLInputFactory.newFactory().createXMLStreamReader(new FileInputStream(new File(infile)));
 			int nsCount = -1;
 			String wrapperPrefix, wrapperNSUri;
 			byte[][] sigRefIdPosTags = getSigRefIdPosTags();
@@ -690,6 +701,10 @@ public class FATCAXmlSigner implements ISigner {
 				parseBuf.setLength(0);
 				wrapperNSUri = wrapperPrefix = null;
 				switch(reader.getEventType()) {
+				case XMLStreamConstants.START_DOCUMENT:
+				    ret.encoding = reader.getEncoding();
+				    ret.version = reader.getVersion();
+					break;
 				case XMLStreamConstants.START_ELEMENT:
 					prefix = reader.getPrefix();
 					localname = reader.getLocalName();
@@ -754,7 +769,6 @@ public class FATCAXmlSigner implements ISigner {
 				reader.next();
 			}
 			reader.close();
-			br.close();
 			reader = null;
 			messageDigest.update(digestSuffix);
 			if (digestBuf != null)
@@ -762,8 +776,9 @@ public class FATCAXmlSigner implements ISigner {
 		} finally {
 			if (reader != null) try{reader.close();}catch(Exception e){}
 		}
+		ret.endXml = retEndXml;
 		logger.debug("<-- calcCanonicalizedXmlMsgDigestByParsingDocNoChunk()");
-		return retEndXml;
+		return ret;
 	}
 	
     //calculate message digest as is - no transformation. used to sign wrapped base64 binary and wrapped text document
@@ -1040,14 +1055,14 @@ public class FATCAXmlSigner implements ISigner {
     			messageDigest = MessageDigest.getInstance(MESSAGE_DIGEST_ALGO, defaultMessageDigestProvider);
     		else
     			messageDigest = MessageDigest.getInstance(MESSAGE_DIGEST_ALGO);
-    		String endXml = null;
+    		ParseXmlReturn parseXmlRet = null;
     		switch(sigDocType) {
     		case XML:
     	    	logger.debug("parsing xml...." + new Date());
     	    	if (myThreadSafeData.isXmlChunkStreaming())
-    	    		endXml = calcCanonicalizedXmlMsgDigestByParsingDocChunk(infile, messageDigest, sigXmlTransform);
+    	    		parseXmlRet = calcCanonicalizedXmlMsgDigestByParsingDocChunk(infile, messageDigest, sigXmlTransform);
     	    	else
-    	    		endXml = calcCanonicalizedXmlMsgDigestByParsingDocNoChunk(infile, messageDigest, sigXmlTransform);
+    	    		parseXmlRet = calcCanonicalizedXmlMsgDigestByParsingDocNoChunk(infile, messageDigest, sigXmlTransform);
 	    		logger.debug("parsing xml....done. " + new Date());
 				break;
     		case WRAPPEDXML:
@@ -1110,6 +1125,8 @@ public class FATCAXmlSigner implements ISigner {
             	throw new Exception("Invalid document structure. Missing <Object> content");
     		baos = new ByteArrayOutputStream();
             trans = transformerFactory.newTransformer();
+            trans.setOutputProperty(OutputKeys.ENCODING, parseXmlRet.encoding);
+            trans.setOutputProperty(OutputKeys.VERSION, parseXmlRet.version);
             trans.transform(new DOMSource(doc), new StreamResult(baos));
             baos.close();
             String tmp = baos.toString();
@@ -1124,7 +1141,7 @@ public class FATCAXmlSigner implements ISigner {
     		switch(sigDocType) {
     		case XML:
     		case WRAPPEDXML:
-                writeXmlFileObjectContent(infile, bos, endXml);
+                writeXmlFileObjectContent(infile, bos, parseXmlRet.endXml);
     			break;
     		case TEXT:	// not used in FATCA
     			writeTextFileObjectContent(infile, bos);
