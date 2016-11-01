@@ -74,8 +74,9 @@ public class UtilShared {
 	private static Random randomDouble = new Random(System.currentTimeMillis());
 	
 	public static String stripXmlHeader(String tmp) {
-		if (tmp.startsWith("<?xml")) {
-			int pos = tmp.indexOf(">");
+		int pos = tmp.indexOf("<?xml");
+		if (pos != -1) {
+			pos = tmp.indexOf(">", pos);
 			if (pos != -1) {
 				tmp = tmp.substring(pos+1);
 				boolean stripWS = false;
