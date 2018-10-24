@@ -1,0 +1,21 @@
+//for unpack
+receiverPrivateKSType=jks
+receiverPrivateKSFile=Keystore/Canada_PrepTool/KSprivateCA.jks
+receiverPrivateKSPwd=pwd123
+receiverPrivateKeyPwd=CAN2014
+receiverPrivateKeyAlias=CANADAcert
+
+//for sig varification
+senderPublicKSType=jks
+senderPublicKSFile=Keystore/IRS_PrepTool/KSpublicUS.jks
+senderPublicKSPwd=pwd123
+senderPublicKeyAlias=IRScert
+
+unpack SampleNotification_840FX44u+n_IsjiyF9CqaVRbCcCIswIX.zip
+
+verifySignature 000000.00000.TA.840_Payload.xml
+//for large file use 'Streaming' based cmds
+verifySignatureStreaming 000000.00000.TA.840_Payload.xml
+
+
+

@@ -11,11 +11,16 @@ receiverPublicCertName=Certs/000000.00000.TA.840.crt
 senderGiin=000000.00000.TA.124
 receiverGiin=000000.00000.TA.840
 approverGiin=000000.00000.TA.484
-taxYear=2015
+taxYear=2017
 
-//IsValidateAllSignature=true
-aesCipherOpMode=CBC
+verifyAllSignature=true
 
-keepSignedXmlAfterSignAndCreatePkgFlag=true
+//keepSignedXmlAfterSignAndCreatePkgFlag=true
 
+//setMetadataInfo email=abc@xyz.com
+//setMetadataInfo email=abc@xyz.com fileRevisionId=false
+setMetadataInfo email=abc@xyz.com fileRevisionId=true origTransId=origTransId0
+
+signAndCreatePkgWithApprover input=Sample.000000.00000.TA.124_Payload.xml
+//for large file use 'Streaming' based cmds
 signAndCreatePkgWithApproverStreaming input=Sample.000000.00000.TA.124_Payload.xml

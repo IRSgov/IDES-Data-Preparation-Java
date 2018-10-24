@@ -6,8 +6,8 @@ receiverPrivateKeyAlias=IRScert
 
 senderPublicCertName=Certs/000000.00000.TA.124.crt
 
-aesCipherOpMode=CBC
+unpack Sample_000000.00000.TA.124.zip
 
-unpack Sample_CBC_20160307T212652260Z_000000.00000.TA.124.zip
-
-validateSignature input=000000.00000.TA.124_Payload.xml sigPublicCert=senderPublicCert
+verifySignature input=000000.00000.TA.124_Payload.xml sigPublicCert=senderPublicCert
+//for large file use 'Streaming' based cmds
+verifySignatureStreaming input=000000.00000.TA.124_Payload.xml sigPublicCert=senderPublicCert

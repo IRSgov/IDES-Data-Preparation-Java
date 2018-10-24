@@ -1,0 +1,18 @@
+//validateSchema xmlFile=<xml> [schemaFile=<schema>] [startElem={namespace}FATCA_OECD]
+//validateSchema xmlFile=<xml> [schemaFile=<schema>] [startElem=FATCA_OECD]
+
+//FATCA XML schema validation
+
+validateSchema xmlFile=Sample.000000.00000.TA.124_Payload.xml schemaFile=Schema/FATCASchema2.0/FatcaXML_v2.0.xsd startElem={urn:oecd:ties:fatca:v2}FATCA_OECD
+validateSchema xmlFile=Sample.000000.00000.TA.124_Payload.xml schemaFile=Schema/FATCASchema2.0/FatcaXML_v2.0.xsd startElem=FATCA_OECD
+validateSchema xmlFile=Sample.000000.00000.TA.124_Payload.signed.xml schemaFile=Schema/digitalSignature.xsd startElem=Signature
+validateSchema xmlFile=Sample.000000.00000.TA.124_Payload.signed.xml schemaFile=Schema/FATCASchema2.0/FatcaXML_v2.0.xsd startElem=FATCA_OECD
+
+//alternative way of specifying default schema and start element for schema validation
+schemaForXmlValidation=Schema/FATCASchema2.0/FatcaXML_v2.0.xsd
+xmlStartElemForSchemaValidation={urn:oecd:ties:fatca:v2}FATCA_OECD
+
+validateSchema xmlFile=Sample.000000.00000.TA.124_Payload.xml
+
+//if 'validateAllXMLSchema' is set to true, all signing cmd will validate schema provided 'schemaForXmlValidation' and 'xmlStartElemForSchemaValidation' are set
+//validateAllXMLSchema=true
