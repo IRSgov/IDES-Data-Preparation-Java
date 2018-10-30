@@ -651,9 +651,8 @@ public class UtilShared {
 		BufferedWriter bw = null;
 		boolean finished = false, objectFound = false, referencedElemFound = false, startElemFound = false, signedInfoFound = false, standalone = false;
 		ArrayList<String> refs = new ArrayList<>(); 
-		QName qname;
-		String name, prefix, nsuri, val, version, encoding;
-		Stack<QName> stackStartTag = new Stack<>();
+		String name, prefix, nsuri, curRefId = null, val, version, encoding;
+		Stack<Object> stackUnsignedElemTag = new Stack<>(), stackReferencedElemTag = new Stack<>();
 		int curIndex = 0;
 		StringBuilder sbElem = new StringBuilder();
 		String xmlDecl = null;
@@ -674,13 +673,13 @@ public class UtilShared {
 							signedInfoFound = true;
 					} else {
 						if (XMLSignature.XMLNS.equals(nsuri) && "Reference".equals(name)) {
-							val = rd.getAttributeValue(null, "URI");
+							curRefId = rd.getAttributeValue(null, "URI");
 							//only same doc ref URI=#<refid> allowed
-							int pos = val.indexOf("#");
+							int pos = curRefId.indexOf("#");
 							if (pos != -1)
-								val = val.substring(pos+1);
-							if (val != null)
-								refs.add(val);
+								curRefId = curRefId.substring(pos+1);
+							if (curRefId != null)
+								refs.add(curRefId);
 						}
 					}
 					break;
@@ -698,25 +697,33 @@ public class UtilShared {
 				sbElem.setLength(0);
 				switch(rd.getEventType()) {
 				case XMLStreamConstants.START_ELEMENT:
-					qname = rd.getName();
 					name = rd.getLocalName();
 					nsuri = rd.getNamespaceURI();
 					prefix = rd.getPrefix();
+					//find Object tag. Unsigned xml is nested within Object
 					if (!startElemFound && !objectFound && !referencedElemFound && XMLSignature.XMLNS.equals(nsuri) && "Object".equals(name))
 						objectFound = true;
+					//Object, SignatureProperty, SignatureProperties may have referenced element (signed xml frag that contains unsigned xml)
 					if (!startElemFound && objectFound && !referencedElemFound && XMLSignature.XMLNS.equals(nsuri) &&
-							(val = rd.getAttributeValue(null, "Id")) != null &&	refs.contains(val))
+							(curRefId = rd.getAttributeValue(null, "Id")) != null &&	refs.contains(curRefId)) {
 						referencedElemFound = true;
+						stackReferencedElemTag.clear();
+					}
 					//start looking for start element from next element ('else' skips referenced element)
 					else if (!startElemFound && objectFound && referencedElemFound && name.equals(unsignedXmlStartElem[curIndex])) {
 						if (bw != null) bw.close();
 						bw = new BufferedWriter(new FileWriter(new File(outUnsignedXml[curIndex])));
 						bw.write(xmlDecl + "\n");
 						startElemFound = true;
-						stackStartTag.clear();
+						stackUnsignedElemTag.clear();
+						logger.debug("start extracting. refId=" + curRefId + ", startTag=" + unsignedXmlStartElem[curIndex]);
 					}
+					if (referencedElemFound)
+						stackReferencedElemTag.add(0);
+					//capture everything as soon as start element is found
 					if (startElemFound) {
-						stackStartTag.add(qname);
+						//push something in stack at start element and pop at end element
+						stackUnsignedElemTag.add(0);
 						sbElem.append("<" + ("".equals(prefix) || prefix == null ? "" : prefix + ":") + name);
 						for (int i = 0; i < rd.getNamespaceCount(); i++) {
 							prefix = rd.getNamespacePrefix(i); 
@@ -756,9 +763,10 @@ public class UtilShared {
 						name = rd.getLocalName();
 						sbElem.append("</" + ("".equals(prefix) || prefix == null ? "" : prefix + ":") + name + ">");
 						bw.write(sbElem.toString());
-						stackStartTag.pop();
-						if (stackStartTag.isEmpty()) {
-							bw.close();
+						stackUnsignedElemTag.pop();
+						//empty stack means we have reached corresponding end element of unsigned xml start element
+						if (stackUnsignedElemTag.isEmpty()) {
+							logger.debug("end extracting. refId=" + curRefId + ", startTag=" + unsignedXmlStartElem[curIndex]);							bw.close();
 							bw = null;
 							objectFound = referencedElemFound = startElemFound = false;
 							curIndex++;
@@ -766,10 +774,27 @@ public class UtilShared {
 								finished = true;
 						}
 					}
+					if (referencedElemFound) {
+						stackReferencedElemTag.pop();
+						if (stackReferencedElemTag.isEmpty()) {
+							objectFound = referencedElemFound = startElemFound = false;
+							if (bw != null) {
+								throw new Exception("bug? bw should be null here");
+								//bw.close(); bw = null;
+							}
+						}
+					}
 					break;
 				}
 				rd.next();
 			}
+			rd.close();
+			rd = null;
+			fis.close();
+			fis = null;
+			if (bw != null)
+				bw.close();
+			bw = null;
 		} finally {
 			if (fis != null) try{fis.close();}catch(Throwable t){}
 			if (rd != null) try{rd.close();}catch(Throwable t){}
