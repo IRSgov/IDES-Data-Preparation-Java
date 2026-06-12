@@ -1,3 +1,5 @@
+Disclaimer: This repository is archived and no longer maintained. The code is available for historical reference only and may contain unpatched or unknown vulnerabilities. Do *not* use it in production systems.
+
 ** MAKE SURE YOU HAVE UNLIMITED JCE JARS, local_policy.jar AND US_export_policy.jar, IN JRE/LIB/SECURITY FOLDER
 ** SET JAVA_HOME in run.bat
 
